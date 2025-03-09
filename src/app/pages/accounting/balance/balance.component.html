@@ -1,0 +1,217 @@
+<section class="content">
+    <div class="content-block">
+        @for (breadscrum of breadscrums; track breadscrum) {
+        <div class="block-header">
+            <!-- breadcrumb -->
+            <app-breadcrumb [items]="breadscrum.items" [active_item]="breadscrum.active">
+            </app-breadcrumb>
+        </div>
+        }
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <form class="row g-3">
+                    <div class="col-md-2">
+                        <label for="cmpy" class="form-label">Compañía</label>
+                        <input type="text" class="form-control" id="cmpy" [(ngModel)]="cmpy" name="cmpy">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="ware" class="form-label">Sucursal</label>
+                        <input type="text" class="form-control" id="ware" [(ngModel)]="ware" name="ware">
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="year" class="form-label">Año</label>
+                        <input type="number" class="form-control" id="year" [(ngModel)]="year" name="year">
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="per" class="form-label">Período</label>
+                        <select class="form-select" id="per" [(ngModel)]="per" name="per">
+                            @for (period of periods; track period.accp_per) {
+                            <option [value]="period.accp_per">
+                                {{ period.accp_description }} ({{ period.accp_per }})
+                            </option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="type" class="form-label">Tipo de Balance</label>
+                        <select class="form-select" id="type" [(ngModel)]="type" name="type">
+                            @for (balanceType of balanceTypes; track balanceType.code) {
+                            <option [value]="balanceType.code">
+                                {{ balanceType.name }}
+                            </option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary me-2" (click)="generateBalance()"
+                            [disabled]="loading">
+                            @if (loading) {
+                            <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+                            }
+                            Generar Balance
+                        </button>
+                        <button type="button" class="btn btn-secondary" (click)="getBalance()" [disabled]="loading">
+                            @if (loading) {
+                            <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+                            }
+                            Consultar Balance
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @if (balanceResponse) {
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5>Balance {{ getBalanceTypeName() }} - Período {{ per }} de {{ year }}</h5>
+                <button class="btn btn-sm btn-outline-secondary">
+                    <i class="bi bi-printer"></i> Imprimir
+                </button>
+            </div>
+            <div class="card-body">
+                <!-- Resumen del balance -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title">Activo</h6>
+                                <h5 class="card-text text-end">{{
+                                    formatNumber(balanceResponse.balance.accb_activo_total) }}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title">Pasivo</h6>
+                                <h5 class="card-text text-end">{{
+                                    formatNumber(balanceResponse.balance.accb_pasivo_total) }}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title">Patrimonio</h6>
+                                <h5 class="card-text text-end">{{
+                                    formatNumber(balanceResponse.balance.accb_patrimonio_total) }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title">Ingresos</h6>
+                                <h5 class="card-text text-end">{{
+                                    formatNumber(balanceResponse.balance.accb_ingresos_total)
+                                    }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title">Gastos y Costos</h6>
+                                <h5 class="card-text text-end">{{ formatNumber(balanceResponse.balance.accb_gastos_total
+                                    +
+                                    balanceResponse.balance.accb_costos_total) }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card" [ngClass]="{
+                    'bg-success text-white': balanceResponse.balance.accb_utilidad_perdida > 0, 
+                    'bg-danger text-white': balanceResponse.balance.accb_utilidad_perdida < 0, 
+                    'bg-light': balanceResponse.balance.accb_utilidad_perdida === 0
+                  }">
+                            <div class="card-body">
+                                <h6 class="card-title">{{ balanceResponse.balance.accb_utilidad_perdida >= 0 ?
+                                    'Utilidad' :
+                                    'Pérdida' }}</h6>
+                                <h5 class="card-text text-end">{{
+                                    formatNumber(balanceResponse.balance.accb_utilidad_perdida) }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla detallada del balance -->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Cuenta</th>
+                                <th>Descripción</th>
+                                <th class="text-end">Saldo Inicial</th>
+                                <th class="text-end">Movimiento</th>
+                                <th class="text-end">Saldo Final</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (detail of balanceResponse.details; track detail.account) {
+                            <tr [ngClass]="{
+                        'table-primary': detail.is_total_row, 
+                        'fw-bold': detail.is_total_row || detail.level <= 2
+                      }">
+                                <td [style.padding-left.px]="detail.level * 10">{{ detail.account }}</td>
+                                <td>{{ detail.account_name }}</td>
+                                <td class="text-end">
+                                    @if (detail.initial_debit !== 0 || detail.initial_credit !== 0) {
+                                    {{ formatNumber(detail.initial_debit - detail.initial_credit) }}
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    @if (detail.period_debit !== 0 || detail.period_credit !== 0) {
+                                    {{ formatNumber(detail.period_debit - detail.period_credit) }}
+                                    }
+                                </td>
+                                <td class="text-end">{{ formatNumber(detail.balance) }}</td>
+                            </tr>
+
+                            @if (detail.children && detail.children.length > 0) {
+                            @for (child of detail.children; track child.account) {
+                            <tr [ngClass]="{
+                            'table-primary': child.is_total_row, 
+                            'fw-bold': child.is_total_row || child.level <= 2
+                          }">
+                                <td [style.padding-left.px]="child.level * 10">{{ child.account }}</td>
+                                <td>{{ child.account_name }}</td>
+                                <td class="text-end">
+                                    @if (child.initial_debit !== 0 || child.initial_credit !== 0) {
+                                    {{ formatNumber(child.initial_debit - child.initial_credit) }}
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    @if (child.period_debit !== 0 || child.period_credit !== 0) {
+                                    {{ formatNumber(child.period_debit - child.period_credit) }}
+                                    }
+                                </td>
+                                <td class="text-end">{{ formatNumber(child.balance) }}</td>
+                            </tr>
+
+                            <!-- Podemos continuar la recursión si es necesario para niveles más profundos -->
+                            }
+                            }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        }
+
+
+    </div>
+</section>

@@ -1,0 +1,20 @@
+<div class="row">
+    @for (menu of submenu; track menu.url; let i = $index) {
+    <div class="col col-12 col-md-3 pb-2">
+        <a [routerLink]="menu.url" class="not_link">
+            <div class="card card-grey card-h text-center hoverable tw m4">
+                @if (menu.isNew) {
+                <img [src]="imgNewUrl" style="position: absolute; width: 77px; top: -11px; right: -17px;" />
+                }
+                <div class="card-svg">
+                    <img class="card-img-top" [src]="menu.urlImagen" />
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">{{ menu.titulo }}</h4>
+                    <p class="card-text">{{ menu.subtitle }}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    }
+</div>

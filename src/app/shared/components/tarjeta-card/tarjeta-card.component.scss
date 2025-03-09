@@ -1,0 +1,94 @@
+.hoverable:hover {
+    cursor: pointer;
+    box-shadow: 1px 2px 9px 1px #cfcfcf;
+}
+
+.card {
+    box-shadow: 7px 7px 12px -5px rgb(223 224 255);
+}
+
+.card-h {
+    height: 100%;
+}
+
+.card-grey {
+    background: #fdfdfd;
+    overflow: hidden;
+}
+
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    margin-top: 10px;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.card-svg {
+    padding-top: 29px;
+}
+
+.card-title {
+    margin-bottom: 0;
+    color: #5a5a5a;
+    font-weight: 400;
+}
+
+.card-text:last-child {
+    margin-bottom: 0;
+}
+
+p.card-text {
+    color: #939292;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.card-svg img {
+    width: 43%;
+}
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.card-title {
+    margin-bottom: 0;
+    color: #5a5a5a;
+    font-weight: 400;
+}
+
+.h4,
+h4 {
+    font-size: 1.5rem;
+}
+
+.not_link {
+    text-decoration: none !important;
+    cursor: pointer !important;
+}

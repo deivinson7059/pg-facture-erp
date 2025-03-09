@@ -1,0 +1,54 @@
+{
+    "routes": [
+        {
+            "path": "",
+            "title": "DANISOFT SAS",
+            "icon": "",
+            "class": "",
+            "groupTitle": true,
+            "submenu": []
+        },
+        {
+            "path": "/dashboard/main",
+            "title": "Dashboards",
+            "icon": "monitor",
+            "class": "",
+            "groupTitle": false,
+            "submenu": []
+        },
+        {
+            "path": "",
+            "title": "Contador",
+            "icon": "pen-tool",
+            "class": "menu-toggle",
+            "groupTitle": false,
+            "submenu": [
+                {
+                    "path": "/accounting",
+                    "title": "Notas contables",
+                    "icon": "trello",
+                    "class": "ml-sub-menu",
+                    "groupTitle": false,
+                    "submenu": [
+                        {
+                            "path": "/accounting/notes",
+                            "title": "Listar Notas contables",
+                            "icon": "",
+                            "class": "ml-menu2",
+                            "groupTitle": false,
+                            "submenu": []
+                        },
+                        {
+                            "path": "/accounting/notes/new",
+                            "title": "Nueva Nota Contable",
+                            "icon": "",
+                            "class": "ml-menu2",
+                            "groupTitle": false,
+                            "submenu": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

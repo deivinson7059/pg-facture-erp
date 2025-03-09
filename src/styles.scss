@@ -1,0 +1,77 @@
+.breadcrumb {
+    background-color: transparent !important;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 0.5rem !important;
+    width: max-content;
+}
+
+.theme-black .breadcrumb li a {
+    color: #6777f0 !important;
+}
+
+.theme-white .breadcrumb li a {
+    color: #6777ef !important;
+}
+
+.dark .form-control {
+    color: #96a2b4;
+    background: #1a202e;
+    border: 1px solid #4a5568;
+}
+
+.form-control:disabled {
+    background-color: var(--bs-secondary-bg) !important;
+    opacity: 1;
+}
+
+.dark .form-control:disabled {
+    background: #2d3748;
+    color: #505862 !important;
+    border-color: #4a5568 !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.dark .form-control[readonly] {
+    background: #2a2f3e;
+    color: #96a2b4 !important;
+    border-color: #4a5568 !important;
+    opacity: 0.8;
+}
+
+.dark .form-control:disabled::placeholder {
+    color: #4a5568 !important;
+    opacity: 0.5;
+}
+
+.dark .form-control[readonly]::placeholder {
+    color: #5a667f !important;
+    opacity: 0.6;
+}
+
+.ls-closed section.content {
+    margin-left: 2px !important;
+}
+
+/* section.content {
+    margin: 70px 0px 0 276px !important
+} */
+
+
+.theme-black .autocomplete-menu {
+    background-color: #1a202e !important;
+    color: #96a2b5 !important;
+}
+
+.theme-black .autocomplete-menu span {
+    color: #96a2b5;
+}
+
+.theme-black .autocomplete-menu li:focus {
+    background-color: white !important;
+}
+
+.card {
+  margin-bottom: 0px; 
+}

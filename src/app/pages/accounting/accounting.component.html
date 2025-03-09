@@ -1,0 +1,16 @@
+<section class="content">
+    <div class="content-block">
+        @for (breadscrum of breadscrums; track breadscrum) {
+        <div class="block-header">
+            <!-- breadcrumb -->
+            <app-breadcrumb [items]="breadscrum.items" [active_item]="breadscrum.active">
+            </app-breadcrumb>
+        </div>
+        }
+
+        <div class="container-xl px-4 mt-4">
+            <pg-tarjeta-card [submenu]='submenu' [breadcrumbs]='breadcrumbs'></pg-tarjeta-card>
+        </div>
+
+    </div>
+</section>

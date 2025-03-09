@@ -1,0 +1,64 @@
+<!-- autocompletable.component.html -->
+<div class="form-group">
+    <div class="low_text" *ngIf="busquedaVacia">{{ textoBusquedaVacia }}</div>
+
+    <div id="autocomplete_search" class="dropdown" style="position: relative; display: flex;"
+        *ngIf="!usuarioSeleccionado">
+        <input autofocus="autofocus" autocomplete="off" [placeholder]="placeholder" type="text" id="find_user_input"
+            class="form-control" [formControl]="busquedaControl" (keydown)="manejarTecla($event)">
+
+        <button *ngIf="mostrarBotonCrear" class="bt bt-white ml-0" (click)="crearNuevo()">
+            <i class="fa fa-plus"></i> {{ textoBotonCrear }}
+        </button>
+
+        <ul class="dropdown-menu autocomplete-mcust" [class.show]="mostrarResultados" style="width: 100%;">
+            <li *ngFor="let resultado of resultados; let i = index" class="dropdown-item"
+                [class.active]="i === resultadoActivo" (click)="seleccionarItem(resultado)"
+                (mouseenter)="cambiarResultadoActivo(i)">
+                <span class="autocomplete_company">{{ resultado.empresa }}</span>
+                <span class="suggestion_name">{{ resultado.nombre }}</span>
+                <span class="autocomplete_id">{{ resultado.id }}</span>
+            </li>
+            <li *ngIf="resultados.length > 0" class="dropdown-item new_user_btn"
+                [class.active]="resultadoActivo === resultados.length" (click)="crearNuevo()"
+                (mouseenter)="cambiarResultadoActivo(resultados.length)">
+                <i class="fa fa-user-plus"></i> {{ textoCrearNuevo }}
+            </li>
+        </ul>
+    </div>
+
+    <div class="selected_user" *ngIf="usuarioSeleccionado">
+        <div class="action_panel_two">
+            <button data-toggle="tooltip" tabindex="-1" data-placement="top" title="Editar este usuario"
+                class="btn btn-outline-primary" (click)="editar()">
+                <i class="fa fa-edit"></i>
+            </button>
+            <button data-toggle="tooltip" tabindex="-1" data-placement="top" title="Ir a perfil"
+                class="btn btn-outline-primary" (click)="verPerfilUsuario()">
+                <i class="fa fa-user"></i>
+            </button>
+            <button data-toggle="tooltip" tabindex="-1" data-placement="top" title="Crear otro usuario"
+                class="btn btn-outline-primary" (click)="crearNuevo()">
+                <i class="fa fa-user-plus"></i>
+            </button>
+            <button data-toggle="tooltip" tabindex="-1" data-placement="top" title="Cancelar y buscar otro usuario"
+                class="btn btn-outline-danger" (click)="cancelar()">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+
+        <div class="selected_user_info">
+            <div class="selected_company">Razón Social:
+                <a target="_blank" tabindex="-1" [href]="'/admin/user/' + usuarioSeleccionado.id">
+                    <b>{{ usuarioSeleccionado.empresa }}</b>
+                </a>
+            </div>
+            <div class="selected_id">NIT - CC: <b>{{ usuarioSeleccionado.id }}</b></div>
+            <div class="selected_id">Email: <b>{{ usuarioSeleccionado.email }}</b></div>
+            <div class="selected_id">Ciudad: <b>{{ usuarioSeleccionado.ciudad }}</b></div>
+            <div class="selected_id">Dir: <b>{{ usuarioSeleccionado.direccion }}</b></div>
+            <div class="selected_id">Tel: <b>{{ usuarioSeleccionado.telefono }}</b></div>
+            <div class="selected_name">Contacto: <b>{{ usuarioSeleccionado.contacto }}</b></div>
+        </div>
+    </div>
+</div>

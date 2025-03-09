@@ -1,0 +1,113 @@
+/* Estilos base - se mantienen igual */
+.autocomplete-container {
+    width: 100%;
+    position: relative;
+    
+    .form-control {
+        width: 100%;
+        padding-right: 30px; // Espacio para el botón de limpiar
+        transition: border-color 0.2s ease;
+        
+        &:focus {
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+        }
+    }
+    
+    .clear-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: transparent;
+        color: #999;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 0;
+        height: 20px;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.2s ease;
+        
+        &:hover {
+            color: #333;
+        }
+    }
+    
+    .autocomplete-menu {
+        margin-top: 0.0rem !important;
+        width: 100%;
+        max-height: 250px;
+        overflow-y: auto;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        padding: 0;
+        margin: 0;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.15s ease-in-out;
+        z-index: 1050;
+        
+        .dropdown-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            
+            &:last-child {
+                border-bottom: none;
+            }
+            
+            &.active {
+                background-color: rgba(13, 110, 253, 0.1);
+                color: inherit;
+            }
+            
+            &:hover {
+                background-color: #f8f9fa;
+            }
+            
+            &.no-results,
+            &.loading-item {
+                color: #6c757d;
+                font-style: italic;
+                cursor: default;
+                
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.suggestion_name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+    b {
+        font-weight: 500;
+        flex-shrink: 0;
+        margin-right: 8px;
+    }
+}
+
+.text-left {
+    text-align: left !important;
+}
+

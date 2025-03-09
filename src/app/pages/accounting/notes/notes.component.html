@@ -1,0 +1,2163 @@
+<section class="content">
+    <div class="content-block">
+        @for (breadscrum of breadscrums; track breadscrum) {
+        <div class="block-header">
+            <!-- breadcrumb -->
+            <app-breadcrumb [items]="breadscrum.items" [active_item]="breadscrum.active">
+            </app-breadcrumb>
+        </div>
+        }
+
+        <div class="container-semi">
+            <div class="row">
+                <div class="col-sm-12 section_title title_mobile text-center d-lg-none">
+                    Notas Contables
+                </div>
+                <div class="col-12">
+                    <div class="action_panel">
+                        <a href="/admin/accounting/"
+                            class="bt bt-white triggerwait pull-left text-primary tw back_button">
+                            <i class="fa fa-btn fa-arrow-left"></i>
+                        </a> <span class="section_title pull-left pl-4 d-none d-md-block">Notas Contables</span>
+                        <a href="/admin/accounting/notes/new" class="bt bt-green"><i class="fa fa-note-o"></i> Nueva
+                            Nota Contable</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-sm-12 col-md-12">
+                    <div class="card">
+                        <div class="card-block overflowing_table">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th style="min-width:210px">Fecha</th>
+                                        <th></th>
+
+                                        <th class="text-center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#168</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2025-02-27 </b> <br>
+                                            Fecha Contabilización: <b> 2025-02-27 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> xxx
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350205</td>
+                                                            <td class="text-right">$1,500</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>11100510</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$1,500</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/168">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#167</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-12-02 </b> <br>
+                                            Fecha Contabilización: <b> 2024-12-02 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> prueba
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350205</td>
+                                                            <td class="text-right">$1,500,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>11100510</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$1,500,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/167">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#166</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-11-12 </b> <br>
+                                            Fecha Contabilización: <b> 2024-11-12 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en importacion masiva de productos.
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>143501</td>
+                                                            <td class="text-right">$4,094,535</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$4,094,535</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/166">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#165</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-08-22 </b> <br>
+                                            Fecha Contabilización: <b> 2024-08-22 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> saldo inicial
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>11100510</td>
+                                                            <td class="text-right">$50,000,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>310505</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$50,000,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/165">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#164</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-06-28 </b> <br>
+                                            Fecha Contabilización: <b> 2024-06-28 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Carcasa Para Xiaomi Redmi Note 8 Pro-000020. Costo
+                                            Anterior =&gt; 400.00. Nuevo Costo =&gt; 100. Unidades en invetario a la
+                                            fecha de ajuste =&gt; 186. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$55,800</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$55,800</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/164">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#163</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-06-28 </b> <br>
+                                            Fecha Contabilización: <b> 2024-06-28 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Proyector Full Resoluttion-000019. Costo Anterior =&gt;
+                                            300000.00. Nuevo Costo =&gt; 10000. Unidades en invetario a la fecha de
+                                            ajuste =&gt; 31. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$8,990,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$8,990,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/163">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#162</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-04-05 </b> <br>
+                                            Fecha Contabilización: <b> 2024-04-05 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Sony - Dualshock 4-000004. Costo Anterior =&gt;
+                                            125000.00. Nuevo Costo =&gt; 10000.00. Unidades en invetario a la fecha de
+                                            ajuste =&gt; 39. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$4,485,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$4,485,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/162">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#161</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-03-25 </b> <br>
+                                            Fecha Contabilización: <b> 2024-03-25 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto internet-000730. Costo Anterior =&gt; 0.00. Nuevo Costo
+                                            =&gt; 4000. Unidades en invetario a la fecha de ajuste =&gt; 1. Modificado
+                                            desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$4,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$4,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/161">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#160</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-03-11 </b> <br>
+                                            Fecha Contabilización: <b> 2024-03-11 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> apertura de cuenta bancaria
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3115</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$5,000,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>11100505</td>
+                                                            <td class="text-right">$5,000,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/160">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#159</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-03-07 </b> <br>
+                                            Fecha Contabilización: <b> 2024-03-07 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto reloj de mesa-000496. Costo Anterior =&gt; 1350442.14.
+                                            Nuevo Costo =&gt; 12500. Unidades en invetario a la fecha de ajuste =&gt;
+                                            99. Modificado desde FACTURACION
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$132,456,272</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$132,456,272</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/159">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#158</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-02-19 </b> <br>
+                                            Fecha Contabilización: <b> 2024-02-19 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto 190224-002391. Costo Anterior =&gt; 12399.00. Nuevo Costo
+                                            =&gt; 8670. Unidades en invetario a la fecha de ajuste =&gt; 400. Modificado
+                                            desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$1,491,600</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$1,491,600</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/158">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#157</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-02-19 </b> <br>
+                                            Fecha Contabilización: <b> 2024-02-19 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto 190224-002391. Costo Anterior =&gt; 0.00. Nuevo Costo
+                                            =&gt; 12399. Unidades en invetario a la fecha de ajuste =&gt; 400.
+                                            Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$4,959,600</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$4,959,600</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/157">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#156</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2024-02-06 </b> <br>
+                                            Fecha Contabilización: <b> 2024-02-06 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en importacion masiva de productos.
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>143501</td>
+                                                            <td class="text-right">$1,190,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$1,190,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/156">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#155</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-12-13 </b> <br>
+                                            Fecha Contabilización: <b> 2023-12-13 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto reloj de mesa-000496. Costo Anterior =&gt; 1350442.48.
+                                            Nuevo Costo =&gt; 1350442.14. Unidades en invetario a la fecha de ajuste
+                                            =&gt; 104. Modificado desde FACTURACION
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$35</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$35</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/155">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#154</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-12-13 </b> <br>
+                                            Fecha Contabilización: <b> 2023-12-13 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Sony - Dualshock 4-000004. Costo Anterior =&gt;
+                                            100000.00. Nuevo Costo =&gt; 125000. Unidades en invetario a la fecha de
+                                            ajuste =&gt; 40. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$1,000,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$1,000,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/154">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#153</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-12-08 </b> <br>
+                                            Fecha Contabilización: <b> 2023-12-08 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Hp Envy 5030-000002. Costo Anterior =&gt; 200000.00.
+                                            Nuevo Costo =&gt; 1800. Unidades en invetario a la fecha de ajuste =&gt; -1.
+                                            Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$198,200</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$198,200</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/153">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#152</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-12-08 </b> <br>
+                                            Fecha Contabilización: <b> 2023-12-08 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Sony - Dualshock 4-000004. Costo Anterior =&gt;
+                                            150000.00. Nuevo Costo =&gt; 100000. Unidades en invetario a la fecha de
+                                            ajuste =&gt; 40. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$2,000,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$2,000,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/152">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#151</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-12-08 </b> <br>
+                                            Fecha Contabilización: <b> 2023-12-08 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Hp Envy 5030-000002. Costo Anterior =&gt; 265555.56.
+                                            Nuevo Costo =&gt; 200000. Unidades en invetario a la fecha de ajuste =&gt;
+                                            -1. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$65,556</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$65,556</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/151">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#150</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-11-01 </b> <br>
+                                            Fecha Contabilización: <b> 2023-11-01 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto LECHE-001684. Costo Anterior =&gt; 0.00. Nuevo Costo
+                                            =&gt; 1500. Unidades en invetario a la fecha de ajuste =&gt; 240. Modificado
+                                            desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$360,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$360,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/150">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#149</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-10-23 </b> <br>
+                                            Fecha Contabilización: <b> 2023-10-23 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> pago de fra 2563
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <span class="pill pill-red pill-smaller"><i class="fa fa-times"></i>
+                                                Anulado</span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>220505</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>110505057</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/149">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#148</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-10-21 </b> <br>
+                                            Fecha Contabilización: <b> 2023-10-21 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> pago fra 4569
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>220505</td>
+                                                            <td class="text-right">$150,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1105050505</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$150,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/148">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#147</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-10-17 </b> <br>
+                                            Fecha Contabilización: <b> 2023-10-17 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> REEMBOLSO DE CAJA MENOR
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                3 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>51355002</td>
+                                                            <td class="text-right">$200,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>529525</td>
+                                                            <td class="text-right">$150,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1105050505</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$350,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/147">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#146</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-09-08 </b> <br>
+                                            Fecha Contabilización: <b> 2023-09-08 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto reloj de mesa-000496. Costo Anterior =&gt; 50000.00.
+                                            Nuevo Costo =&gt; 200000. Unidades en invetario a la fecha de ajuste =&gt;
+                                            21. Modificado desde FACTURACION
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$3,150,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$3,150,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/146">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#145</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-09-05 </b> <br>
+                                            Fecha Contabilización: <b> 2023-09-05 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Cuarzo negro chispas-001095. Costo Anterior =&gt; 0.00.
+                                            Nuevo Costo =&gt; 435000.00. Unidades en invetario a la fecha de ajuste
+                                            =&gt; 5. Modificado desde FACTURACION
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$2,175,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$2,175,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/145">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#144</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-08-28 </b> <br>
+                                            Fecha Contabilización: <b> 2023-08-28 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Sony - Dualshock 4-000004. Costo Anterior =&gt;
+                                            1037749.00. Nuevo Costo =&gt; 150000. Unidades en invetario a la fecha de
+                                            ajuste =&gt; 39. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$34,622,211</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$34,622,211</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/144">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#143</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-08-11 </b> <br>
+                                            Fecha Contabilización: <b> 2023-08-11 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Carcasa Para Xiaomi Redmi Note 8 Pro-000020. Costo
+                                            Anterior =&gt; 6000.00. Nuevo Costo =&gt; 8000.00. Unidades en invetario a
+                                            la fecha de ajuste =&gt; 58. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$116,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$116,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/143">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#142</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-07-18 </b> <br>
+                                            Fecha Contabilización: <b> 2023-07-18 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Sony - Dualshock 4-000004. Costo Anterior =&gt;
+                                            103702.02. Nuevo Costo =&gt; 1037749. Unidades en invetario a la fecha de
+                                            ajuste =&gt; 33. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$30,823,550</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$30,823,550</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/142">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#141</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-07-01 </b> <br>
+                                            Fecha Contabilización: <b> 2023-07-01 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> cruce contrBKSDALALSDHALSD
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>133005</td>
+                                                            <td class="text-right">$5,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1110</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$5,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/141">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#140</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-06-06 </b> <br>
+                                            Fecha Contabilización: <b> 2023-06-06 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto MATRIMONIO X 3 CAPS-001021. Costo Anterior =&gt; 1500.00.
+                                            Nuevo Costo =&gt; 1600. Unidades en invetario a la fecha de ajuste =&gt; 16.
+                                            Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$1,600</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$1,600</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/140">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#139</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-05-24 </b> <br>
+                                            Fecha Contabilización: <b> 2023-05-24 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> TELEFONO ENVIADO
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>513545</td>
+                                                            <td class="text-right">$50,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2335</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$50,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/139">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#138</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-04-26 </b> <br>
+                                            Fecha Contabilización: <b> 2023-04-26 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto NORAVER GRIPA DIA SOBRE 15G-000962. Costo Anterior =&gt;
+                                            0.00. Nuevo Costo =&gt; 2100. Unidades en invetario a la fecha de ajuste
+                                            =&gt; 4. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$8,400</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$8,400</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/138">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#137</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-04-26 </b> <br>
+                                            Fecha Contabilización: <b> 2023-04-26 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Cuero Por Cm-000014. Costo Anterior =&gt; 10333.33. Nuevo
+                                            Costo =&gt; 25000. Unidades en invetario a la fecha de ajuste =&gt; 890.
+                                            Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$13,053,336</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$13,053,336</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/137">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#136</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-04-26 </b> <br>
+                                            Fecha Contabilización: <b> 2023-04-26 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Demo
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1105</td>
+                                                            <td class="text-right">$100</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4135</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$100</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/136">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#135</td>
+                                        <td>
+                                            Generado por: <b> Carlos </b><br>
+                                            Fecha Generación: <b> 2023-03-25 </b> <br>
+                                            Fecha Contabilización: <b> 2023-03-25 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> xxxxxxxxxxxxxxxxxx
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>13050501</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$13,050,501</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>530535</td>
+                                                            <td class="text-right">$13,050,501</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/135">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#134</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-03-24 </b> <br>
+                                            Fecha Contabilización: <b> 2023-03-24 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> PRUEBA
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>11050550</td>
+                                                            <td class="text-right">$100,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>13050501</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$100,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/134">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#133</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-03-15 </b> <br>
+                                            Fecha Contabilización: <b> 2023-03-15 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Reloj semi Inteligente Samsumg x46-000001. Costo Anterior
+                                            =&gt; 40314.02. Nuevo Costo =&gt; 30000. Unidades en invetario a la fecha de
+                                            ajuste =&gt; 9114. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$94,001,978</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>14350190</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$94,001,978</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/133">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#132</td>
+                                        <td>
+                                            Generado por: <b> Carlos </b><br>
+                                            Fecha Generación: <b> 2023-02-07 </b> <br>
+                                            Fecha Contabilización: <b> 2023-02-07 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> depreciones
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1592</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$10,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>5160</td>
+                                                            <td class="text-right">$10,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/132">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#131</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-02-04 </b> <br>
+                                            Fecha Contabilización: <b> 2023-02-04 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> DSDSDSD
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>110505</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$100,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>111050</td>
+                                                            <td class="text-right">$100,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/131">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#130</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-01-31 </b> <br>
+                                            Fecha Contabilización: <b> 2023-01-31 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> un comentatrio del porque
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3605</td>
+                                                            <td class="text-right">$1,000,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>13050501</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$1,000,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/130">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#129</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2023-01-23 </b> <br>
+                                            Fecha Contabilización: <b> 2023-01-23 </b>
+                                        </td>
+                                        <td>
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                0 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/129">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#128</td>
+                                        <td>
+                                            Generado por: <b> Carlos </b><br>
+                                            Fecha Generación: <b> 2022-11-01 </b> <br>
+                                            Fecha Contabilización: <b> 2022-11-01 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> es un prueba
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>13050541</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$15,000,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>11050505</td>
+                                                            <td class="text-right">$15,000,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/128">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#127</td>
+                                        <td>
+                                            Generado por: <b> Carlos </b><br>
+                                            Fecha Generación: <b> 2022-11-01 </b> <br>
+                                            Fecha Contabilización: <b> 2022-11-01 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Es una prueba
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>21950501</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$10,000,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>11050505</td>
+                                                            <td class="text-right">$10,000,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/127">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#126</td>
+                                        <td>
+                                            Generado por: <b> Carlos </b><br>
+                                            Fecha Generación: <b> 2022-10-28 </b> <br>
+                                            Fecha Contabilización: <b> 2022-10-28 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> depreciaciones
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1588</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$10,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>5160</td>
+                                                            <td class="text-right">$10,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/126">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#125</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2022-10-05 </b> <br>
+                                            Fecha Contabilización: <b> 2022-10-05 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Cartón paja 1/4-000720. Costo Anterior =&gt; 800.00.
+                                            Nuevo Costo =&gt; 850.00. Unidades en invetario a la fecha de ajuste =&gt;
+                                            18. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>143501</td>
+                                                            <td class="text-right">$900</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$900</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/125">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#124</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2022-10-04 </b> <br>
+                                            Fecha Contabilización: <b> 2022-10-04 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Cartón paja 1/4-000720. Costo Anterior =&gt; 750.00.
+                                            Nuevo Costo =&gt; 800. Unidades en invetario a la fecha de ajuste =&gt; 8.
+                                            Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>143501</td>
+                                                            <td class="text-right">$400</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$400</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/124">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#123</td>
+                                        <td>
+                                            Generado por: <b> ANDRES </b><br>
+                                            Fecha Generación: <b> 2022-09-30 </b> <br>
+                                            Fecha Contabilización: <b> 2022-09-30 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Altavoz Portatil-000138. Costo Anterior =&gt; 32418.60.
+                                            Nuevo Costo =&gt; 5000. Unidades en invetario a la fecha de ajuste =&gt;
+                                            215. Modificado desde FACTURACION
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$5,894,999</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>143501</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$5,894,999</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/123">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#122</td>
+                                        <td>
+                                            Generado por: <b> Carlos </b><br>
+                                            Fecha Generación: <b> 2022-09-01 </b> <br>
+                                            Fecha Contabilización: <b> 2022-09-01 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> es una prueba
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>11100510</td>
+                                                            <td class="text-right">$100,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>421005</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$100,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/122">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#121</td>
+                                        <td>
+                                            Generado por: <b> Carlos </b><br>
+                                            Fecha Generación: <b> 2022-08-14 </b> <br>
+                                            Fecha Contabilización: <b> 2022-08-14 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Reloj Inteligente Samsumg-000001. Costo Anterior =&gt;
+                                            500000.00. Nuevo Costo =&gt; 40000. Unidades en invetario a la fecha de
+                                            ajuste =&gt; 10049. Modificado desde FACTURACION
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$4,622,540,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>143501</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$4,622,540,000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/121">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#120</td>
+                                        <td>
+                                            Generado por: <b> Carlos </b><br>
+                                            Fecha Generación: <b> 2022-08-12 </b> <br>
+                                            Fecha Contabilización: <b> 2022-07-30 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> prueba generar docs
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                4 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>11100510</td>
+                                                            <td class="text-right">$100,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>41352810</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$100,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>11200510</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$250,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>519520</td>
+                                                            <td class="text-right">$250,000</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/120">Ver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#119</td>
+                                        <td>
+                                            Generado por: <b> ADMIN </b><br>
+                                            Fecha Generación: <b> 2022-08-06 </b> <br>
+                                            Fecha Contabilización: <b> 2022-08-06 </b>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-caret-right ml-2"></i> Generado automaticamente. Ajuste de
+                                            costos en producto Reloj Inteligente Samsumg-000001. Costo Anterior =&gt;
+                                            458556.90. Nuevo Costo =&gt; 500000. Unidades en invetario a la fecha de
+                                            ajuste =&gt; 10049. Modificado desde MODULO PRECIOS Y UTILIDADES
+                                            <br>
+                                            <span
+                                                class="hoverable ml-3 mr-2 mt-2 pill pill-outline-blue pill-smaller toggle-table">
+                                                2 movimientos
+                                            </span>
+                                            <div class="mt-2 d-none hidden-table">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>143501</td>
+                                                            <td class="text-right">$416,461,712</td>
+                                                            <td class="text-right">$0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>313001</td>
+                                                            <td class="text-right">$0</td>
+                                                            <td class="text-right">$416,461,712</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" href="/admin/accounting/note/119">Ver</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-center">
+                            <ul class="pagination">
+
+                                <li class="page-item disabled"><span class="page-link">«</span></li>
+
+
+
+
+
+                                <li class="page-item active"><span class="page-link">1</span></li>
+                                <li class="page-item"><a class="page-link"
+                                        href="https://miempresa.oficinapro.co/admin/accounting/notes?page=2">2</a></li>
+                                <li class="page-item"><a class="page-link"
+                                        href="https://miempresa.oficinapro.co/admin/accounting/notes?page=3">3</a></li>
+                                <li class="page-item"><a class="page-link"
+                                        href="https://miempresa.oficinapro.co/admin/accounting/notes?page=4">4</a></li>
+
+
+                                <li class="page-item"><a class="page-link"
+                                        href="https://miempresa.oficinapro.co/admin/accounting/notes?page=2"
+                                        rel="next">»</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
