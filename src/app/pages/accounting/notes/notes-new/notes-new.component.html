@@ -10,221 +10,280 @@
     </div>
 
     <div class="container-fluid">
-        <div class="container-semi">
-            <div class="row">
-                <div class="col-sm-12 section_title">
-                    <i class="fa fa-chevron-right"></i> Nueva Nota Contable
-                </div>
-                <hr>
-                <div class="col-12">
-                    <app-pg-autocomplete #pucAutocomplete [data]="puc" valueField="id" displayField="code"
-                        placeholder="Buscar Cuenta" displayFormat="{value} - {display}" [debounceTime]="200"
-                        [minChars]="1" [itemTemplate]="pucTemplate" [showDropdownOnFocus]="true"
-                        (selected)="onPucSelected($event)" (search)="onSearchPuc($event)">
-                    </app-pg-autocomplete>
+        <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+            <div class="container-semi">
+                <div class="row">
+                    <div class="col-sm-12 section_title">
+                        <i class="fa fa-chevron-right"></i> Nueva Nota Contable
+                    </div>
+                    <hr>
+                    <div class="col-12">
+                        <app-pg-autocomplete #pucAutocomplete [appAutofocus]="true" [data]="puc" valueField="code"
+                            displayField="code" placeholder="Buscar Cuenta"
+                            customDisplayTemplate="${code} - ${description} (${nature})" [debounceTime]="200"
+                            [minChars]="2" [itemTemplate]="pucTemplate" [showDropdownOnFocus]="false"
+                            (selected)="onPucSelected($event)" (search)="onSearchPuc($event)"
+                            formControlName="pucAutocompleteId" [showSelectedValue]="false" [returnFullObject]="true"
+                            [required]="false" errorMessage="Debe seleccionar una cuenta PUC">
+                        </app-pg-autocomplete>
 
-                    <ng-template #pucTemplate let-puc>
-                        <div class="d-flex flex-column">
-                            <span class="fw-bold">{{ puc.code }}</span>
-                            <div class="d-flex justify-content-between small">
-                                <span class="text-primary">{{ puc.description }}</span>
-                                <span class="text-muted">{{ puc.nature }}</span>
-                            </div>
-                        </div>
-                    </ng-template>
-                </div>
-                @if(selectedPuc){
-                <div class="mt-3 p-3 bg-light rounded">
-                    <h6 class="border-bottom pb-2">Puc seleccionado</h6>
-                    <div class="row">
-                        <div class="col-sm-4 fw-bold">description:</div>
-                        <div class="col-sm-8">{{ selectedPuc.description }}</div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-sm-4 fw-bold">code:</div>
-                        <div class="col-sm-8">{{ selectedPuc.code }}</div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-sm-4 fw-bold">nature:</div>
-                        <div class="col-sm-8">{{ selectedPuc.nature }}</div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-sm-4 fw-bold">classification:</div>
-                        <div class="col-sm-8">{{ selectedPuc.classification }}</div>
-                    </div>
-                </div>
-                }
-
-                <hr>
-            </div>
-            <div class="w-100">
-                <div class="action_panel row">
-                    <div class="col-12 col-md-6 offset-md-6 d-flex">
-                        <div class="flex-grow-1">
-                            <label>Fecha Contable</label><br>
-                            <input type="date" class="form-control">
-                        </div>
-                        <div class="flex-grow-1 pl-1">
-                            <label>Oficina</label><br>
-                            <select class="form-control">
-                                <option value="1">BOGOTA</option>
-                                <option value="2">PASTO</option>
-                            </select>
-                        </div>
-                        <div class="flex-grow-1 pl-1"><label>Centro de costo</label><br> <select class="form-control">
-                                <option value="0"></option>
-                                <option value="19">VENTAS</option>
-                                <option value="20">Pollos asados</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    @for (item of pucSeleted; track $index) {
-                    <div class="card">
-                        <div class="row accounting_notes">
-                            <div class="col-sm-12 col-md-2">
-                                {{item.account}}
-                            </div>
-                            <div class="col-sm-12 col-md-2">
-                                {{item.account_name.toUpperCase()}}
-                            </div>
-                            <div class="col-sm-12 col-md-2">
-                                <input type="number" [step]="0.01" placeholder="Débito" class="form-control"
-                                    [value]="item.debit" [disabled]="item.debitDisabled"
-                                    (input)="onDebitChange($index, $event)">
-                            </div>
-                            <div class="col-sm-12 col-md-2">
-                                <input type="number" placeholder="Crédito" class="form-control" [value]="item.credit"
-                                    [disabled]="item.creditDisabled" [step]="0.01"
-                                    (input)="onCreditChange($index, $event)">
-                            </div>
-                            <div class="col-sm-12 col-md-3 text-center">
-                                @if (item.customers!=null) {
-                                <div>
-                                    <div class="low_text">ID #1326 </div>
-                                    LOPEZ PEDRO <i class="fa fa-times-circle canceled-invoice"
-                                        style="cursor: pointer;"></i><br>
-                                    cc/nit 4444444
+                        <ng-template #pucTemplate let-puc>
+                            <div class="d-flex flex-column">
+                                <span class="fw-bold">{{ puc.code }}</span>
+                                <div class="d-flex justify-content-between small">
+                                    <span class="text-primary">{{ puc.description }}</span>
+                                    <span class="text-muted">{{ puc.nature }}</span>
                                 </div>
-                                }
-                                @if (item.customers===null) {
-                                <div>
-                                    <button class="bt bt-white">
-                                        <i class="fa fa-user"></i>
-                                        Tercero
-                                    </button>
-                                </div>
-                                }
                             </div>
-                            <div class="col-sm-12 col-md-1 text-center">
-                                <button data-toggle="tooltip" data-placement="top" title="Eliminar"
-                                    class="btn btn-outline-danger btn-narrow">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    }
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="text-center card section_title">
-                        <small>Total Débitos</small>
-                        ${{getTotalDebits() | number:'1.0-2'}}
+                        </ng-template>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
-                    <div class="text-center card section_title">
-                        <small>Total Créditos</small>
-                        ${{getTotalCredits() | number:'1.0-2'}}
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="action_panel">
-                        <button class="bt bt-green">
-                            <i class="fa fa-check"></i>
-                            Generar Nota Contable
-                        </button>
-                    </div>
-                </div>
-                <hr>
-                <div class="col-12 section_title">
-                    <i class="fa fa-chevron-right"></i>
-                    COMENTARIOS
-                </div>
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-block pad2rem invoiceform">
-                            <textarea maxlength="500" rows="3" class="form-control register_box"></textarea>
-                            <div class="register_btn">
-                                <button class="bt bt-blue">
-                                    <i aria-hidden="true" class="fa fa-comment"></i>
-                                    Guardar Comentario
-                                </button>
-                            </div>
-                            <hr>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-            class="modal">
-            <div role="document" class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="text-center">
-                            <div class="section_title">
-                                Seleccione Tercero
-                            </div>
-                            <hr>
-                            <div class="form-group ">
-                                <div class="form-group">
-                                    <div class="low_text" style="display: none;">No Resultados De Busqueda...</div>
-                                    <div id="autocomplete_search" class="dropdown"
-                                        style="position: relative; display: flex;"><input autofocus="autofocus"
-                                            autocomplete="off" placeholder="Buscar Cliente/Proveedor" type="text"
-                                            id="find_user_input" class="form-control"> <button
-                                            class="bt bt-white ml-3"><i class="fa fa-plus"></i> Crear</button>
-                                        <ul class="dropdown-menu" style="width: 100%;">
-                                            <li class="dropdown-item new_user_btn"><i class="fa fa-user-plus"></i> CREAR
-                                                NUEVO USUARIO</li>
-                                        </ul>
-                                    </div>
-                                    <div class="selected_user" style="display: none;">
-                                        <div class="action_panel_two"><button class="btn btn-outline-primary"><i
-                                                    class="fa fa-user"></i></button> <button
-                                                class="btn btn-outline-danger"><i class="fa fa-times"></i></button>
+                <!--  @if (pucSeleted.length >0) { -->
+                <div class="w-100">
+                    <div class="w-100">
+                        <div class="action_panel">
+                            <div class="row">
+                                <!-- Primer método: usando un offset para empujar todo hacia la derecha -->
+                                <div class="col-12 col-md-8 offset-md-4">
+                                    <div class="row">
+                                        <!-- Fecha Contable -->
+                                        <div class="col-12 col-md-4 mb-2">
+                                            <div class="form-group">
+                                                <label class="w-100">
+                                                    Fecha Contable: <span class="required">*</span>
+                                                    <input formControlName="fechaContable" type="date"
+                                                        class="form-control"
+                                                        [formControlValidation]="noteForm.get('fechaContable')!">
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="selected_user_info">
-                                            <div class="selected_company">Razón Social: <a target="_blank"
-                                                    href="/admin/user/undefined"><b></b></a></div>
-                                            <div class="selected_name">Contacto: <b></b></div>
-                                            <div class="selected_id">NIT - CC: <b></b></div>
-                                            <div class="selected_id">Ciudad: <b></b><!----><!----></div>
-                                            <div class="selected_id">Dir: <b></b></div>
-                                            <div class="selected_id">Tel: <b></b> <b></b></div>
+
+                                        <!-- Oficina -->
+                                        <div class="col-12 col-md-4 mb-2">
+                                            <div class="form-group">
+                                                <label class="w-100">
+                                                    Oficina: <span class="required">*</span>
+                                                    <select formControlName="cbOffice" class="form-select"
+                                                        [formControlValidation]="noteForm.get('cbOffice')!">
+                                                        <option value="Oficina Principal">Oficina Principal</option>
+                                                        <option value="Oficina Centro">Oficina Centro</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Centro de costo -->
+                                        <div class="col-12 col-md-4 mb-2">
+                                            <div class="form-group">
+                                                <label class="w-100">
+                                                    Centro de costo: <span class="required">*</span>
+                                                    <select formControlName="cbCentoCosto" class="form-select"
+                                                        [formControlValidation]="noteForm.get('cbCentoCosto')!">
+                                                        <option value="">Seleccionar...</option>
+                                                        <option value="19">VENTAS</option>
+                                                        <option value="20">Pollos asados</option>
+                                                    </select>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer"><button tabindex="0" type="button" data-dismiss="modal"
-                            class="bt bt-white">Cancelar</button> <button tabindex="0" type="button"
-                            class="bt bt-green"><i class="fa fa-check"></i> Seleccionar</button></div>
+                    <div class="accounts-container">
+                        @for (item of pucSeleted; track $index) {
+                        <div class="card">
+                            <div class="row accounting_notes">
+                                <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-2">
+                                    {{item.account}}
+                                </div>
+                                <div class="col-9 col-sm-3 col-md-3 col-lg-3 col-xl-3 mb-2">
+                                    {{item.account_name.toUpperCase()}}
+                                </div>
+                                <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-2">
+                                    <input type="number" [step]="0.01" placeholder="Débito" class="form-control"
+                                        [value]="item.debit" [disabled]="item.debitDisabled"
+                                        (input)="onDebitChange($index, $event)" typingListener>
+                                </div>
+                                <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-2">
+                                    <input type="number" placeholder="Crédito" class="form-control"
+                                        [value]="item.credit" [disabled]="item.creditDisabled" [step]="0.01"
+                                        (input)="onCreditChange($index, $event)" typingListener>
+                                </div>
+                                <div class="col-10 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-center mb-2">
+                                    @if (item.customers!=null) {
+                                    <div>
+                                        <div class="low_text">
+                                            CC / NIT: {{item.customers.nit}}
+                                        </div>
+                                        {{item.customers.name }}
+
+                                        <i class="fa fa-times-circle canceled-invoice pointer" aria-hidden="true"
+                                            [appTooltip]="'Eliminar Tercero'" [placement]="'top'"
+                                            (click)="removeCustomer($index)"></i>
+                                    </div>
+                                    }
+                                    @if (item.customers===null) {
+                                    <div>
+                                        <button type="button" [appTooltip]="'Agregar Tercero'" [placement]="'top'"
+                                            class="bt bt-white" (click)="openUserModal($index, item)">
+                                            <i class="fa fa-user"></i>
+                                            Tercero
+                                        </button>
+                                    </div>
+                                    }
+                                </div>
+                                <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center mb-2">
+                                    <i class="fa fa-trash pointer canceled-invoice mt-2" aria-hidden="true"
+                                        [appTooltip]="'Eliminar cuenta'" [placement]="'top'"
+                                        (click)="removeItem($index, item)"></i>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="text-center card section_title">
+                            <small>Total Débitos</small>
+                            ${{getTotalDebits() | number:'1.0-2'}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="text-center card section_title">
+                            <small>Total Créditos</small>
+                            ${{getTotalCredits() | number:'1.0-2'}}
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="col-12 section_title">
+                        <i class="fa fa-chevron-right"></i>
+                        COMENTARIOS
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-block pad2rem invoiceform">
+                                <textarea formControlName="txtComment" maxlength="500" rows="3"
+                                    class="form-control register_box"
+                                    [formControlValidation]="noteForm.get('txtComment')!"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="action_panel">
+                            <button type="submit" class="bt bt-green">
+                                <i class="fa fa-check"></i>
+                                Generar Nota Contable
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- } -->
             </div>
-        </div>
+        </form>
     </div>
 </section>
-@if (isTyping) {
-<div class="card typing">
-    <div class="card-block pad2rem">
-        ${{currentTypingValue | number:'1.0-2'}}
+
+<app-typing [timeout]="2000"></app-typing>
+
+<!-- Modal de selección de terceros - usando app-pg-autocomplete -->
+<div class="modal" [ngClass]="{'show': showUserModal}" tabindex="-1" role="dialog"
+    [style.display]="showUserModal ? 'block' : 'none'">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="section_title">
+                        Seleccione Tercero
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <div class="form-group">
+
+                                @if (!selectedCustomer) {
+                                <!-- Usar app-pg-autocomplete para la búsqueda de terceros -->
+                                <app-pg-autocomplete #customerAutocomplete [data]="customers" valueField="id"
+                                    displayField="name" placeholder="Buscar Tercero"
+                                    customDisplayTemplate="${name} - ${nit}" [debounceTime]="200" [minChars]="3"
+                                    [itemTemplate]="customerTemplate" [showDropdownOnFocus]="true"
+                                    (selected)="onCustomerSelected($event)" [showButton]="true" buttonText="Crear"
+                                    buttonClass="bt bt-white ms-2" buttonIconClass="fa fa-plus"
+                                    (buttonClick)="onCreateNewCustomer()" [required]="false"
+                                    errorMessage="Debe seleccionar un Tercero" [showSelectedValue]="false"
+                                    [returnFullObject]="true">
+                                </app-pg-autocomplete>
+
+                                <!-- Template personalizado para los items del dropdown -->
+                                <ng-template #customerTemplate let-customer>
+                                    <div class="d-flex flex-column">
+                                        <span class="fw-bold">{{ customer.name }}</span>
+                                        <div class="d-flex justify-content-between small">
+                                            <span class="text-primary">NIT: {{ customer.nit }}</span>
+                                            <span class="text-muted">{{ customer.city || '' }}</span>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                }
+                                <!-- Vista previa del cliente seleccionado -->
+                                @if (selectedCustomer) {
+
+                                <div class="selected_user">
+                                    <div class="action_panel_two text-left">
+                                        <button [appTooltip]="'Quitar Seleccion'" [placement]="'top'"
+                                            class="btn btn-outline-danger" (click)="clearUserModal()">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="selected_user_info">
+                                        <div class="selected_company">Razón Social:
+                                            <a [appTooltip]="'Ver Tercero'" [placement]="'top'" target="_blank"
+                                                href="#">
+                                                <b>{{ selectedCustomer.name }}</b></a>
+                                        </div>
+                                        <div class="selected_name">
+                                            Contacto: <b></b>
+                                        </div>
+                                        <div class="selected_id">
+                                            NIT - CC: <b>{{ selectedCustomer.nit }}</b>
+                                        </div>
+                                        <div class="selected_id">
+                                            Ciudad: <b>{{ selectedCustomer.city }}</b>
+                                        </div>
+                                        <div class="selected_id">
+                                            Dir: <b>{{ selectedCustomer.address }}</b>
+                                        </div>
+                                        <div class="selected_id">
+                                            Tel: <b>{{ selectedCustomer.phone }}</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="bt bt-white" (click)="closeUserModal()">
+                    Cancelar
+                </button>
+                <button type="button" class="bt bt-green" [disabled]="!selectedCustomer"
+                    (click)="confirmCustomerSelection()">
+                    <i class="fa fa-check"></i> Seleccionar
+                </button>
+            </div>
+        </div>
     </div>
 </div>
+
+<!-- Backdrop del modal -->
+@if (showUserModal) {
+<div class="modal-backdrop fade show" (click)="closeUserModal()"></div>
 }

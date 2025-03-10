@@ -12,6 +12,7 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
+    "skipLibCheck": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
@@ -19,6 +20,7 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
+    "typeRoots": ["node_modules/@types", "src/types"],
     "paths": {
       "@core": ["app/core"],
       "@core/*": ["app/core/*"],

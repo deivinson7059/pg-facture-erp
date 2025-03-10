@@ -1,14 +1,23 @@
-<div class="autocomplete-container position-relative" (click)="hideDropdown($event)">
-    <input type="text" #searchInput autocomplete="off" [placeholder]="placeholder" class="form-control"
-        [(ngModel)]="searchTerm" (input)="onSearchChange($event)" (keydown)="onKeyDown($event)" (focus)="onFocus()"
-        (blur)="onBlur()" />
+<div #autocompleteContainer class="autocomplete-container position-relative">
+    <div class="input-group" [ngClass]="{'has-button': showButton}">
+        <!-- Input de búsqueda -->
+        <input type="text" #searchInput autocomplete="off" [placeholder]="placeholder" class="form-control"
+            [class.is-invalid]="touched && required && !_selectedValue" [disabled]="disabled" [(ngModel)]="searchTerm"
+            (input)="onSearchChange($event)" (keydown)="onKeyDown($event)" (focus)="onFocus()" (blur)="onBlur()" />
 
-    <!-- Botón de limpieza (X) -->
-    @if (searchTerm) {
-    <button class="clear-btn" type="button" (click)="clearSearch()">
-        ✖
-    </button>
-    }
+        <!-- Botón de limpieza (X) usando un elemento i para mejor consistencia con iconos -->
+        @if (searchTerm && !disabled) {
+        <i class="clear-icon fa fa-times-circle" (click)="clearSearch()" aria-hidden="true"></i>
+        }
+
+        <!-- Botón personalizado -->
+        @if (showButton) {
+        <button [class]="buttonClass" type="button" (click)="onButtonClick($event)">
+            <i [class]="buttonIconClass" *ngIf="buttonIconClass"></i>
+            {{ buttonText }}
+        </button>
+        }
+    </div>
 
     @if (showDropdown) {
     <ul #suggestionsList class="dropdown-menu show autocomplete-menu">
@@ -30,8 +39,9 @@
 
         <!-- Resultados -->
         @if (!isLoading && filteredSuggestions.length > 0) {
-        @for (item of filteredSuggestions; track item; let i = $index) {
-        <li class="dropdown-item" [class.active]="i === selectedIndex" (click)="selectItem(item)">
+        @for (item of filteredSuggestions; track getItemValue(item); let i = $index) {
+        <li class="dropdown-item" [class.active]="i === selectedIndex" (click)="selectItem(item)"
+            [attr.aria-selected]="i === selectedIndex">
             @if (itemTemplate) {
             <ng-container [ngTemplateOutlet]="itemTemplate"
                 [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
@@ -58,5 +68,12 @@
         }
         }
     </ul>
+    }
+
+    <!-- Mensaje de error para formularios - solo se muestra si el campo es requerido -->
+    @if (touched && required && !_selectedValue) {
+    <div class="invalid-feedback d-block">
+        {{ errorMessage }}
+    </div>
     }
 </div>

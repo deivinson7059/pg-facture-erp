@@ -3,7 +3,7 @@ import { NotaContable } from '../interfaces/notas.interface';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { environment } from 'environments/environment';
-import { apiResponse, Puc, PucData } from '../interfaces/puc.interface';
+import { apiResponse, Puc, PucCmpy, PucData } from '../interfaces/puc.interface';
 
 const { backend } = environment;
 
@@ -28,17 +28,16 @@ export class NotesService {
     constructor(private http: HttpClient) {
         // Cargar datos iniciales
         this.loadInitialData({
-            account: '1105',
             cmpy: '01',
         });
     }
 
-    private loadInitialData(data: PucData): void {
+    private loadInitialData(data: PucCmpy): void {
         this.loadingPucSubject.next(true);
 
         // Cargar usuarios
         this.http.post<apiResponse<Puc[]>>(
-            `${backend.domain}/accounting/puc/search`,
+            `${backend.domain}/accounting/puc/all`,
             data,
             {
                 headers: {},

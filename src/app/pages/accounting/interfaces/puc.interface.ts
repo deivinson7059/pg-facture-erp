@@ -16,3 +16,7 @@ export interface PucData{
     account: string;
     cmpy: string;
 }
+
+export interface PucCmpy{
+    cmpy: string;
+}

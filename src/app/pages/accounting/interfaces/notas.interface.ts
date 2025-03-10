@@ -6,9 +6,9 @@ export interface LineaNotaContable {
     debito: number | null;
     credito: number | null;
     tercero: string;
-  }
-  
-  export interface NotaContable {
+}
+
+export interface NotaContable {
     id?: number;
     fechaContable: Date;
     oficina: string;
@@ -19,14 +19,22 @@ export interface LineaNotaContable {
     comentarios?: string;
     generadoPor?: string;
     fechaCreacion?: Date;
-  } 
+}
 
-  export interface accountPUC {
+export interface accountPUC {
     account: string;
-    account_name: string;   
-    debit: number |null ;
-    credit: number|null;
-    debitDisabled:boolean;
-    creditDisabled:boolean;
-    customers: any;
+    account_name: string;
+    debit: number | null;
+    credit: number | null;
+    debitDisabled: boolean;
+    creditDisabled: boolean;
+    customers: Customer | null;
+}
+
+export interface Customer {
+    name: string;
+    nit: string;
+    city?: string;
+    address?: string;
+    phone?: string;
 }
