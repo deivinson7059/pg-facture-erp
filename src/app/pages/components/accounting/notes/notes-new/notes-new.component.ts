@@ -2,7 +2,6 @@ import { CommonModule, CurrencyPipe, DatePipe, DecimalPipe } from '@angular/comm
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 import { UtilsAutocompleteComponent } from '@shared/components/utils-autocomplete/utils-autocomplete.component';
-import { NotesService } from '../notes.service';
 
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -11,6 +10,7 @@ import { UtilsTypingComponent } from '@shared/components/utils-typing/utils-typi
 import { UtilsDropdownButtonComponent } from '@shared/components/utils-dropdown-button/utils-dropdown-button.component';
 import { UtilsService, UtilsSpinnerService, UtilsToastrService } from '@core';
 import { accountPUC, Customer, notesHeader, notesLine, Puc, PucData } from 'app/pages/interfaces';
+import { NotesService } from '@pages/services';
 @Component({
     selector: 'app-notes-new',
     imports: [
