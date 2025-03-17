@@ -14,7 +14,7 @@ export const APP_ROUTE: Route[] = [
             {
                 path: 'accounting',
                 loadChildren: () =>
-                    import('./pages/components/accounting/accounting.routes').then((m) => m.ACCOUNTING_ROUTE),
+                    import('@pages/components/accounting/accounting.routes').then((m) => m.ACCOUNTING_ROUTE),
             },
 
             {
