@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { NotaContable } from '../interfaces/notas.interface';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { environment } from 'environments/environment';
-import { apiResponse, Puc, PucCmpy, PucData } from '../interfaces/puc.interface';
+import { apiResponse, Puc, PucCmpy, PucData, NotaContable } from '../interfaces';
+import { AccountingEntry, notesHeader } from '../interfaces/notas.interface';
 
 const { backend } = environment;
 
@@ -67,54 +67,14 @@ export class NotesService {
         );
     }
 
-
-    // Datos de ejemplo para demostración
-    private notasContables: NotaContable[] = [];
-    private nextId = 1;
-
-
-    // Obtener todas las notas contables
-    getNotasContables(): Observable<NotaContable[]> {
-        // En una aplicación real: return this.http.get<NotaContable[]>(this.apiUrl);
-        return of(this.notasContables);
+    createNote(data: notesHeader): Observable<apiResponse<AccountingEntry[]>> {
+        return this.http.post<apiResponse<AccountingEntry[]>>(
+            `${backend.domain}/accounting/notes`,
+            data,
+            {
+                headers: {},
+            }
+        );
     }
 
-    // Obtener una nota contable por ID
-    getNotaContable(id: number): Observable<NotaContable | undefined> {
-        // En una aplicación real: return this.http.get<NotaContable>(`${this.apiUrl}/${id}`);
-        const nota = this.notasContables.find(n => n.id === id);
-        return of(nota);
-    }
-
-    // Crear una nueva nota contable
-    crearNotaContable(nota: NotaContable): Observable<NotaContable> {
-        // En una aplicación real: return this.http.post<NotaContable>(this.apiUrl, nota);
-        const nuevaNota: NotaContable = {
-            ...nota,
-            id: this.nextId++,
-            fechaCreacion: new Date()
-        };
-        this.notasContables.push(nuevaNota);
-        return of(nuevaNota);
-    }
-
-    // Actualizar una nota contable existente
-    actualizarNotaContable(nota: NotaContable): Observable<NotaContable> {
-        // En una aplicación real: return this.http.put<NotaContable>(`${this.apiUrl}/${nota.id}`, nota);
-        const index = this.notasContables.findIndex(n => n.id === nota.id);
-        if (index !== -1) {
-            this.notasContables[index] = nota;
-        }
-        return of(nota);
-    }
-
-    // Eliminar una nota contable
-    eliminarNotaContable(id: number): Observable<void> {
-        // En una aplicación real: return this.http.delete<void>(`${this.apiUrl}/${id}`);
-        const index = this.notasContables.findIndex(n => n.id === id);
-        if (index !== -1) {
-            this.notasContables.splice(index, 1);
-        }
-        return of(undefined);
-    }
 }

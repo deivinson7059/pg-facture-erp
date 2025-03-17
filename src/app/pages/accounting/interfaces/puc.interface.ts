@@ -1,6 +1,11 @@
 export interface apiResponse<T = any> {
-    message: string;
+    code: number;
+    messages: Messages;
     data?: T;
+}
+export interface Messages {
+    success?: string;
+    error?: string;
 }
 export interface Puc {
     code: string;
@@ -12,11 +17,11 @@ export interface Puc {
     active: "Y" | "N";
 }
 
-export interface PucData{
+export interface PucData {
     account: string;
     cmpy: string;
 }
 
-export interface PucCmpy{
+export interface PucCmpy {
     cmpy: string;
 }

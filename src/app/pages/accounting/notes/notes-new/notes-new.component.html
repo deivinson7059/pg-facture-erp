@@ -1,5 +1,5 @@
 <section class="content">
-    <div class="content-block__">
+    <div class="container-fluid">
         @for (breadscrum of breadscrums; track breadscrum) {
         <div class="block-header">
             <!-- breadcrumb -->
@@ -11,21 +11,21 @@
 
     <div class="container-fluid">
         <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
-            <div class="container-semi">
+            <div class="container-semi-fluid">
                 <div class="row">
                     <div class="col-sm-12 section_title">
                         <i class="fa fa-chevron-right"></i> Nueva Nota Contable
                     </div>
                     <hr>
                     <div class="col-12">
-                        <app-pg-autocomplete #pucAutocomplete [appAutofocus]="true" [data]="puc" valueField="code"
+                        <utils-autocomplete #pucAutocomplete [autofocus]="true" [data]="puc" valueField="code"
                             displayField="code" placeholder="Buscar Cuenta"
                             customDisplayTemplate="${code} - ${description} (${nature})" [debounceTime]="200"
                             [minChars]="2" [itemTemplate]="pucTemplate" [showDropdownOnFocus]="false"
                             (selected)="onPucSelected($event)" (search)="onSearchPuc($event)"
                             formControlName="pucAutocompleteId" [showSelectedValue]="false" [returnFullObject]="true"
                             [required]="false" errorMessage="Debe seleccionar una cuenta PUC">
-                        </app-pg-autocomplete>
+                        </utils-autocomplete>
 
                         <ng-template #pucTemplate let-puc>
                             <div class="d-flex flex-column">
@@ -43,51 +43,59 @@
                     <div class="w-100">
                         <div class="action_panel">
                             <div class="row">
-                                <!-- Primer método: usando un offset para empujar todo hacia la derecha -->
-                                <div class="col-12 col-md-8 offset-md-4">
-                                    <div class="row">
-                                        <!-- Fecha Contable -->
-                                        <div class="col-12 col-md-4 mb-2">
-                                            <div class="form-group">
-                                                <label class="w-100">
-                                                    Fecha Contable: <span class="required">*</span>
-                                                    <input formControlName="fechaContable" type="date"
-                                                        class="form-control"
-                                                        [formControlValidation]="noteForm.get('fechaContable')!">
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <!-- Oficina -->
-                                        <div class="col-12 col-md-4 mb-2">
-                                            <div class="form-group">
-                                                <label class="w-100">
-                                                    Oficina: <span class="required">*</span>
-                                                    <select formControlName="cbOffice" class="form-select"
-                                                        [formControlValidation]="noteForm.get('cbOffice')!">
-                                                        <option value="Oficina Principal">Oficina Principal</option>
-                                                        <option value="Oficina Centro">Oficina Centro</option>
-                                                    </select>
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <!-- Centro de costo -->
-                                        <div class="col-12 col-md-4 mb-2">
-                                            <div class="form-group">
-                                                <label class="w-100">
-                                                    Centro de costo: <span class="required">*</span>
-                                                    <select formControlName="cbCentoCosto" class="form-select"
-                                                        [formControlValidation]="noteForm.get('cbCentoCosto')!">
-                                                        <option value="">Seleccionar...</option>
-                                                        <option value="19">VENTAS</option>
-                                                        <option value="20">Pollos asados</option>
-                                                    </select>
-                                                </label>
-                                            </div>
-                                        </div>
+                                <!-- Oficina -->
+                                <div class="col-12 col-md-3 mb-2">
+                                    <div class="form-group">
+                                        <label class="w-100">
+                                            Oficina: <span class="required">*</span>
+                                            <select formControlName="cbOffice" class="form-select"
+                                                [ngModel]="wareSelected"
+                                                [formControlValidation]="noteForm.get('cbOffice')!">
+                                                <option value="Oficina Principal">Oficina Principal</option>
+                                                <option value="Oficina Centro">Oficina Centro</option>
+                                            </select>
+                                        </label>
                                     </div>
                                 </div>
+                                <!-- Fecha Contable -->
+                                <div class="col-12 col-md-3 mb-2">
+                                    <div class="form-group">
+                                        <label class="w-100">
+                                            Fecha Contable: <span class="required">*</span>
+                                            <input formControlName="fechaContable" type="date" class="form-control"
+                                                [readOnly]="true"
+                                                [formControlValidation]="noteForm.get('fechaContable')!">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Centro de costo -->
+                                <div class="col-12 col-md-3 mb-2">
+                                    <div class="form-group">
+                                        <label class="w-100">
+                                            Centro de costo: <span class="required">*</span>
+                                            <select formControlName="cbCentoCosto" class="form-select"
+                                                [ngModel]="centroCosto"
+                                                [formControlValidation]="noteForm.get('cbCentoCosto')!">
+                                                <option value="--">...</option>
+                                                <option value="19">VENTAS</option>
+                                                <option value="20">Pollos asados</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- Referencia -->
+                                <div class="col-12 col-md-3 mb-2">
+                                    <div class="form-group">
+                                        <label class="w-100">
+                                            Referencia: <span class="required">*</span>
+                                            <input formControlName="txtReference" type="text" class="form-control"
+                                                [ngModel]="txtReference"
+                                                [formControlValidation]="noteForm.get('txtReference')!">
+                                        </label>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -135,9 +143,23 @@
                                     }
                                 </div>
                                 <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center mb-2">
-                                    <i class="fa fa-trash pointer canceled-invoice mt-2" aria-hidden="true"
+                                    <utils-dropdown-button tooltipText="Opciones">
+                                        <!-- Aquí puedes poner el contenido directamente -->
+                                        <button type="button" class="dropdown-item bt-red"
+                                            (click)="removeItem($index, item)">
+                                            <i class="fa fa-times"></i>
+                                            Eliminar
+                                        </button>
+
+                                        <button type="button" class="dropdown-item">
+                                            <i class="fas fa-hand-holding-usd"></i>
+                                            Agregar Base Gravable
+                                        </button>
+                                    </utils-dropdown-button>
+
+                                    <!-- <i class="fa fa-trash pointer canceled-invoice mt-2" aria-hidden="true"
                                         [appTooltip]="'Eliminar cuenta'" [placement]="'top'"
-                                        (click)="removeItem($index, item)"></i>
+                                        (click)="removeItem($index, item)"></i> -->
                                 </div>
                             </div>
                         </div>
@@ -161,12 +183,12 @@
                     <hr>
                     <div class="col-12 section_title">
                         <i class="fa fa-chevron-right"></i>
-                        COMENTARIOS
+                        Observaciones
                     </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-block pad2rem invoiceform">
-                                <textarea formControlName="txtComment" maxlength="500" rows="3"
+                                <textarea formControlName="txtComment" maxlength="500" rows="3" [ngModel]="txtComment"
                                     class="form-control register_box"
                                     [formControlValidation]="noteForm.get('txtComment')!"></textarea>
                             </div>
@@ -187,7 +209,7 @@
     </div>
 </section>
 
-<app-typing [timeout]="2000"></app-typing>
+<utils-typing [timeout]="2000"></utils-typing>
 
 <!-- Modal de selección de terceros - usando app-pg-autocomplete -->
 <div class="modal" [ngClass]="{'show': showUserModal}" tabindex="-1" role="dialog"
@@ -207,7 +229,7 @@
 
                                 @if (!selectedCustomer) {
                                 <!-- Usar app-pg-autocomplete para la búsqueda de terceros -->
-                                <app-pg-autocomplete #customerAutocomplete [data]="customers" valueField="id"
+                                <utils-autocomplete #customerAutocomplete [data]="customers" valueField="id"
                                     displayField="name" placeholder="Buscar Tercero"
                                     customDisplayTemplate="${name} - ${nit}" [debounceTime]="200" [minChars]="3"
                                     [itemTemplate]="customerTemplate" [showDropdownOnFocus]="true"
@@ -216,7 +238,7 @@
                                     (buttonClick)="onCreateNewCustomer()" [required]="false"
                                     errorMessage="Debe seleccionar un Tercero" [showSelectedValue]="false"
                                     [returnFullObject]="true">
-                                </app-pg-autocomplete>
+                                </utils-autocomplete>
 
                                 <!-- Template personalizado para los items del dropdown -->
                                 <ng-template #customerTemplate let-customer>

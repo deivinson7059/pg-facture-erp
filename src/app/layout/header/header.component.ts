@@ -10,7 +10,7 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { ConfigService } from '@config';
 import { UnsubscribeOnDestroyAdapter } from '@shared';
-import { InConfiguration, AuthService, WINDOW, LanguageService, RightSidebarService } from '@core';
+import { InConfiguration, AuthService, WINDOW, RightSidebarService } from '@core';
 import { NgScrollbar } from 'ngx-scrollbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { FeatherIconsComponent } from '../../shared/components/feather-icons/feather-icons.component';
@@ -53,10 +53,6 @@ export class HeaderComponent
     public config!: InConfiguration;
     isNavbarCollapsed = true;
     isNavbarShow = true;
-    flagvalue: string | string[] | undefined;
-    countryName: string | string[] = [];
-    langStoreValue?: string;
-    defaultFlag?: string;
     isOpenSidebar?: boolean;
     docElement?: HTMLElement;
     isFullScreen = false;
@@ -69,17 +65,11 @@ export class HeaderComponent
         private configService: ConfigService,
         private authService: AuthService,
         private router: Router,
-        public languageService: LanguageService
     ) {
         super();
     }
     isDarkTheme = false;
 
-    listLang = [
-        { text: 'English', flag: 'assets/images/flags/us.jpg', lang: 'en' },
-        { text: 'Spanish', flag: 'assets/images/flags/spain.jpg', lang: 'es' },
-        { text: 'German', flag: 'assets/images/flags/germany.jpg', lang: 'de' },
-    ];
     notifications: Notifications[] = [
         {
             message: 'Please check your mail',
@@ -146,27 +136,17 @@ export class HeaderComponent
     ngOnInit() {
         this.config = this.configService.configData;
         this.docElement = document.documentElement;
-        this.langStoreValue = localStorage.getItem('lang') as string;
-        const val = this.listLang.filter((x) => x.lang === this.langStoreValue);
-        this.countryName = val.map((element) => element.text);
-        if (val.length === 0) {
-            if (this.flagvalue === undefined) {
-                this.defaultFlag = 'assets/images/flags/us.jpg';
-            }
-        } else {
-            this.flagvalue = val.map((element) => element.flag);
-        }
 
         this.isDarkTheme = localStorage.getItem('theme') === 'dark';
         this.updateTheme();
 
         // Escuchar cambios en `localStorage` desde otras pestañas
-       /*  window.addEventListener('storage', (event) => {
-            if (event.key === 'theme-changed') {
-                this.isDarkTheme = localStorage.getItem('theme') === 'dark';
-                this.updateTheme();
-            }
-        }); */
+        /*  window.addEventListener('storage', (event) => {
+             if (event.key === 'theme-changed') {
+                 this.isDarkTheme = localStorage.getItem('theme') === 'dark';
+                 this.updateTheme();
+             }
+         }); */
     }
 
     updateTheme() {
@@ -262,12 +242,6 @@ export class HeaderComponent
             document.exitFullscreen();
         }
         this.isFullScreen = !this.isFullScreen;
-    }
-    setLanguage(text: string, lang: string, flag: string) {
-        this.countryName = text;
-        this.flagvalue = flag;
-        this.langStoreValue = lang;
-        this.languageService.setLanguage(lang);
     }
     mobileMenuSidebarOpen(event: Event, className: string) {
         const hasClass = (event.target as HTMLInputElement).classList.contains(

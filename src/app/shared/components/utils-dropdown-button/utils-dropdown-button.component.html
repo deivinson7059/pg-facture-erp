@@ -1,0 +1,36 @@
+<div class="dropdown d-inline-block dropdown-button-pt">
+    <!-- Botón que activa el dropdown -->
+    <a class="dropdown-toggle bt bt-white hide-arrow" href="javascript:void(0)" role="button" [appTooltip]="tooltipText"
+        [placement]="'top'" (click)="toggleDropdown($event)">
+        <i class="fa fa-ellipsis-v"></i>
+    </a>
+
+    <!-- Contenedor del menú dropdown -->
+    <div class="dropdown-menu dropdown-menu-right dropdown-pt" [class.show]="isOpen" (click)="onMenuClick($event)">
+        <ng-content></ng-content>
+    </div>
+</div>
+
+
+<!--  <app-dropdown-button tooltipText="Opciones">                                        
+            <button type="button" class="dropdown-item bt-red"
+                (click)="removeItem($index, item)">
+                <i class="fa fa-times"></i>
+                Eliminar
+            </button>
+            <button type="button" class="dropdown-item">
+                <i class="fas fa-hand-holding-usd"></i>
+                Agregar Descuento
+            </button>
+            <button type="button" class="dropdown-item">
+                <i class="far fa-edit"></i>
+                Modificar Precio
+            </button>
+            <button type="button" class="dropdown-item"><i class="fa fa-edit"></i>
+                Editar Producto
+            </button>
+            <button type="button" class="dropdown-item">
+                <i class="fa fa-list"></i>
+                Inventario
+            </button> 
+    </app-dropdown-button>-->

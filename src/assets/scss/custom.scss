@@ -3157,7 +3157,7 @@ span.status_dot {
 
 .invoice_dropdown button {
     margin: 0 !important;
-    padding: 22px 1.5rem !important;
+    padding: 0.5rem 1.5rem !important;
 }
 
 .row_table {
@@ -3910,6 +3910,11 @@ select.form-control {
     background: #fff !important;
 }
 
+.dark .bt-red:hover {
+    background: #3a2a2a !important;
+    color: #ffffff !important;
+}
+
 .bt-o-red {
     color: red;
     border: red 1px solid;
@@ -3923,6 +3928,19 @@ select.form-control {
 .bt-white {
     color: #506afb !important;
     background: #ecf4ff;
+}
+
+.dark .bt-white {
+    color: #96a2b4 !important;
+    background: #1a202e !important;
+    border: 1px solid #2e3951;
+    transition: all 0.3s ease;
+}
+
+.dark .bt-white:hover {
+    background: #2a3048 !important;
+    color: #adbdff !important;
+    border-color: #3d4a6b;
 }
 
 .bt-o-green {
@@ -3955,6 +3973,29 @@ select.form-control {
 .bt-margin {
     margin-right: 20px;
 }
+
+.dropdown-pt {
+    margin-top: 0rem !important;
+}
+
+.dark .dropdown-pt {
+    background: #1a202e;
+    border-color: #2e3951;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    margin-top: 5px;
+}
+
+.dark .dropdown-pt .dropdown-item {
+    color: #96a2b4;
+}
+
+.dark .dropdown-pt .dropdown-item:hover {
+    background: #2a3048;
+    color: #ffffff;
+}
+
+
+
 
 .closed-invoice {
     color: green;

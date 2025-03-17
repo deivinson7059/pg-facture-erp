@@ -1,34 +1,37 @@
 import { CommonModule, CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
-import { PgAutocompleteComponent } from '@shared/components/pg-autocomplete/pg-autocomplete.component';
-import { accountPUC, Customer } from '../../interfaces/notas.interface';
+import { UtilsAutocompleteComponent } from '@shared/components/utils-autocomplete/utils-autocomplete.component';
+import { accountPUC, Customer, Puc, PucData } from '../../interfaces';
 import { NotesService } from '../notes.service';
-import { Puc, PucData } from '../../interfaces/puc.interface';
 
 import Swal from 'sweetalert2';
-import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
-import { TooltipDirective, FormControlValidationDirective, AutofocusDirective, TypingListenerDirective } from '@core/directive';
-import { TypingComponent } from '@shared/components/typing/typing.component';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UtilsTooltipDirective, FormControlValidationDirective, UtilsTypingListenerDirective } from '@core/directive';
+import { UtilsTypingComponent } from '@shared/components/utils-typing/utils-typing.component';
+import { UtilsDropdownButtonComponent } from '@shared/components/utils-dropdown-button/utils-dropdown-button.component';
+import { notesHeader, notesLine } from '../../interfaces/notas.interface';
+import { UtilsService, UtilsSpinnerService, UtilsToastrService } from '@core/service';
 @Component({
     selector: 'app-notes-new',
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        PgAutocompleteComponent,
+        UtilsAutocompleteComponent,
         BreadcrumbComponent,
-        TypingComponent,
+        UtilsTypingComponent,
         DecimalPipe,
-        TooltipDirective,
+        UtilsTooltipDirective,
         FormControlValidationDirective,
-        AutofocusDirective,
-        TypingListenerDirective,
+        UtilsTypingListenerDirective,
+        UtilsDropdownButtonComponent,
     ],
     templateUrl: './notes-new.component.html',
     styleUrl: './notes-new.component.scss'
 })
 export class NotesNewComponent implements OnInit, OnDestroy {
+    readonly today = new Date().toISOString().split('T')[0];
     breadscrums = [
         {
             items: [
@@ -45,7 +48,7 @@ export class NotesNewComponent implements OnInit, OnDestroy {
     pucSeleted: accountPUC[] = [];
 
     // Referencia al componente de autocomplete
-    @ViewChild('pucAutocomplete') pucAutocomplete!: PgAutocompleteComponent<Puc>;
+    @ViewChild('pucAutocomplete') pucAutocomplete!: UtilsAutocompleteComponent<Puc>;
 
     // Datos para los autocomplete
     puc: Puc[] = [];
@@ -65,7 +68,7 @@ export class NotesNewComponent implements OnInit, OnDestroy {
     currentCustomer: Customer | null = null;
 
     // ViewChild para acceder al componente de autocomplete de terceros
-    @ViewChild('customerAutocomplete') customerAutocomplete!: PgAutocompleteComponent<Customer>;
+    @ViewChild('customerAutocomplete') customerAutocomplete!: UtilsAutocompleteComponent<Customer>;
 
 
     // Lista de terceros (ejemplo)
@@ -80,16 +83,20 @@ export class NotesNewComponent implements OnInit, OnDestroy {
 
     constructor(
         private notesService: NotesService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private spinnerService: UtilsSpinnerService,
+        private utilsService: UtilsService,
+        private toastrService: UtilsToastrService,
     ) {
-        const today = new Date().toISOString().split('T')[0];
+        this.toastrService.success("hola", "");
+
         this.noteForm = this.fb.group({
             pucAutocompleteId: [null],
-            fechaContable: [today, [
+            fechaContable: [this.today, [
                 Validators.required,
-                this.notBeforeTodayValidator()
             ]],
             cbOffice: [Validators.required],
+            txtReference: [null, Validators.required],
             cbCentoCosto: ['-', Validators.required],
             txtComment: [null, [
                 Validators.required,
@@ -97,6 +104,11 @@ export class NotesNewComponent implements OnInit, OnDestroy {
             ]]
         });
     }
+
+    wareSelected: string = '';
+    centroCosto: string = '--';
+    txtReference: string = '';
+    txtComment: string = '';
 
     ngOnInit() {
         // Suscribirse a los observables de datos
@@ -114,27 +126,12 @@ export class NotesNewComponent implements OnInit, OnDestroy {
                 this.pucAutocomplete.setLoading(loading);
             }
         });
+
+        // Cargar los datos iniciales
+        this.wareSelected = 'Oficina Principal';
     }
 
     ngOnDestroy(): void { }
-
-    /**
-    * Validador personalizado que verifica que la fecha no sea anterior a hoy
-    */
-    private notBeforeTodayValidator() {
-        return (control: AbstractControl): ValidationErrors | null => {
-            if (!control.value) return null;
-
-            const inputDate = new Date(control.value);
-            const today = new Date();
-
-            // Normalizar las fechas para comparar solo año, mes y día
-            today.setHours(0, 0, 0, 0);
-            inputDate.setHours(0, 0, 0, 0);
-
-            return inputDate >= today ? null : { notBeforeToday: true };
-        };
-    }
 
     /**
      * Método para manejar los cambios en el campo de fecha contable
@@ -491,6 +488,19 @@ export class NotesNewComponent implements OnInit, OnDestroy {
         return { valid: true };
     }
 
+    // Función para obtener nombres amigables de los campos
+    private obtenerNombreCampo(key: string): string {
+        const nombresCampos: { [key: string]: string } = {
+            'cbOffice': 'Oficina',
+            'fechaContable': 'Fecha Contable',
+            'cbCentoCosto': 'Centro de costo',
+            'txtReference': 'Referencia',
+            'txtComment': 'Observaciones',
+        };
+
+        return nombresCampos[key] || key;
+    }
+
     /**
      * Método para manejar el envío del formulario
      * @returns Nada
@@ -498,13 +508,29 @@ export class NotesNewComponent implements OnInit, OnDestroy {
     onSubmit(): void {
         this.noteForm.markAllAsTouched();
 
+
+        //0. Recopilar los nombres de los campos inválidos
+        const camposInvalidos: string[] = [];
+        Object.keys(this.noteForm.controls).forEach(key => {
+            const control = this.noteForm.get(key);
+            if (control?.invalid) {
+                console.log(`Campo inválido: ${key}`, control.errors);
+                camposInvalidos.push(this.obtenerNombreCampo(key));
+            }
+        });
+
         // 1. Validar el formulario principal
         if (this.noteForm.invalid) {
+            // Crear mensaje con los campos inválidos
+            const mensaje = camposInvalidos.length > 0
+                ? `Por favor complete los siguientes campos: <strong>${camposInvalidos.join(', ')}<strong>`
+                : 'Por favor complete todos los campos requeridos';
+
             Swal.fire({
                 title: 'Formulario incompleto',
-                text: 'Por favor complete todos los campos requeridos',
+                html: mensaje,
                 icon: 'warning',
-                confirmButtonText: 'Entendido'
+                confirmButtonText: 'OK'
             });
             return;
         }
@@ -528,9 +554,78 @@ export class NotesNewComponent implements OnInit, OnDestroy {
             return;
         }
 
+        Swal.fire({
+            title: '¿Desea guardar la nota contable?',
+            text: 'No podrás deshacer este paso...',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'No, cancelar!',
+            confirmButtonText: 'Sí, guardar'
+        }).then((result: any) => {
+            if (result.value) {
+                const lineas: notesLine[] = this.pucSeleted.map(item => {
+                    return {
+                        account: item.account,
+                        account_name: item.account_name,
+                        debit: item.debit || 0,
+                        credit: item.credit || 0,
+                        tercero: item.customers?.nit || null
+                    };
+                });
+
+                const data: notesHeader = {
+                    cmpy: '01',
+                    ware: this.noteForm.value.cbOffice,
+                    year: 2025,
+                    per: 1,
+                    description: this.noteForm.value.txtComment,
+                    reference: this.noteForm.value.txtReference,
+                    creation_by: 'danisoft',
+                    lines: lineas,
+                }
+
+                this.spinnerService.show();
+                this.notesService
+                    .createNote(data)
+                    .subscribe(res => {
+                        this.spinnerService.hide();
+                        if (res.code === 200) {
+                            this.toastrService.success(res.messages.success!, 'Guardado');
+                            console.log('Respuesta del servidor:', res);
+
+                        } else {
+                            console.error('Error al guardar la nota:', res);
+                            this.utilsService.errorAlert(
+                                res.messages.error || 'Error al guardar la nota',
+                                'Error ' + res.code,
+                                'error'
+                            );
+                        }
+                    },
+                        (error) => {
+                            console.error('Error al guardar la nota:', error);
+                            this.spinnerService.hide();
+
+                            this.utilsService.errorAlert(
+                                'Error al guardar la nota',
+                                'Error',
+                                'error'
+                            );
+                        });
+            }
+
+        });
+
+
+
+
+
+
         // Todo está correcto, continuar con el procesamiento
-        console.log('Datos del formulario:', this.noteForm.value);
-        console.log('Cuentas seleccionadas:', this.pucSeleted);
+        //console.log('Datos del formulario:', this.noteForm.value);
+        //console.log('Cuentas seleccionadas:', this.pucSeleted);
 
         // Código para guardar...
     }
