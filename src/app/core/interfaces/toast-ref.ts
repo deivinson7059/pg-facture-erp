@@ -1,5 +1,5 @@
+import { OverlayRef } from '@shared/components/utils-toastr/overlay/overlay-ref';
 import { Observable, Subject } from 'rxjs';
-import { OverlayRef } from './overlay/overlay-ref';
 
 /**
  * Reference to a toast opened via the Toastr service.

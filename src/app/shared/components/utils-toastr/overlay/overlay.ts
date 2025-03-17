@@ -10,8 +10,7 @@ import {
 import { DomPortalHost } from '../portal/dom-portal-host';
 import { OverlayContainer } from './overlay-container';
 import { OverlayRef } from './overlay-ref';
-import { UtilsToastDirective } from '@core/directive';
-import { DEFAULT_STYLES } from '../toast-ref';
+import { UtilsToastDirective, DEFAULT_STYLES } from '@core';
 
 /**
  * Service to create Overlays. Overlays are dynamically added pieces of floating UI, meant to be

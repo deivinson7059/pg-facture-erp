@@ -23,10 +23,7 @@ import {
     transition,
     animate,
 } from '@angular/animations';
-import {
-    UtilsSpinnerConfig,
-    UTILS_SPINNER_CONFIG,
-} from './interfaces/utils-spinner-config';
+
 import {
     Size,
     DEFAULTS,
@@ -34,10 +31,12 @@ import {
     LOADERS,
     UtilSpinner,
     LoaderType,
-} from './enums/utils-spinner.enum';
+    UTILS_SPINNER_CONFIG,
+    UtilsSpinnerConfig,
+    UtilsSafeHtmlPipe,
+    UtilsSpinnerService
+} from '@core';
 import { CommonModule } from '@angular/common';
-import { UtilsSpinnerService } from '@core/service';
-import { UtilsSafeHtmlPipe } from '@core/pipes';
 
 @Component({
     selector: 'utils-spinner',

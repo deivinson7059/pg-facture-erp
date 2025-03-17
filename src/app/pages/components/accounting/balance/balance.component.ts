@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BalanceResponse, BalanceType, Period } from '../interfaces';
 import { BalanceService } from './balance.service';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { BalanceResponse, BalanceType, Period } from 'app/pages/interfaces';
 
 @Component({
     selector: 'app-balance',
-    imports: [CommonModule, FormsModule,BreadcrumbComponent],
+    imports: [CommonModule, FormsModule, BreadcrumbComponent],
     templateUrl: './balance.component.html',
     styleUrl: './balance.component.scss'
 })
@@ -15,13 +15,13 @@ export class BalanceComponent implements OnInit {
 
     breadscrums = [
         {
-          items: [ {
-            path: '/accounting',
-            name: 'Contabilidad'
-        }],
-          active: 'Balance Contable',
+            items: [{
+                path: '/accounting',
+                name: 'Contabilidad'
+            }],
+            active: 'Balance Contable',
         },
-      ];
+    ];
 
     cmpy: string = '01';
     ware: string = 'Oficina Principal';

@@ -13,12 +13,9 @@ import {
     OnDestroy,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import {
-    IndividualConfig,
-    ToastPackage,
-} from './toastr-interface';
-import { UtilsToastrService } from '../../../core/service/utils-toastr.service';
+
 import { CommonModule } from '@angular/common';
+import { UtilsToastrService, IndividualConfig, ToastPackage } from '@core';
 
 @Component({
     selector: '[toast-component]',

@@ -15,10 +15,10 @@ import {
     ToastPackage,
     ToastToken,
     TOAST_CONFIG,
-} from '../../shared/components/utils-toastr/toastr-interface';
-import { UtilsToastDirective } from '@core/directive';
+    UtilsToastDirective,
+    ToastRef
+} from '@core';
 import { Overlay } from '@shared/components/utils-toastr/overlay/overlay';
-import { ToastRef } from '@shared/components/utils-toastr/toast-ref';
 import { ComponentPortal } from '@shared/components/utils-toastr/portal/portal';
 
 @Injectable({ providedIn: 'root' })

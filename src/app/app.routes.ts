@@ -5,32 +5,32 @@ import { AuthLayoutComponent } from './layout/app-layout/auth-layout/auth-layout
 import { Page404Component } from './authentication/page404/page404.component';
 
 export const APP_ROUTE: Route[] = [
-  {
-    path: '',
-    component: MainLayoutComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: '', redirectTo: '/authentication/signin', pathMatch: 'full' },
-      {
-        path: 'accounting',
-        loadChildren: () =>
-          import('./pages/accounting/accounting.routes').then((m) => m.ACCOUNTING_ROUTE),
-      },
+    {
+        path: '',
+        component: MainLayoutComponent,
+        canActivate: [AuthGuard],
+        children: [
+            { path: '', redirectTo: '/authentication/signin', pathMatch: 'full' },
+            {
+                path: 'accounting',
+                loadChildren: () =>
+                    import('./pages/components/accounting/accounting.routes').then((m) => m.ACCOUNTING_ROUTE),
+            },
 
-      {
-        path: 'dashboard',
+            {
+                path: 'dashboard',
+                loadChildren: () =>
+                    import('./dashboard/dashboard.routes').then((m) => m.DASHBOARD_ROUTE),
+            },
+
+
+        ],
+    },
+    {
+        path: 'authentication',
+        component: AuthLayoutComponent,
         loadChildren: () =>
-          import('./dashboard/dashboard.routes').then((m) => m.DASHBOARD_ROUTE),
-      },
-          
-      
-    ],
-  },
-  {
-    path: 'authentication',
-    component: AuthLayoutComponent,
-    loadChildren: () =>
-      import('./authentication/auth.routes').then((m) => m.AUTH_ROUTE),
-  },
-  { path: '**', component: Page404Component },
+            import('./authentication/auth.routes').then((m) => m.AUTH_ROUTE),
+    },
+    { path: '**', component: Page404Component },
 ];

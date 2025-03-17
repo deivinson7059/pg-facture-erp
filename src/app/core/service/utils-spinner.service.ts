@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PRIMARY_SPINNER, UtilSpinner } from '@shared/components/utils-spinner/enums/utils-spinner.enum';
+import { PRIMARY_SPINNER, UtilSpinner } from '@core/enums/utils-spinner.enum';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 

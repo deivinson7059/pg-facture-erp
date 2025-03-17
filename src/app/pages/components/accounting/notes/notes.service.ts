@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { environment } from 'environments/environment';
-import { apiResponse, Puc, PucCmpy, PucData, NotaContable } from '../interfaces';
-import { AccountingEntry, notesHeader } from '../interfaces/notas.interface';
+import { AccountingEntry, apiResponse, notesHeader, Puc, PucCmpy, PucData } from 'app/pages/interfaces';
 
 const { backend } = environment;
 

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, Input } from '@angular/core';
-import { UtilsTooltipDirective } from '@core/directive';
+import { UtilsTooltipDirective } from '@core';
 
 @Component({
     selector: 'utils-dropdown-button',

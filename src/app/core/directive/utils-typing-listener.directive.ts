@@ -1,5 +1,5 @@
 import { Directive, HostListener } from '@angular/core';
-import { UtilsTypingService } from '@shared/components/utils-typing/utils-typing.service';
+import { UtilsTypingService } from '@core';
 
 @Directive({
     selector: '[typingListener]',

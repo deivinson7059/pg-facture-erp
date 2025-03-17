@@ -2,7 +2,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, 
 import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { Subject, Subscription, debounceTime, distinctUntilChanged, filter } from 'rxjs';
-import { ClickOutsideService } from './click-outside.service';
+import { ClickOutsideService } from '@core';
 
 @Component({
     selector: 'utils-autocomplete',

@@ -23,7 +23,7 @@ import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { DefaultNoComponentGlobalConfig, TOAST_CONFIG } from '@shared/components/utils-toastr/toastr-interface';
+import { DefaultNoComponentGlobalConfig, TOAST_CONFIG } from '@core';
 import { UtilsToastr } from '@shared/components/utils-toastr/utils-toastr.component';
 
 

@@ -2,16 +2,15 @@ import { CommonModule, CurrencyPipe, DatePipe, DecimalPipe } from '@angular/comm
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 import { UtilsAutocompleteComponent } from '@shared/components/utils-autocomplete/utils-autocomplete.component';
-import { accountPUC, Customer, Puc, PucData } from '../../interfaces';
 import { NotesService } from '../notes.service';
 
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UtilsTooltipDirective, FormControlValidationDirective, UtilsTypingListenerDirective } from '@core/directive';
+import { UtilsTooltipDirective, FormControlValidationDirective, UtilsTypingListenerDirective } from '@core';
 import { UtilsTypingComponent } from '@shared/components/utils-typing/utils-typing.component';
 import { UtilsDropdownButtonComponent } from '@shared/components/utils-dropdown-button/utils-dropdown-button.component';
-import { notesHeader, notesLine } from '../../interfaces/notas.interface';
-import { UtilsService, UtilsSpinnerService, UtilsToastrService } from '@core/service';
+import { UtilsService, UtilsSpinnerService, UtilsToastrService } from '@core';
+import { accountPUC, Customer, notesHeader, notesLine, Puc, PucData } from 'app/pages/interfaces';
 @Component({
     selector: 'app-notes-new',
     imports: [
@@ -24,7 +23,6 @@ import { UtilsService, UtilsSpinnerService, UtilsToastrService } from '@core/ser
         DecimalPipe,
         UtilsTooltipDirective,
         FormControlValidationDirective,
-        UtilsTypingListenerDirective,
         UtilsDropdownButtonComponent,
     ],
     templateUrl: './notes-new.component.html',

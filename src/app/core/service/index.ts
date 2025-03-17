@@ -1,3 +1,7 @@
+export { ClickOutsideService } from "./click-outside.service";
+
+export { UtilsTypingService } from "./utils-typing.service";
+
 export { UtilsSpinnerService } from "./utils-spinner.service";
 export { UtilsToastrService } from "./utils-toastr.service";
 export { AuthService } from "./auth.service";

@@ -1,10 +1,16 @@
 import { ComponentRef, InjectionToken } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
-import { ComponentType } from './portal/portal';
 import { ToastRef } from './toast-ref';
 
 export type ProgressAnimationType = 'increasing' | 'decreasing';
+
+
+export interface ComponentType<T> {
+    // eslint-disable-next-line @typescript-eslint/prefer-function-type
+    new(...args: any[]): T;
+}
+
 
 /**
  * Configuration for an individual toast.

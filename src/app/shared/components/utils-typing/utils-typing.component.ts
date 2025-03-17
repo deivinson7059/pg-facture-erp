@@ -3,7 +3,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { UtilsTypingService } from './utils-typing.service';
+import { UtilsTypingService } from '@core';
 
 @Component({
     selector: 'utils-typing',
