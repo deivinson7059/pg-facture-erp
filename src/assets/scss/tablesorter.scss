@@ -10,13 +10,13 @@
     margin-bottom: 1rem;
 }
 
-.tablesorter thead th {
-    background-color: #99b3e6 !important;
+.tablesorter thead .tablesorter-header {
+    background-color: #99bfe6 !important;
     color: black !important;
     font-weight: 600 !important;
     padding: 8px;
     text-align: left;
-    border: 1px solid white;
+    border: 1px solid white !important;
 }
 
 /* Efecto hover en encabezados */
@@ -147,4 +147,49 @@
 
 .tablesorter tr.even td.tertiary {
     background-color: #ebf0fa;
+}
+
+.dark.tablesorter input.tablesorter-filter,
+
+
+.tablesorter input.tablesorter-filter,
+.tablesorter select.tablesorter-filter {
+    width: 98%;
+    height: auto;
+    margin: 0;
+    padding: 4px;
+    background-color: #fff;
+    border: 1px solid #bbb;
+    color: #333;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: height 0.1s ease;
+    -moz-transition: height 0.1s ease;
+    -o-transition: height 0.1s ease;
+    transition: height 0.1s ease;
+}
+
+
+
+
+
+[type=search] {
+    outline-offset: -2px;
+}
+
+.tablesorter-filter-row {
+    background-color: transparent !important;
+}
+
+.dark table.tablesorter .tablesorter-filter-row td {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.dark table.tablesorter input.tablesorter-filter {
+    background-color: #1a202e !important;
+    color: #96a2b4 !important;
+    border: 1px solid #71757e !important;
+    /* Opcional: borde acorde al modo oscuro */
 }
