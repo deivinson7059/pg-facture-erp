@@ -37,6 +37,116 @@ export class NotesComponent {
             fecha: '6 de julio de 2006, 8:14 a. m.'
         },
         {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
+            cuenta: 'A42b',
+            nombre: 'Pedro',
+            apellido: 'Parker',
+            edad: 28,
+            total: '$9.99',
+            descuento: '20,9%',
+            diferencia: '+12.1',
+            fecha: '6 de julio de 2006, 8:14 a. m.'
+        },
+        {
             cuenta: 'A255',
             nombre: 'Bruce',
             apellido: 'Jones',

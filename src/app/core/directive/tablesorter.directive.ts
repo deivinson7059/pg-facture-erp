@@ -6,6 +6,7 @@ import { AfterViewInit, Directive, ElementRef, Input, Renderer2 } from "@angular
 })
 export class TablesorterDirective implements AfterViewInit {
     @Input() filter: boolean = true;
+    @Input() sticky: boolean = false;
 
     private headers: HTMLElement[] = [];
     private sortDirections: { [key: number]: 'asc' | 'desc' } = {};
@@ -72,6 +73,19 @@ export class TablesorterDirective implements AfterViewInit {
 
         if (this.filter) {
             this.addFilterRow();
+        }
+        // Aplicar la clase sticky-thead si corresponde
+        this.applyStickyClass();
+    }
+    // Método para manejar el cambio de la propiedad sticky
+    private applyStickyClass() {
+        const thead = this.el.nativeElement.querySelector('thead');
+        if (!thead) return;
+
+        if (this.sticky) {
+            this.renderer.addClass(thead, 'sticky-thead');
+        } else {
+            this.renderer.removeClass(thead, 'sticky-thead');
         }
     }
 
