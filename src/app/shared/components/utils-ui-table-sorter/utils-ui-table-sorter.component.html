@@ -1,0 +1,516 @@
+<div class="row">
+    @if (tableConfig.data.length > 0 && tableConfig.buttonsDownload == true) {
+    <div class="col-12">
+        <!-- Example split danger button -->
+        <div class="text-right" style="width: 100%;">
+            <div class="btn-group btn-download">
+                <button type="button" class="{{tableConfig.classDownload}}" (click)="download()">
+                    <i class="{{tableConfig.iconDownload}}"></i>
+                    @if (tableConfig.downloadOption === false) {
+                    {{tableConfig.downloadText}}
+                    }
+                    @if (tableConfig.downloadOption === true) {
+                    {{lenguagetable.buttonName}}
+                    }
+                </button>
+                @if (tableConfig.downloadOption) {
+                <ng-container>
+                    <button type="button" class="btn btn-primary dropdown-toggle" (click)="downloadOptionClick()">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    @if (downloadOption) {
+                    <ul class="dropdown-menu show"
+                        style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(5px, 40px);"
+                        data-popper-placement="bottom-start">
+                        @if (tableConfig.columnSelector == true) {
+                        <li class="pointer">
+                            <a class="dropdown-item" (click)="download('selection')">
+                                <i class="fa fa-file-archive-o fas fa-file-archive"></i>
+                                {{lenguagetable.buttonSelected}}
+                            </a>
+                        </li>
+                        }
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        @if (tableConfig.isFilter == true) {
+                        <li class="pointer">
+                            <a class="dropdown-item" (click)="download('filter')">
+                                <i class="fa fa-file-archive-o fas fa-file-archive"></i>
+                                {{lenguagetable.buttonFilter}}
+                            </a>
+                        </li>
+                        }
+
+                        <li class="pointer">
+                            <a class="dropdown-item" (click)="download()">
+                                <i class="fa fa-file-archive-o fas fa-file-archive"></i>
+                                {{lenguagetable.buttonAll}}
+                            </a>
+                        </li>
+                    </ul>
+                    }
+
+                </ng-container>
+                }
+
+            </div>
+        </div>
+    </div>
+    }
+
+    @if (tableConfig.columnSelector) {
+    <div class="col-12 columnSelectorWrapper">
+        <input id="colSelect1" type="checkbox" class="hidden">
+        <label class="btn btn-outline-primary" for="colSelect1">
+            <i class="fa fa-th"></i>
+            {{lenguagetable.colunSelector}}
+        </label>
+        <div id="columnSelector" class="columnSelector">
+            <label>
+                <input type="checkbox" data-column="auto" class="checked" [(ngModel)]="checkColumnsAuto"
+                    (ngModelChange)="selectColumnsAuto($event)">
+                Auto:
+            </label>
+            <div class="columnSelectorScroll">
+                @for (column of tableConfig.columns; track $index) {
+                <label [ngClass]="{'disabled': checkColumnsAuto}">
+                    <input type="checkbox" attr.data-column="{{$index}}" class="checked" [disabled]="checkColumnsAuto"
+                        [(ngModel)]="column.checkColumn">
+                    {{column.title}}
+                </label>
+                }
+
+                <label [ngClass]="{'disabled': checkColumnsAuto}">
+                    <input type="checkbox" data-column="auto" class="checked" [(ngModel)]="checkColumnsOption"
+                        [disabled]="checkColumnsAuto">
+                    OPTION
+                </label>
+            </div>
+        </div>
+    </div>
+    }
+
+    <div class="overflowing_table" [ngClass]="{'sticky-table': tableConfig.sticky}">
+        @if (tableConfig.caption != undefined) {
+        <div class="pagination_info">
+            <h4 class="mb-0 caption-table">{{tableConfig.caption}}</h4>
+        </div>
+        }
+
+        @if (tableConfig.isPaginate) {
+        <div class="pagination_info">
+            {{lenguagetable.til_1}}
+            <b><i>{{ItemsPage}}</i></b>
+            {{lenguagetable.til_2}}
+            <b><i>{{totalPage}}</i></b>
+            {{lenguagetable.til_3}} {{lenguagetable.til_4}}
+            <b><i>{{p}}</i></b>
+        </div>
+        }
+
+        <div [ngClass]="{'table-container': tableConfig.sticky}">
+            <table
+                class="table table-striped table-bordered master-hand centerText tablesorter tablesorter-blue {{tableConfig.cssClass}}">
+                <thead [ngClass]="{'sticky-thead': tableConfig.sticky}">
+                    <tr class="invoice_header">
+                        @if (tableConfig.buttons.length > 0 && tableConfig.fillForm === undefined &&
+                        tableConfig.buttonsInitial === true) {
+                        <th [ngClass]="{'hidden': !checkColumnsOption}" class="text-center th th-buton">
+                            {{lenguagetable.options}}
+                        </th>
+                        }
+
+                        @for (column of tableConfig.columns; track $index) {
+                        <th attr.data-column="{{$index}}" [ngClass]="{'hidden': !column.checkColumn}"
+                            (click)="tableConfig.sorting === true ? sortBy(column.name) : ''"
+                            class="th tablesorter-header tablesorter-headerUnSorted {{column.class}}" tabindex="0"
+                            scope="col" role="columnheader" aria-disabled="false" unselectable="on" aria-sort="none"
+                            attr.aria-label="{{column.name}}" style="user-select: none;">
+                            <div class="tablesorter-wrapper" style="position:relative;height:100%;width:100%">
+                                <div class="tablesorter-header-inner">{{column.title}} {{tableConfig.sorting === true ?
+                                    sortIcon(column.name) : ''}}</div>
+                            </div>
+                        </th>
+                        }
+
+                        @if (tableConfig.buttons.length > 0 && tableConfig.fillForm === undefined &&
+                        tableConfig.buttonsInitial === false) {
+                        <th [ngClass]="{'hidden': !checkColumnsOption}" class="text-center th th-buton">
+                            {{lenguagetable.options}}
+                        </th>
+                        }
+                    </tr>
+                    @if (tableConfig.isFilter) {
+                    <tr role="search" class="tablesorter-filter-row tablesorter-ignoreRow">
+                        @if (tableConfig.buttons.length > 0 && tableConfig.fillForm === undefined &&
+                        tableConfig.buttonsInitial === true) {
+                        <td [ngClass]="{'hidden': !checkColumnsOption}">
+                        </td>
+                        }
+
+                        @for (column of tableConfig.columns; track $index) {
+                        <td [ngClass]="{'hidden': !column.checkColumn}" attr.data-column="{{$index}}">
+                            <input type="search" [(ngModel)]="column.filter" (ngModelChange)="filterByColumns($event)"
+                                placeholder="" class="tablesorter-filter" attr.data-column="{{$index}}"
+                                aria-label="Filter">
+                        </td>
+                        }
+
+                        @if (tableConfig.buttons.length > 0 && tableConfig.fillForm === undefined &&
+                        tableConfig.buttonsInitial === false) {
+                        <td [ngClass]="{'hidden': !checkColumnsOption}">
+                        </td>
+                        }
+
+                    </tr>
+                    }
+
+                </thead>
+
+                @if (tableConfig.isPaginate) {
+                <tbody>
+                    @for (item of tableConfig.data | paginate: { itemsPerPage: _ItemsPage, currentPage: p }; track
+                    $index) {
+                    <tr [ngClass]="{'pointer': tableConfig.fillForm}"
+                        (click)="tableConfig.fillForm ? tableConfig.fillForm(item) : ''">
+                        @if (tableConfig.buttons.length > 0 && tableConfig.fillForm === undefined &&
+                        tableConfig.buttonsInitial === true) {
+                        <td [ngClass]="{'hidden': !checkColumnsOption}" class="text-center">
+
+                            @for (button of tableConfig.buttons; track $index) {
+                            <button type="button" class="btn btn-xs btn-{{button.type}}"
+                                [ngClass]="{'full-width': button.text}" attr.title="{{button.title}}"
+                                (click)="button?.onclick(item)">
+
+                                @if (!button.text) {
+                                @if (button.icon) {
+                                <span class="{{button.icon}}"></span>
+                                }@else {
+                                <span class="fa fa-bars"></span>
+                                }
+                                }@else {
+                                {{button.text}}
+                                }
+                            </button>
+                            }
+                        </td>
+                        }
+
+                        @for (column of tableConfig.columns; track $index) {
+                        <td [ngStyle]="column.conditionalStyle ? column.conditionalStyle(item[column.name], column.format?.type) : {}"
+                            [ngClass]="{'hidden': !column.checkColumn}"
+                            class="{{item.classTd ? item.classTd : column.classItems}}"
+                            [ngClass]="column.conditionalClassTD ? column.conditionalClassTD(item[column.name], column.format?.type) : ''">
+                            @if (!column.inputType?.enabled) {
+                            <ng-container>
+                                @if (column.link === undefined) {
+                                <span
+                                    [ngClass]="column.conditionalClass ? column.conditionalClass(item[column.name], column.format?.type) : ''">
+                                    @switch (column.format?.type) {
+                                    @case ('date') {
+                                    {{item[column.name] | date: column.format?.format}}
+                                    }
+                                    @case ('number') {
+                                    {{item[column.name] | number: column.format?.format}}
+                                    }
+                                    @case ('currency') {
+                                    {{item[column.name] | customCurrency: column.format?.format:'symbol':'1.1-2'}}
+                                    }
+                                    @case ('percent') {
+                                    {{item[column.name] | percent: column.format?.format}}
+                                    }
+                                    @default {
+                                    {{item[column.name]}}
+                                    }
+                                    }
+                                </span>
+                                }
+
+                                @if (column.link?.isLink == true) {
+                                <span (click)="column.link?.onclick(item)" attr.title="{{column.link?.title}}"
+                                    class="clickable"
+                                    [ngClass]="column.conditionalClass ? column.conditionalClass(item[column.name], column.format?.type) : ''">
+                                    @switch (column.format?.type) {
+                                    @case ('date') {
+                                    {{item[column.name] | date: column.format?.format}}
+                                    }
+                                    @case ('number') {
+                                    {{item[column.name] | number: column.format?.format}}
+                                    }
+                                    @case ('currency') {
+                                    {{item[column.name] | customCurrency: column.format?.format:'symbol':'1.1-2'}}
+                                    }
+                                    @case ('percent') {
+                                    {{item[column.name] | percent: column.format?.format}}
+                                    }
+                                    @default {
+                                    {{item[column.name]}}
+                                    }
+                                    }
+                                </span>
+                                }
+
+                            </ng-container>
+                            }
+
+                            @if (column.inputType?.enabled) {
+                            <ng-container>
+                                @if (column.inputType?.type === 'text') {
+                                <input type="text" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'number') {.
+                                <input type="number" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'date') {
+                                <input type="date" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'email') {
+                                <input type="email" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'password') {
+                                <input type="password" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'tel') {
+                                <input type="tel" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'checkbox') {
+                                <input type="checkbox" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)" class="custom-checkbox" />
+                                }
+
+                            </ng-container>
+                            }
+
+
+                        </td>
+                        }
+
+                        @if (tableConfig.buttons.length > 0 && tableConfig.fillForm === undefined &&
+                        tableConfig.buttonsInitial === false) {
+                        <td [ngClass]="{'hidden': !checkColumnsOption}" class="text-center t-option">
+                            @for (button of tableConfig.buttons; track $index) {
+                            <button type="button" class="btn btn-xs btn-{{button.type}}"
+                                [ngClass]="{'full-width': button.text}" attr.title="{{button.title}}"
+                                (click)="button?.onclick(item)">
+                                @if (!button.text) {
+                                @if (button.icon) {
+                                <span class="{{button.icon}}"></span>
+                                }@else {
+                                <span class="fa fa-bars"></span>
+                                }
+                                }@else {
+                                {{button.text}}
+                                }
+                            </button>
+                            }
+                        </td>
+                        }
+                    </tr>
+                    }
+
+                    @if (tableConfig.data.length == 0) {
+                    <tr>
+                        <td attr.colspan="{{tableConfig.columns.length}}" class="text-center">
+                            <span
+                                class="text-muted {{darkMode === true ? '' : 'text-black'}}">{{lenguagetable.tr_info}}</span>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+                }
+
+                @if (!tableConfig.isPaginate) {
+                <tbody>
+                    @for (item of tableConfig.data; track $index) {
+                    <tr [ngClass]="{'pointer': tableConfig.fillForm}"
+                        (click)="tableConfig.fillForm ? tableConfig.fillForm(item) : ''">
+                        @if (tableConfig.buttons.length > 0 && tableConfig.fillForm === undefined &&
+                        tableConfig.buttonsInitial === true) {
+                        <td [ngClass]="{'hidden': !checkColumnsOption}" class="text-center t-option">
+                            @for (button of tableConfig.buttons; track $index) {
+                            <button type="button" class="btn btn-xs btn-{{button.type}}"
+                                [ngClass]="{'full-width': button.text}" attr.title="{{button.title}}"
+                                (click)="button?.onclick(item)">
+                                @if (!button.text) {
+                                @if (button.icon) {
+                                <span class="{{button.icon}}"></span>
+                                }@else {
+                                <span class="fa fa-bars"></span>
+                                }
+                                }@else {
+                                {{button.text}}
+                                }
+                            </button>
+                            }
+
+                        </td>
+                        }
+
+                        <td [ngStyle]="column.conditionalStyle ? column.conditionalStyle(item[column.name], column.format?.type) : {}"
+                            [ngClass]="{'hidden': !column.checkColumn}"
+                            class="{{item.classTd ? item.classTd : column.classItems}}"
+                            *ngFor="let column of tableConfig.columns"
+                            [ngClass]="column.conditionalClassTD ? column.conditionalClassTD(item[column.name], column.format?.type) : ''">
+                            @if (!column.inputType?.enabled) {
+                            <ng-container>
+                                @if (column.link === undefined) {
+                                <span
+                                    [ngClass]="column.conditionalClass ? column.conditionalClass(item[column.name], column.format?.type) : ''">
+                                    @switch (column.format?.type) {
+                                    @case ('date') {
+                                    {{item[column.name] | date: column.format?.format}}
+                                    }
+                                    @case ('number') {
+                                    {{item[column.name] | number: column.format?.format}}
+                                    }
+                                    @case ('currency') {
+                                    {{item[column.name] | customCurrency: column.format?.format:'symbol':'1.1-2'}}
+                                    }
+                                    @case ('percent') {
+                                    {{item[column.name] | percent: column.format?.format}}
+                                    }
+                                    @default {
+                                    {{item[column.name]}}
+                                    }
+                                    }
+                                </span>
+                                }
+
+                                @if (column.link?.isLink == true) {
+                                <span (click)="column.link?.onclick(item)" attr.title="{{column.link?.title}}"
+                                    class="{{darkMode === true ? 'clickable-white' : 'clickable'}}"
+                                    [ngClass]="column.conditionalClass ? column.conditionalClass(item[column.name], column.format?.type) : ''">
+                                    @switch (column.format?.type) {
+                                    @case ('date') {
+                                    {{item[column.name] | date: column.format?.format}}
+                                    }
+                                    @case ('number') {
+                                    {{item[column.name] | number: column.format?.format}}
+                                    }
+                                    @case ('currency') {
+                                    {{item[column.name] | customCurrency: column.format?.format:'symbol':'1.1-2'}}
+                                    }
+                                    @case ('percent') {
+                                    {{item[column.name] | percent: column.format?.format}}
+                                    }
+                                    @default {
+                                    {{item[column.name]}}
+                                    }
+                                    }
+                                </span>
+                                }
+
+
+                            </ng-container>
+                            }
+
+
+
+                            @if (column.inputType?.enabled) {
+                            <ng-container>
+                                @if (column.inputType?.type === 'text') {
+                                <input type="text" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'number') {
+                                <input type="number" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'date') {
+                                <input type="date" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'email') {
+                                <input type="email" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'password') {
+                                <input type="password" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'tel') {
+                                <input type="tel" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)"
+                                    class="form-control valInput {{column.inputType?.class}}" />
+                                }
+                                @if (column.inputType?.type === 'checkbox') {
+                                <input type="checkbox" [(ngModel)]="item[column.name]"
+                                    (ngModelChange)="onInputChange(item, column, $event)" class="custom-checkbox" />
+                                }
+                            </ng-container>
+                            }
+
+
+                        </td>
+
+                        @if (tableConfig.buttons.length > 0 && tableConfig.fillForm === undefined &&
+                        tableConfig.buttonsInitial === false) {
+                        <td [ngClass]="{'hidden': !checkColumnsOption}" class="text-center t-option">
+                            @for (button of tableConfig.buttons; track $index) {
+                            <button type="button" class="btn btn-xs btn-{{button.type}}"
+                                [ngClass]="{'full-width': button.text}" attr.title="{{button.title}}"
+                                (click)="button?.onclick(item)">
+                                @if (!button.text) {
+                                @if (button.icon) {
+                                <span class="{{button.icon}}"></span>
+                                }@else {
+                                <span class="fa fa-bars"></span>
+                                }
+                                } @else {
+                                {{button.text}}
+                                }
+                            </button>
+                            }
+
+
+                        </td>
+                        }
+
+                    </tr>
+                    }
+
+
+                    @if (tableConfig.data.length == 0) {
+                    <tr>
+                        <td attr.colspan="{{tableConfig.columns.length}}" class="text-center">
+                            <span
+                                class="text-muted {{darkMode === true ? '' : 'text-black'}}">{{lenguagetable.tr_info}}</span>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+                }
+
+
+            </table>
+        </div>
+        @if (tableConfig.isPaginate) {
+        <div class="text-right">
+            <utils-pagination [responsive]="true" (pageChange)="pageChanged($event)"
+                [previousLabel]="lenguagetable.previousLabel" [nextLabel]="lenguagetable.nextLabel">
+            </utils-pagination>
+        </div>
+        }
+
+    </div>
+</div>

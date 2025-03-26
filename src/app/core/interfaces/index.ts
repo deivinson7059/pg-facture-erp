@@ -16,3 +16,7 @@ export {
     ComponentType,
     DefaultNoComponentGlobalConfig
 } from './toastr-interface';
+
+export { UtilsPaginationInstance } from '../interfaces/pagination-instance';
+
+export { DownloadType, LenguageTable, TableSorter } from '../interfaces/ui-table.interface';

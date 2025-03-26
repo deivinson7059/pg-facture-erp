@@ -1,7 +1,6 @@
+export { UtilsPaginationService } from "./utils-pagination.service";
 export { ClickOutsideService } from "./click-outside.service";
-
 export { UtilsTypingService } from "./utils-typing.service";
-
 export { UtilsSpinnerService } from "./utils-spinner.service";
 export { UtilsToastrService } from "./utils-toastr.service";
 export { AuthService } from "./auth.service";
@@ -9,5 +8,4 @@ export { DirectionService } from "./direction.service";
 export { RightSidebarService } from "./rightsidebar.service";
 export { UtilsService } from "./utils.service";
 export { BrowserWindowRef } from "./window.service";
-
 export { WINDOW } from './window.service';

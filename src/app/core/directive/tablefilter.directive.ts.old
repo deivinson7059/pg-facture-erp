@@ -1,0 +1,380 @@
+import { Directive, ElementRef, Input, OnInit, Renderer2, AfterViewInit } from '@angular/core';
+
+@Directive({
+    standalone: true,
+    selector: '[tablefilter]'
+})
+export class TablefilterDirective implements OnInit, AfterViewInit {
+    @Input() data: any[] = [];
+
+    private table: HTMLTableElement;
+    private headers: HTMLTableCellElement[] = [];
+    private thead: HTMLTableSectionElement | null = null;
+    private tbody: HTMLTableSectionElement | null = null;
+    private filterInputs: HTMLInputElement[] = [];
+    private originalRows: HTMLTableRowElement[] = [];
+    private tableData: { row: HTMLTableRowElement, cells: string[] }[] = [];
+    private initialized: boolean = false;
+    private columnWidths: number[] = [];
+
+    private regex = {
+        regex: /^\/((?:\\\/|[^\/])+)\/([migyu]{0,5})?$/,
+        exact: /(^[\"\'=]+)|([\"\'=]+$)/g,
+        operators: /[<>=]/g,
+        wild01: /\?/g,
+        wild0More: /\*/g
+    };
+
+    constructor(private el: ElementRef, private renderer: Renderer2) {
+        this.table = this.el.nativeElement;
+    }
+
+    ngOnInit() {
+        if (this.table.tagName !== 'TABLE') {
+            console.error('Esta directiva solo puede ser usada en elementos <table>');
+            return;
+        }
+
+        // Agregar clase principal tablefilter a la tabla
+        this.renderer.addClass(this.table, 'tablefilter');
+
+        this.thead = this.table.querySelector('thead');
+        if (!this.thead) {
+            console.error('La tabla debe tener un elemento <thead>');
+            return;
+        }
+
+        const headerRow = this.thead.querySelector('tr');
+        if (!headerRow) {
+            console.error('El <thead> debe contener al menos una fila <tr>');
+            return;
+        }
+
+        this.headers = Array.from(headerRow.querySelectorAll('th'));
+        if (this.headers.length === 0) {
+            console.error('No se encontraron elementos <th> en el encabezado de la tabla');
+            return;
+        }
+
+        this.tbody = this.table.querySelector('tbody');
+        if (!this.tbody) {
+            console.error('La tabla debe tener un elemento <tbody>');
+            return;
+        }
+
+        // Preservar anchos de columnas antes de cualquier manipulación
+        this.preserveColumnWidths();
+
+        this.addFilterRow();
+
+        // Agregar estilos CSS a la página
+        this.addTableStyles();
+    }
+
+    ngAfterViewInit() {
+        setTimeout(() => {
+            this.captureTableData();
+            this.initialized = true;
+        }, 0);
+    }
+
+    // Método para preservar los anchos de columnas originales
+    private preserveColumnWidths() {
+        this.columnWidths = this.headers.map(header => {
+            // Obtener el ancho computado actual
+            const computedWidth = window.getComputedStyle(header).width;
+            const width = parseFloat(computedWidth);
+
+            // Fijar el ancho en el elemento para evitar cambios
+            this.renderer.setStyle(header, 'width', `${width}px`);
+
+            return width;
+        });
+    }
+
+    // Método para aplicar los anchos preservados a las columnas
+    private enforceColumnWidths() {
+        this.headers.forEach((header, index) => {
+            if (this.columnWidths[index]) {
+                this.renderer.setStyle(header, 'width', `${this.columnWidths[index]}px`);
+
+                // También aplicar a las celdas correspondientes en tbody
+                if (this.tbody) {
+                    const rows = this.tbody.querySelectorAll('tr');
+                    rows.forEach(row => {
+                        const cell = row.cells[index];
+                        if (cell) {
+                            this.renderer.setStyle(cell, 'width', `${this.columnWidths[index]}px`);
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    private captureTableData() {
+        if (!this.tbody) return;
+        this.originalRows = Array.from(this.tbody.querySelectorAll('tr'));
+        this.storeTableData();
+    }
+
+    private storeTableData() {
+        this.tableData = [];
+
+        if (this.originalRows.length === 0) {
+            console.warn('No se encontraron filas en la tabla.');
+            return;
+        }
+
+        if (this.data && this.data.length > 0) {
+            this.originalRows.forEach((row, rowIndex) => {
+                if (rowIndex < this.data.length) {
+                    const dataValues = Object.values(this.data[rowIndex])
+                        .map(val => val !== null && val !== undefined ? val.toString() : '');
+
+                    this.tableData.push({
+                        row: row,
+                        cells: dataValues
+                    });
+                }
+            });
+        } else {
+            this.originalRows.forEach(row => {
+                const rowData = Array.from(row.cells).map(cell => cell.textContent || '');
+                this.tableData.push({
+                    row: row,
+                    cells: rowData
+                });
+            });
+        }
+    }
+
+    private addFilterRow() {
+        const existingFilterRow = this.thead!.querySelector('.filter-row');
+        if (existingFilterRow) {
+            this.renderer.removeChild(this.thead, existingFilterRow);
+        }
+
+        const filterRow = this.renderer.createElement('tr');
+        this.renderer.addClass(filterRow, 'filter-row');
+
+        this.headers.forEach((header, index) => {
+            const filterCell = this.renderer.createElement('th');
+            this.renderer.addClass(filterCell, 'filter-cell');
+
+            // Mantener el mismo ancho que el encabezado
+            if (this.columnWidths[index]) {
+                this.renderer.setStyle(filterCell, 'width', `${this.columnWidths[index]}px`);
+            }
+
+            const input = this.renderer.createElement('input');
+            this.renderer.setAttribute(input, 'type', 'search');
+            this.renderer.setAttribute(input, 'placeholder', ``);
+            this.renderer.addClass(input, 'filter-input');
+
+            this.renderer.listen(input, 'input', () => {
+                const filterValue = input.value;
+                this.applyColumnFilter(index, filterValue);
+            });
+
+            this.filterInputs[index] = input;
+            this.renderer.appendChild(filterCell, input);
+            this.renderer.appendChild(filterRow, filterCell);
+        });
+
+        this.renderer.appendChild(this.thead!, filterRow);
+    }
+
+    private applyColumnFilter(columnIndex: number, filterValue: string) {
+        const allFilters = this.filterInputs.map(input => input ? input.value : '');
+        this.applyAllFilters(allFilters);
+    }
+
+    private applyAllFilters(filterValues: string[] = []) {
+        if (!this.tbody || this.tableData.length === 0) return;
+
+        if (filterValues.length === 0) {
+            filterValues = this.filterInputs.map(input =>
+                input ? input.value : '');
+        }
+
+        const hasActiveFilters = filterValues.some(value => value.length > 0);
+
+        if (!hasActiveFilters) {
+            this.resetFilters();
+            return;
+        }
+
+        // Preservar anchos antes de filtrar
+        this.preserveColumnWidths();
+
+        this.clearTbody();
+
+        const filteredRows = this.tableData.filter(item => {
+            for (let i = 0; i < Math.min(item.cells.length, filterValues.length); i++) {
+                const cellText = item.cells[i];
+                const filterValue = filterValues[i];
+
+                if (filterValue && !this.applyFilter(cellText, filterValue)) {
+                    return false;
+                }
+            }
+            return true;
+        });
+
+        filteredRows.forEach(item => {
+            this.tbody?.appendChild(item.row.cloneNode(true));
+        });
+
+        if (filteredRows.length === 0) {
+            this.showNoResultsMessage();
+        }
+
+        // Restaurar anchos después de filtrar
+        this.enforceColumnWidths();
+    }
+
+    private showNoResultsMessage() {
+        if (!this.tbody) return;
+
+        const noResultsRow = this.renderer.createElement('tr');
+        const cell = this.renderer.createElement('td');
+
+        this.renderer.setAttribute(cell, 'colspan', this.headers.length.toString());
+        this.renderer.addClass(cell, 'no-results');
+
+        const message = this.renderer.createText('No se encontraron resultados para el filtro actual.');
+        this.renderer.appendChild(cell, message);
+        this.renderer.appendChild(noResultsRow, cell);
+        this.renderer.appendChild(this.tbody, noResultsRow);
+    }
+
+    private applyFilter(itemValue: string, filterValue: string): boolean {
+        if (!filterValue) return true;
+
+        const normalizedItemValue = itemValue.toLowerCase();
+        let exactMatch = false;
+
+        if (this.regex.exact.test(filterValue)) {
+            exactMatch = true;
+            filterValue = filterValue.replace(this.regex.exact, '');
+        }
+
+        if (exactMatch) {
+            return normalizedItemValue === filterValue.toLowerCase();
+        }
+
+        if (this.regex.operators.test(filterValue)) {
+            let operatorMatch = filterValue.match(this.regex.operators);
+            if (operatorMatch) {
+                let operator = operatorMatch[0];
+                let value = filterValue.split(operator)[1].trim();
+
+                let itemNumber = parseFloat(itemValue);
+                let filterNumber = parseFloat(value);
+                let itemDate = new Date(itemValue);
+                let filterDate = new Date(value);
+
+                if (!isNaN(itemNumber) && !isNaN(filterNumber)) {
+                    switch (operator) {
+                        case '>': return itemNumber > filterNumber;
+                        case '<': return itemNumber < filterNumber;
+                        case '>=': return itemNumber >= filterNumber;
+                        case '<=': return itemNumber <= filterNumber;
+                        case '=': return itemNumber === filterNumber;
+                    }
+                }
+
+                if (!isNaN(itemDate.getTime()) && !isNaN(filterDate.getTime())) {
+                    switch (operator) {
+                        case '>': return itemDate > filterDate;
+                        case '<': return itemDate < filterDate;
+                        case '>=': return itemDate >= filterDate;
+                        case '<=': return itemDate <= filterDate;
+                        case '=': return itemDate.getTime() === filterDate.getTime();
+                    }
+                }
+            }
+        }
+
+        let wildcard = filterValue
+            .replace(this.regex.wild01, '.')
+            .replace(this.regex.wild0More, '.*');
+
+        try {
+            let wildcardRegex = new RegExp(wildcard, 'i');
+            return wildcardRegex.test(itemValue);
+        } catch (e) {
+            return normalizedItemValue.includes(filterValue.toLowerCase());
+        }
+    }
+
+    private clearTbody() {
+        if (!this.tbody) return;
+
+        const rows = Array.from(this.tbody.querySelectorAll('tr'));
+        rows.forEach(row => {
+            this.renderer.removeChild(this.tbody!, row);
+        });
+    }
+
+    private resetFilters() {
+        if (!this.tbody) return;
+
+        // Preservar anchos antes de resetear
+        this.preserveColumnWidths();
+
+        this.filterInputs.forEach(input => {
+            if (input) input.value = '';
+        });
+
+        this.clearTbody();
+
+        this.originalRows.forEach(row => {
+            this.tbody?.appendChild(row.cloneNode(true));
+        });
+
+        // Restaurar anchos después de resetear
+        this.enforceColumnWidths();
+    }
+
+    // Método para agregar los estilos CSS a la página
+    private addTableStyles() {
+        const styleEl = this.renderer.createElement('style');
+        const css = `
+        /* Estilos para la fila de filtros */
+        .tablefilter .filter-row th {
+          padding: 0 10px;
+          height: 40px;
+          background-color: #f0f0f0;
+          font-weight: normal;
+          position: relative;
+          z-index: 1;
+        }
+        
+        /* Estilos para los inputs de filtro */
+        .tablefilter .filter-input {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 6px 8px;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+        }
+        
+        .tablefilter .filter-input:focus {
+          outline: none;
+          border-color: #4d90fe;
+          box-shadow: 0 0 3px rgba(77, 144, 254, 0.5);
+        }
+    
+        /* Estilos para el mensaje sin resultados */
+        .tablefilter .no-results {
+          text-align: center;
+          padding: 20px;
+          color: #666;
+        }`;
+
+        this.renderer.appendChild(styleEl, this.renderer.createText(css));
+        this.renderer.appendChild(document.head, styleEl);
+    }
+}

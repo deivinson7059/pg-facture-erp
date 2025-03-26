@@ -9,6 +9,7 @@ import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { HeaderComponent } from '../../header/header.component';
 import { UnsubscribeOnDestroyAdapter } from '@shared';
 import { UtilsSpinnerComponent } from '@shared/components/utils-spinner/utils-spinner.component';
+import { UtilsTypingComponent } from '@shared/components/utils-typing/utils-typing.component';
 
 @Component({
     selector: 'app-main-layout',
@@ -16,6 +17,7 @@ import { UtilsSpinnerComponent } from '@shared/components/utils-spinner/utils-sp
     styleUrls: [],
     imports: [
         UtilsSpinnerComponent,
+        UtilsTypingComponent,
         HeaderComponent,
         SidebarComponent,
         BidiModule,

@@ -20,7 +20,7 @@ export const APP_ROUTE: Route[] = [
             {
                 path: 'dashboard',
                 loadChildren: () =>
-                    import('./dashboard/dashboard.routes').then((m) => m.DASHBOARD_ROUTE),
+                    import('@pages/routes/dashboard.routes').then((m) => m.DASHBOARD_ROUTE),
             },
 
 

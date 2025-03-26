@@ -1,0 +1,150 @@
+.tablesorter {
+    width: 100%;
+    margin: 10px 0 15px;
+    text-align: left;
+    border-spacing: 0;
+    border: #cdcdcd 1px solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.tablesorter thead th {
+    background-color: #99b3e6 !important;
+    color: black !important;
+    font-weight: 600 !important;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid white;
+}
+
+/* Efecto hover en encabezados */
+.tablesorter thead th.sortable:hover {
+    background-color: #b0c4de !important;
+}
+
+/* Encabezados ordenables */
+.tablesorter th.sortable {
+    position: relative;
+    padding-right: 20px !important;
+    /* Espacio para el indicador */
+    cursor: pointer;
+    user-select: none;
+    /* Evita selección de texto */
+}
+
+/* Indicador neutral de ordenamiento */
+.tablesorter th.sortable::after {
+    content: "⇕";
+    /* Flecha bidireccional */
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+    font-size: 0.9em;
+}
+
+/* Indicador de ordenamiento ascendente */
+.tablesorter th.sort-asc::after {
+    content: "↑";
+    /* Flecha hacia arriba */
+    opacity: 1;
+}
+
+/* Indicador de ordenamiento descendente */
+.tablesorter th.sort-desc::after {
+    content: "↓";
+    /* Flecha hacia abajo */
+    opacity: 1;
+}
+
+
+.tablesorter tbody td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.tablesorter tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tablesorter tbody tr:hover {
+    background-color: #e6e6e6;
+}
+
+/* Animación suave al ordenar */
+.tablesorter tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.tablesorter th,
+.tablesorter td {
+    border-width: 0 1px 1px 0;
+}
+
+.tablesorter th,
+.tablesorter thead td {
+    font-family: Arial, Sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border-collapse: collapse;
+    padding: 4px;
+    text-shadow: 0 1px 0 rgba(204, 204, 204, 0.7);
+}
+
+.tablesorter tbody td,
+.tablesorter tfoot th,
+.tablesorter tfoot td {
+    padding: 4px;
+    vertical-align: top;
+}
+
+.tablesorter tbody>tr.hover>td,
+.tablesorter tbody>tr:hover>td,
+.tablesorter tbody>tr:hover+tr.tablesorter-childRow>td,
+.tablesorter tbody>tr:hover+tr.tablesorter-childRow+tr.tablesorter-childRow>td,
+.tablesorter tbody>tr.even.hover>td,
+.tablesorter tbody>tr.even:hover>td,
+.tablesorter tbody>tr.even:hover+tr.tablesorter-childRow>td,
+.tablesorter tbody>tr.even:hover+tr.tablesorter-childRow+tr.tablesorter-childRow>td {
+    background-color: #d9d9d9;
+    color: #000;
+}
+
+.tablesorter tbody>tr.odd.hover>td,
+.tablesorter tbody>tr.odd:hover>td,
+.tablesorter tbody>tr.odd:hover+tr.tablesorter-childRow>td,
+.tablesorter tbody>tr.odd:hover+tr.tablesorter-childRow+tr.tablesorter-childRow>td {
+    background-color: #bfbfbf;
+    color: #000;
+}
+
+.tablesorter tbody tr.odd>td {
+    background-color: #ebf2fa;
+}
+
+.tablesorter tbody tr.even>td {
+    background-color: #fff;
+}
+
+.tablesorter tr {
+    background-color: #99b3e6;
+}
+
+.tablesorter tr.even td.primary,
+.tablesorter td.secondary,
+.tablesorter tr.odd td.secondary {
+    background-color: #c2d1f0;
+}
+
+.tablesorter tr.even td.secondary,
+.tablesorter td.tertiary,
+.tablesorter tr.odd td.tertiary {
+    background-color: #d6e0f5;
+}
+
+.tablesorter tr.even td.tertiary {
+    background-color: #ebf0fa;
+}

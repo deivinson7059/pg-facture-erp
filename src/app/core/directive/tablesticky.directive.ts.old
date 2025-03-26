@@ -1,0 +1,194 @@
+import { Directive, ElementRef, Input, OnInit, Renderer2, OnDestroy } from '@angular/core';
+
+@Directive({
+    standalone: true,
+    selector: '[tablesticky]'
+})
+export class TablestickyDirective implements OnInit, OnDestroy {
+    @Input() maxHeight: string = '500px';
+
+    private table: HTMLTableElement;
+    private thead: HTMLTableSectionElement | null = null;
+    private tableWrapper: HTMLDivElement | null = null;
+    private columnWidths: number[] = [];
+
+    constructor(private el: ElementRef, private renderer: Renderer2) {
+        this.table = this.el.nativeElement;
+    }
+
+    ngOnInit() {
+        if (this.table.tagName !== 'TABLE') {
+            console.error('Esta directiva solo puede ser usada en elementos <table>');
+            return;
+        }
+
+        // Agregar clase para identificación
+        this.renderer.addClass(this.table, 'tablesticky');
+
+        this.thead = this.table.querySelector('thead');
+        if (!this.thead) {
+            console.error('La tabla debe tener un elemento <thead>');
+            return;
+        }
+
+        // Preservar anchos de columnas antes de manipular
+        this.preserveColumnWidths();
+
+        // Aplicar encabezados fijos
+        this.applyStickyHeaders();
+
+        // Agregar estilos CSS a la página
+        this.addTableStyles();
+    }
+
+    ngOnDestroy() {
+        // Limpiar cuando la directiva se destruye
+        this.removeStickyHeaders();
+    }
+
+    // Método para preservar los anchos de columnas originales
+    private preserveColumnWidths() {
+        const headers = this.thead?.querySelectorAll('th');
+        if (!headers) return;
+
+        this.columnWidths = Array.from(headers).map(header => {
+            // Obtener el ancho computado actual
+            const computedWidth = window.getComputedStyle(header).width;
+            const width = parseFloat(computedWidth);
+
+            // Fijar el ancho en el elemento para evitar cambios
+            this.renderer.setStyle(header, 'width', `${width}px`);
+
+            return width;
+        });
+    }
+
+    private applyStickyHeaders() {
+        // Si ya existe un wrapper, eliminarlo primero para no duplicar
+        if (this.tableWrapper) {
+            this.removeStickyHeaders();
+        }
+
+        // Creamos un contenedor con scroll para la tabla
+        this.tableWrapper = this.renderer.createElement('div');
+        this.renderer.addClass(this.tableWrapper, 'tablesticky-wrapper');
+        this.renderer.setStyle(this.tableWrapper, 'position', 'relative');
+        this.renderer.setStyle(this.tableWrapper, 'max-height', this.maxHeight);
+        this.renderer.setStyle(this.tableWrapper, 'overflow-y', 'auto');
+        this.renderer.setStyle(this.tableWrapper, '-webkit-overflow-scrolling', 'touch');
+
+        // Evitar propiedades que pueden causar jitter
+        this.renderer.removeStyle(this.tableWrapper, 'transform');
+        this.renderer.removeStyle(this.tableWrapper, 'will-change');
+
+        const parent = this.table.parentNode;
+        if (!parent) return;
+
+        // Insertar el wrapper alrededor de la tabla
+        this.renderer.insertBefore(parent, this.tableWrapper, this.table);
+        this.renderer.removeChild(parent, this.table);
+        this.renderer.appendChild(this.tableWrapper, this.table);
+
+        // Obtener el ancho de la tabla
+        const tableWidth = this.table.offsetWidth;
+        this.renderer.setStyle(this.tableWrapper, 'width', `${tableWidth}px`);
+
+        if (this.thead) {
+            // Hacer sticky el encabezado
+            this.renderer.addClass(this.thead, 'sticky-header');
+            this.renderer.setStyle(this.thead, 'position', 'sticky');
+            this.renderer.setStyle(this.thead, 'top', '0');
+            this.renderer.setStyle(this.thead, 'z-index', '2');
+            this.renderer.setStyle(this.thead, 'background-color', '#f5f5f5');
+            this.renderer.setStyle(this.thead, 'width', `${tableWidth}px`);
+
+            // Eliminar propiedades que pueden causar jitter
+            this.renderer.removeStyle(this.thead, 'transform');
+            this.renderer.removeStyle(this.thead, 'will-change');
+
+            // También hacer sticky la fila de filtro si existe
+            const filterRow = this.thead.querySelector('.filter-row');
+            if (filterRow) {
+                this.renderer.addClass(filterRow, 'sticky-filter');
+                this.renderer.setStyle(filterRow, 'position', 'sticky');
+                this.renderer.setStyle(filterRow, 'top', '50px'); // Altura del encabezado principal
+                this.renderer.setStyle(filterRow, 'z-index', '1');
+                this.renderer.setStyle(filterRow, 'background-color', '#f0f0f0');
+
+                // Eliminar propiedades que pueden causar jitter
+                this.renderer.removeStyle(filterRow, 'transform');
+                this.renderer.removeStyle(filterRow, 'will-change');
+            }
+        }
+    }
+
+    private removeStickyHeaders() {
+        if (!this.tableWrapper) return;
+
+        const parent = this.tableWrapper.parentNode;
+        if (!parent) return;
+
+        if (this.thead) {
+            this.renderer.removeClass(this.thead, 'sticky-header');
+            // Remover estilos inline añadidos
+            this.renderer.removeStyle(this.thead, 'position');
+            this.renderer.removeStyle(this.thead, 'top');
+            this.renderer.removeStyle(this.thead, 'z-index');
+            this.renderer.removeStyle(this.thead, 'background-color');
+            this.renderer.removeStyle(this.thead, 'width');
+            this.renderer.removeStyle(this.thead, 'transform');
+            this.renderer.removeStyle(this.thead, 'will-change');
+
+            // Remover estilos de la fila de filtro si existe
+            const filterRow = this.thead.querySelector('.filter-row');
+            if (filterRow) {
+                this.renderer.removeClass(filterRow, 'sticky-filter');
+                this.renderer.removeStyle(filterRow, 'position');
+                this.renderer.removeStyle(filterRow, 'top');
+                this.renderer.removeStyle(filterRow, 'z-index');
+                this.renderer.removeStyle(filterRow, 'background-color');
+                this.renderer.removeStyle(filterRow, 'transform');
+                this.renderer.removeStyle(filterRow, 'will-change');
+            }
+        }
+
+        // Extraer la tabla del wrapper y eliminar el wrapper
+        this.renderer.removeChild(this.tableWrapper, this.table);
+        this.renderer.insertBefore(parent, this.table, this.tableWrapper);
+        this.renderer.removeChild(parent, this.tableWrapper);
+        this.tableWrapper = null;
+    }
+
+    // Método para agregar los estilos CSS a la página
+    private addTableStyles() {
+        const styleEl = this.renderer.createElement('style');
+        const css = `
+        /* Estilos para el contenedor con scroll */
+        .tablesticky-wrapper {
+          position: relative;
+          margin-bottom: 20px;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Estilos para encabezados fijos */
+        .tablesticky .sticky-header {
+          position: sticky;
+          top: 0;
+          z-index: 2;
+          background-color: #f5f5f5;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Estilos para fila de filtros fija */
+        .tablesticky .sticky-filter {
+          position: sticky;
+          top: 50px;
+          z-index: 1;
+          background-color: #f0f0f0;
+        }`;
+
+        this.renderer.appendChild(styleEl, this.renderer.createText(css));
+        this.renderer.appendChild(document.head, styleEl);
+    }
+}

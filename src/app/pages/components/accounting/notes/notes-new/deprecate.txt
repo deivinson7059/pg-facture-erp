@@ -1,0 +1,98 @@
+<!-- Modal de selección de terceros - usando app-pg-autocomplete -->
+<div class="modal" [ngClass]="{'show': showUserModal}" tabindex="-1" role="dialog"
+    [style.display]="showUserModal ? 'block' : 'none'">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="section_title">
+                        Seleccione Tercero
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <div class="form-group">
+
+                                @if (!selectedCustomer) {
+                                <!-- Usar app-pg-autocomplete para la búsqueda de terceros -->
+                                <utils-autocomplete #customerAutocomplete [data]="customers" valueField="id"
+                                    displayField="name" placeholder="Buscar Tercero"
+                                    customDisplayTemplate="${name} - ${nit}" [debounceTime]="200" [minChars]="3"
+                                    [itemTemplate]="customerTemplate" [showDropdownOnFocus]="true"
+                                    (selected)="onCustomerSelected($event)" [showButton]="true" buttonText="Crear"
+                                    buttonClass="bt bt-white ms-2" buttonIconClass="fa fa-plus"
+                                    (buttonClick)="onCreateNewCustomer()" [required]="false"
+                                    errorMessage="Debe seleccionar un Tercero" [showSelectedValue]="false"
+                                    [returnFullObject]="true">
+                                </utils-autocomplete>
+
+                                <!-- Template personalizado para los items del dropdown -->
+                                <ng-template #customerTemplate let-customer>
+                                    <div class="d-flex flex-column">
+                                        <span class="fw-bold">{{ customer.name }}</span>
+                                        <div class="d-flex justify-content-between small">
+                                            <span class="text-primary">NIT: {{ customer.nit }}</span>
+                                            <span class="text-muted">{{ customer.city || '' }}</span>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                }
+                                <!-- Vista previa del cliente seleccionado -->
+                                @if (selectedCustomer) {
+
+                                <div class="selected_user">
+                                    <div class="action_panel_two text-left">
+                                        <button [appTooltip]="'Quitar Seleccion'" [placement]="'top'"
+                                            class="btn btn-outline-danger" (click)="clearUserModal()">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="selected_user_info">
+                                        <div class="selected_company">Razón Social:
+                                            <a [appTooltip]="'Ver Tercero'" [placement]="'top'" target="_blank"
+                                                href="#">
+                                                <b>{{ selectedCustomer.name }}</b></a>
+                                        </div>
+                                        <div class="selected_name">
+                                            Contacto: <b></b>
+                                        </div>
+                                        <div class="selected_id">
+                                            NIT - CC: <b>{{ selectedCustomer.nit }}</b>
+                                        </div>
+                                        <div class="selected_id">
+                                            Ciudad: <b>{{ selectedCustomer.city }}</b>
+                                        </div>
+                                        <div class="selected_id">
+                                            Dir: <b>{{ selectedCustomer.address }}</b>
+                                        </div>
+                                        <div class="selected_id">
+                                            Tel: <b>{{ selectedCustomer.phone }}</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="bt bt-white" (click)="closeUserModal()">
+                    Cancelar
+                </button>
+                <button type="button" class="bt bt-green" [disabled]="!selectedCustomer"
+                    (click)="confirmCustomerSelection()">
+                    <i class="fa fa-check"></i> Seleccionar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Backdrop del modal -->
+@if (showUserModal) {
+<div class="modal-backdrop fade show" (click)="closeUserModal()"></div>
+}

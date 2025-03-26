@@ -28,7 +28,6 @@ export interface accountPUC {
     credit: number | null;
     debitDisabled: boolean;
     creditDisabled: boolean;
-    customers: Customer | null;
 }
 
 export interface Customer {

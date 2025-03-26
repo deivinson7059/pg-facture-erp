@@ -2,43 +2,51 @@
 .autocomplete-container {
     width: 100%;
     position: relative;
-    
+
     .input-group {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
         position: relative;
-        
+
+
         &.has-button {
-          .form-control {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-          }
-          
-          /* No mostrar el icono X cuando hay botón lateral */
-          .clear-icon {
-            display: none; /* CAMBIO PRINCIPAL: ocultar el icono cuando hay botón */
-          }
+
+            .form-control {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            /* No mostrar el icono X cuando hay botón lateral */
+            .clear-icon {
+                display: none;
+                /* CAMBIO PRINCIPAL: ocultar el icono cuando hay botón */
+            }
         }
     }
-    
+
+    .input-group .bt-button {
+        margin-left: 0px !important;
+    }
+
     .form-control {
         width: 100%;
-        padding-right: 30px; /* Espacio para el icono X */
+        padding-right: 30px;
+        /* Espacio para el icono X */
         transition: border-color 0.2s ease;
         padding: 0.25rem 0.6rem;
-        
+
         &:focus {
             box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
         }
-        
+
         /* Estilo cuando está deshabilitado - usando variables para compatibilidad con tema oscuro */
         &:disabled {
             background-color: var(--bs-gray-200, #e9ecef);
             cursor: not-allowed;
         }
     }
-    
+
     /* Estilo para el icono X */
     .clear-icon {
         position: absolute;
@@ -51,15 +59,15 @@
         background: transparent;
         border: none;
         z-index: 5;
-        
+
         /* Posicionamiento básico para cuando NO hay botón */
         right: 10px;
-        
+
         &:hover {
             color: var(--bs-gray-800, #333);
         }
     }
-    
+
     /* Estilo para el menú desplegable */
     .autocomplete-menu {
         margin-top: 0.0rem !important;
@@ -74,40 +82,40 @@
         animation: fadeIn 0.15s ease-in-out;
         z-index: 1050;
         background-color: var(--bs-body-bg, #fff);
-        
+
         .dropdown-item {
             padding: 8px 12px;
             cursor: pointer;
             transition: background-color 0.2s ease;
             border-bottom: 1px solid var(--bs-border-color-translucent, rgba(0, 0, 0, 0.05));
             color: var(--bs-body-color, inherit);
-            
+
             &:last-child {
                 border-bottom: none;
             }
-            
+
             &.active {
                 background-color: var(--bs-primary-bg-subtle, rgba(13, 110, 253, 0.1));
                 color: var(--bs-body-color, inherit);
             }
-            
+
             &:hover {
                 background-color: var(--bs-tertiary-bg, #f8f9fa);
             }
-            
+
             &.no-results,
             &.loading-item {
                 color: var(--bs-gray-600, #6c757d);
                 font-style: italic;
                 cursor: default;
-                
+
                 &:hover {
                     background-color: transparent;
                 }
             }
         }
     }
-    
+
     /* Mensaje de error */
     .invalid-feedback {
         display: block;
@@ -124,7 +132,7 @@
         opacity: 0;
         transform: translateY(-5px);
     }
-    
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -137,7 +145,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    
+
     b {
         font-weight: 500;
         flex-shrink: 0;
@@ -155,4 +163,3 @@
     display: block;
     margin-top: 2px !important;
 }
-

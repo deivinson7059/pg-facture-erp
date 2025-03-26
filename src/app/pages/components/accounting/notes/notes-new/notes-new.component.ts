@@ -19,7 +19,6 @@ import { NotesService } from '@pages/services';
         ReactiveFormsModule,
         UtilsAutocompleteComponent,
         BreadcrumbComponent,
-        UtilsTypingComponent,
         DecimalPipe,
         UtilsTooltipDirective,
         FormControlValidationDirective,
@@ -249,7 +248,6 @@ export class NotesNewComponent implements OnInit, OnDestroy {
             "debitDisabled": false,
             "credit": null,
             "creditDisabled": false,
-            "customers": this.currentCustomer,
         };
 
         //this.pucSeleted.push(account);
@@ -380,13 +378,6 @@ export class NotesNewComponent implements OnInit, OnDestroy {
     confirmCustomerSelection(): void {
         if (!this.selectedCustomer || this.selectedAccountIndex === null) return;
 
-        // Actualizar la cuenta con el tercero seleccionado
-        //this.pucSeleted[this.selectedAccountIndex].customers = this.selectedCustomer;
-        this.pucSeleted.forEach(item => {
-            // Crear una copia del objeto cliente para evitar referencias compartidas
-            item.customers = this.selectedCustomer;
-        });
-
         this.currentCustomer = this.selectedCustomer;
 
         // Mostrar mensaje de éxito
@@ -409,7 +400,8 @@ export class NotesNewComponent implements OnInit, OnDestroy {
     removeCustomer(index: number): void {
         if (index < 0 || index >= this.pucSeleted.length) return;
 
-        const customerName = this.pucSeleted[index].customers?.name || 'Tercero';
+        //const customerName = this.pucSeleted[index].customers?.name || 'Tercero';
+        const customerName = "Tercero";
 
         Swal.fire({
             title: '¿Eliminar tercero?',
@@ -423,11 +415,7 @@ export class NotesNewComponent implements OnInit, OnDestroy {
         }).then((result) => {
             if (result.isConfirmed) {
                 // Eliminar el tercero
-                //this.pucSeleted[index].customers = null;
-                this.pucSeleted.forEach(item => {
-                    // Crear una copia del objeto cliente para evitar referencias compartidas
-                    item.customers = null;
-                });
+                //this.pucSeleted[index].customers = null;              
 
                 this.currentCustomer = null;
 
@@ -569,7 +557,7 @@ export class NotesNewComponent implements OnInit, OnDestroy {
                         account_name: item.account_name,
                         debit: item.debit || 0,
                         credit: item.credit || 0,
-                        tercero: item.customers?.nit || null
+                        tercero: this.selectedCustomer?.nit || null
                     };
                 });
 

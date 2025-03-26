@@ -16,7 +16,135 @@
                     <div class="col-sm-12 section_title">
                         <i class="fa fa-chevron-right"></i> Nueva Nota Contable
                     </div>
-                    <hr>
+                </div>
+                <hr>
+                <!--  @if (pucSeleted.length >0) { -->
+                <div class="action_panel">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    @if (!selectedCustomer) {
+                                    <!-- Usar app-pg-autocomplete para la búsqueda de terceros -->
+                                    <utils-autocomplete #customerAutocomplete [data]="customers" valueField="id"
+                                        displayField="name" placeholder="Buscar Tercero"
+                                        customDisplayTemplate="${name} - ${nit}" [debounceTime]="200" [minChars]="3"
+                                        [itemTemplate]="customerTemplate" [showDropdownOnFocus]="true"
+                                        (selected)="onCustomerSelected($event)" [showButton]="true" buttonText="Crear"
+                                        buttonClass="bt bt-white ms-2" buttonIconClass="fa fa-plus"
+                                        (buttonClick)="onCreateNewCustomer()" [required]="false"
+                                        errorMessage="Debe seleccionar un Tercero" [showSelectedValue]="false"
+                                        [returnFullObject]="true">
+                                    </utils-autocomplete>
+
+                                    <!-- Template personalizado para los items del dropdown -->
+                                    <ng-template #customerTemplate let-customer>
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bold">{{ customer.name }}</span>
+                                            <div class="d-flex justify-content-between small">
+                                                <span class="text-primary">NIT: {{ customer.nit }}</span>
+                                                <span class="text-muted">{{ customer.city || '' }}</span>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                    }
+                                    <!-- Vista previa del cliente seleccionado -->
+                                    @if (selectedCustomer) {
+
+                                    <div class="selected_user">
+                                        <div class="action_panel_two text-left">
+                                            <button [appTooltip]="'Quitar Seleccion'" [placement]="'top'"
+                                                class="btn btn-outline-danger" (click)="clearUserModal()">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                        <div class="selected_user_info">
+                                            <div class="selected_company">Razón Social:
+                                                <a [appTooltip]="'Ver Tercero'" [placement]="'top'" target="_blank"
+                                                    href="#">
+                                                    <b>{{ selectedCustomer.name }}</b></a>
+                                            </div>
+                                            <div class="selected_name">
+                                                Contacto: <b></b>
+                                            </div>
+                                            <div class="selected_id">
+                                                NIT - CC: <b>{{ selectedCustomer.nit }}</b>
+                                            </div>
+                                            <div class="selected_id">
+                                                Ciudad: <b>{{ selectedCustomer.city }}</b>
+                                            </div>
+                                            <div class="selected_id">
+                                                Dir: <b>{{ selectedCustomer.address }}</b>
+                                            </div>
+                                            <div class="selected_id">
+                                                Tel: <b>{{ selectedCustomer.phone }}</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="row text-left">
+                                <!-- Oficina -->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label class="w-100">
+                                            Oficina: <span class="required">*</span>
+                                            <select formControlName="cbOffice" class="form-select"
+                                                [ngModel]="wareSelected"
+                                                [formControlValidation]="noteForm.get('cbOffice')!">
+                                                <option value="Oficina Principal">Oficina Principal</option>
+                                                <option value="Oficina Centro">Oficina Centro</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- Fecha Contable -->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label class="w-100">
+                                            Fecha Contable: <span class="required">*</span>
+                                            <input formControlName="fechaContable" type="date" class="form-control"
+                                                [readOnly]="true"
+                                                [formControlValidation]="noteForm.get('fechaContable')!">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Centro de costo -->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label class="w-100">
+                                            Centro de costo: <span class="required">*</span>
+                                            <select formControlName="cbCentoCosto" class="form-select"
+                                                [ngModel]="centroCosto"
+                                                [formControlValidation]="noteForm.get('cbCentoCosto')!">
+                                                <option value="--">...</option>
+                                                <option value="19">VENTAS</option>
+                                                <option value="20">Pollos asados</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Referencia -->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label class="w-100">
+                                            Referencia: <span class="required">*</span>
+                                            <input formControlName="txtReference" type="text" class="form-control"
+                                                [ngModel]="txtReference"
+                                                [formControlValidation]="noteForm.get('txtReference')!">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2 mt-2">
                     <div class="col-12">
                         <utils-autocomplete #pucAutocomplete [autofocus]="true" [data]="puc" valueField="code"
                             displayField="code" placeholder="Buscar Cuenta"
@@ -38,134 +166,52 @@
                         </ng-template>
                     </div>
                 </div>
-                <!--  @if (pucSeleted.length >0) { -->
-                <div class="w-100">
-                    <div class="w-100">
-                        <div class="action_panel">
-                            <div class="row">
-                                <!-- Oficina -->
-                                <div class="col-12 col-md-3 mb-2">
-                                    <div class="form-group">
-                                        <label class="w-100">
-                                            Oficina: <span class="required">*</span>
-                                            <select formControlName="cbOffice" class="form-select"
-                                                [ngModel]="wareSelected"
-                                                [formControlValidation]="noteForm.get('cbOffice')!">
-                                                <option value="Oficina Principal">Oficina Principal</option>
-                                                <option value="Oficina Centro">Oficina Centro</option>
-                                            </select>
-                                        </label>
+                <div class="accounts-container mt-2">
+                    @for (item of pucSeleted; track $index) {
+                    <div class="card">
+                        <div class="row accounting_notes">
+                            <div class="col-10 col-md-11 text-left">
+                                <div class="row">
+                                    <div class="col-5 col-sm-2 col-md-3 col-lg-3 col-xl-3 mb-2">
+                                        {{item.account}}
                                     </div>
-                                </div>
-                                <!-- Fecha Contable -->
-                                <div class="col-12 col-md-3 mb-2">
-                                    <div class="form-group">
-                                        <label class="w-100">
-                                            Fecha Contable: <span class="required">*</span>
-                                            <input formControlName="fechaContable" type="date" class="form-control"
-                                                [readOnly]="true"
-                                                [formControlValidation]="noteForm.get('fechaContable')!">
-                                        </label>
+                                    <div class="col-7 col-sm-5 col-md-4 col-lg-5 col-xl-5 mb-2">
+                                        {{item.account_name.toUpperCase()}}
                                     </div>
-                                </div>
-
-                                <!-- Centro de costo -->
-                                <div class="col-12 col-md-3 mb-2">
-                                    <div class="form-group">
-                                        <label class="w-100">
-                                            Centro de costo: <span class="required">*</span>
-                                            <select formControlName="cbCentoCosto" class="form-select"
-                                                [ngModel]="centroCosto"
-                                                [formControlValidation]="noteForm.get('cbCentoCosto')!">
-                                                <option value="--">...</option>
-                                                <option value="19">VENTAS</option>
-                                                <option value="20">Pollos asados</option>
-                                            </select>
-                                        </label>
+                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-2">
+                                        <input type="number" [step]="0.01" placeholder="Débito" class="form-control"
+                                            [value]="item.debit" [disabled]="item.debitDisabled"
+                                            (input)="onDebitChange($index, $event)" typingListener>
                                     </div>
-                                </div>
-                                <!-- Referencia -->
-                                <div class="col-12 col-md-3 mb-2">
-                                    <div class="form-group">
-                                        <label class="w-100">
-                                            Referencia: <span class="required">*</span>
-                                            <input formControlName="txtReference" type="text" class="form-control"
-                                                [ngModel]="txtReference"
-                                                [formControlValidation]="noteForm.get('txtReference')!">
-                                        </label>
+                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-2">
+                                        <input type="number" placeholder="Crédito" class="form-control"
+                                            [value]="item.credit" [disabled]="item.creditDisabled" [step]="0.01"
+                                            (input)="onCreditChange($index, $event)" typingListener>
                                     </div>
                                 </div>
 
                             </div>
-                        </div>
-                    </div>
-                    <div class="accounts-container">
-                        @for (item of pucSeleted; track $index) {
-                        <div class="card">
-                            <div class="row accounting_notes">
-                                <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-2">
-                                    {{item.account}}
-                                </div>
-                                <div class="col-9 col-sm-3 col-md-3 col-lg-3 col-xl-3 mb-2">
-                                    {{item.account_name.toUpperCase()}}
-                                </div>
-                                <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-2">
-                                    <input type="number" [step]="0.01" placeholder="Débito" class="form-control"
-                                        [value]="item.debit" [disabled]="item.debitDisabled"
-                                        (input)="onDebitChange($index, $event)" typingListener>
-                                </div>
-                                <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-2">
-                                    <input type="number" placeholder="Crédito" class="form-control"
-                                        [value]="item.credit" [disabled]="item.creditDisabled" [step]="0.01"
-                                        (input)="onCreditChange($index, $event)" typingListener>
-                                </div>
-                                <div class="col-10 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-center mb-2">
-                                    @if (item.customers!=null) {
-                                    <div>
-                                        <div class="low_text">
-                                            CC / NIT: {{item.customers.nit}}
-                                        </div>
-                                        {{item.customers.name }}
+                            <div class="col-2 col-md-1 text-right">
+                                <utils-dropdown-button tooltipText="Opciones">
+                                    <!-- Aquí puedes poner el contenido directamente -->
+                                    <button type="button" class="dropdown-item bt-red"
+                                        (click)="removeItem($index, item)">
+                                        <i class="fa fa-times"></i>
+                                        Eliminar
+                                    </button>
 
-                                        <i class="fa fa-times-circle canceled-invoice pointer" aria-hidden="true"
-                                            [appTooltip]="'Eliminar Tercero'" [placement]="'top'"
-                                            (click)="removeCustomer($index)"></i>
-                                    </div>
-                                    }
-                                    @if (item.customers===null) {
-                                    <div>
-                                        <button type="button" [appTooltip]="'Agregar Tercero'" [placement]="'top'"
-                                            class="bt bt-white" (click)="openUserModal($index, item)">
-                                            <i class="fa fa-user"></i>
-                                            Tercero
-                                        </button>
-                                    </div>
-                                    }
-                                </div>
-                                <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center mb-2">
-                                    <utils-dropdown-button tooltipText="Opciones">
-                                        <!-- Aquí puedes poner el contenido directamente -->
-                                        <button type="button" class="dropdown-item bt-red"
-                                            (click)="removeItem($index, item)">
-                                            <i class="fa fa-times"></i>
-                                            Eliminar
-                                        </button>
-
-                                        <button type="button" class="dropdown-item">
-                                            <i class="fas fa-hand-holding-usd"></i>
-                                            Agregar Base Gravable
-                                        </button>
-                                    </utils-dropdown-button>
-
-                                    <!-- <i class="fa fa-trash pointer canceled-invoice mt-2" aria-hidden="true"
-                                        [appTooltip]="'Eliminar cuenta'" [placement]="'top'"
-                                        (click)="removeItem($index, item)"></i> -->
-                                </div>
+                                    <button type="button" class="dropdown-item">
+                                        <i class="fas fa-hand-holding-usd"></i>
+                                        Agregar Base Gravable
+                                    </button>
+                                </utils-dropdown-button>
                             </div>
+
                         </div>
-                        }
                     </div>
+                    }
                 </div>
+
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <div class="text-center card section_title">
@@ -179,8 +225,10 @@
                             ${{getTotalCredits() | number:'1.0-2'}}
                         </div>
                     </div>
+                </div>
 
-                    <hr>
+                <hr>
+                <div class="row">
                     <div class="col-12 section_title">
                         <i class="fa fa-chevron-right"></i>
                         Observaciones
@@ -194,6 +242,8 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-12">
                         <div class="action_panel">
                             <button type="submit" class="bt bt-green">
@@ -208,104 +258,3 @@
         </form>
     </div>
 </section>
-
-<utils-typing [timeout]="2000"></utils-typing>
-
-<!-- Modal de selección de terceros - usando app-pg-autocomplete -->
-<div class="modal" [ngClass]="{'show': showUserModal}" tabindex="-1" role="dialog"
-    [style.display]="showUserModal ? 'block' : 'none'">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="text-center">
-                    <div class="section_title">
-                        Seleccione Tercero
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-12">
-
-                            <div class="form-group">
-
-                                @if (!selectedCustomer) {
-                                <!-- Usar app-pg-autocomplete para la búsqueda de terceros -->
-                                <utils-autocomplete #customerAutocomplete [data]="customers" valueField="id"
-                                    displayField="name" placeholder="Buscar Tercero"
-                                    customDisplayTemplate="${name} - ${nit}" [debounceTime]="200" [minChars]="3"
-                                    [itemTemplate]="customerTemplate" [showDropdownOnFocus]="true"
-                                    (selected)="onCustomerSelected($event)" [showButton]="true" buttonText="Crear"
-                                    buttonClass="bt bt-white ms-2" buttonIconClass="fa fa-plus"
-                                    (buttonClick)="onCreateNewCustomer()" [required]="false"
-                                    errorMessage="Debe seleccionar un Tercero" [showSelectedValue]="false"
-                                    [returnFullObject]="true">
-                                </utils-autocomplete>
-
-                                <!-- Template personalizado para los items del dropdown -->
-                                <ng-template #customerTemplate let-customer>
-                                    <div class="d-flex flex-column">
-                                        <span class="fw-bold">{{ customer.name }}</span>
-                                        <div class="d-flex justify-content-between small">
-                                            <span class="text-primary">NIT: {{ customer.nit }}</span>
-                                            <span class="text-muted">{{ customer.city || '' }}</span>
-                                        </div>
-                                    </div>
-                                </ng-template>
-                                }
-                                <!-- Vista previa del cliente seleccionado -->
-                                @if (selectedCustomer) {
-
-                                <div class="selected_user">
-                                    <div class="action_panel_two text-left">
-                                        <button [appTooltip]="'Quitar Seleccion'" [placement]="'top'"
-                                            class="btn btn-outline-danger" (click)="clearUserModal()">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </div>
-                                    <div class="selected_user_info">
-                                        <div class="selected_company">Razón Social:
-                                            <a [appTooltip]="'Ver Tercero'" [placement]="'top'" target="_blank"
-                                                href="#">
-                                                <b>{{ selectedCustomer.name }}</b></a>
-                                        </div>
-                                        <div class="selected_name">
-                                            Contacto: <b></b>
-                                        </div>
-                                        <div class="selected_id">
-                                            NIT - CC: <b>{{ selectedCustomer.nit }}</b>
-                                        </div>
-                                        <div class="selected_id">
-                                            Ciudad: <b>{{ selectedCustomer.city }}</b>
-                                        </div>
-                                        <div class="selected_id">
-                                            Dir: <b>{{ selectedCustomer.address }}</b>
-                                        </div>
-                                        <div class="selected_id">
-                                            Tel: <b>{{ selectedCustomer.phone }}</b>
-                                        </div>
-                                    </div>
-                                </div>
-                                }
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="bt bt-white" (click)="closeUserModal()">
-                    Cancelar
-                </button>
-                <button type="button" class="bt bt-green" [disabled]="!selectedCustomer"
-                    (click)="confirmCustomerSelection()">
-                    <i class="fa fa-check"></i> Seleccionar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Backdrop del modal -->
-@if (showUserModal) {
-<div class="modal-backdrop fade show" (click)="closeUserModal()"></div>
-}

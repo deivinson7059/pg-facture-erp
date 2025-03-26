@@ -12,7 +12,7 @@
 
         <!-- Botón personalizado -->
         @if (showButton) {
-        <button [class]="buttonClass" type="button" (click)="onButtonClick($event)">
+        <button class="bt-button" [class]="buttonClass" type="button" (click)="onButtonClick($event)">
             <i [class]="buttonIconClass" *ngIf="buttonIconClass"></i>
             {{ buttonText }}
         </button>

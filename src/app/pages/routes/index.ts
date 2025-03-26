@@ -1,3 +1,4 @@
+export { DASHBOARD_ROUTE } from "./dashboard.routes";
 export { ACCOUNTING_ROUTE } from "./accounting.routes";
 export { EXPENSES_ROUTE } from "./expenses.routes";
 export { INCOME_ROUTE } from "./income.routes";
