@@ -31,32 +31,172 @@
                 </div>
                 <hr>
                 <div class="col-sm-12 col-md-12">
+
                     <div class="card">
-                        <div class="card-block overflowing_table table-scroll">
-                            <table tablesorter [sticky]="true">
+                        <div class="card-block">
+                            <div class="row" style="width: 100%;">
+                                <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                    <div class="form-group">
+                                        <label>Punto de Venta:</label>
+                                        <select id="cbVenta" class="form-select" required="">
+                                            <option value="all">Todos</option>
+                                            <option value="Oficina Principal">Oficina Principal</option>
+                                            <option value="Oficina Centro">Oficina Centro</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                    <div class="form-group">
+                                        <label>Desde:</label>
+                                        <input required="" type="date" id="desde" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                    <div class="form-group">
+                                        <label>Hasta:</label>
+                                        <input required="" type="date" id="hasta" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                    <div class="form-group">
+                                        <button type="submit" class="bt bt-blue w-100 mt-4">
+                                            <i class="fa fa-search"></i>
+                                            Cargar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                    <div class="form-group">
+                                        <button title="" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            onclick="toHTMLaExcel('wrapListTable');" type="button"
+                                            class="bt bt-green mt-4 w-100" data-bs-original-title="Descargar en Excel">
+                                            <i class="fas fa-file-excel"></i>
+                                            Excel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-block overflowing_table">
+                            <table tablesorter class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Cuenta #</th>
-                                        <th>Nombre de pila</th>
-                                        <th>Apellido</th>
-                                        <th>Edad</th>
-                                        <th>Total</th>
-                                        <th>Descuento</th>
-                                        <th>Diferencia</th>
-                                        <th>Fecha</th>
+                                        <th class="col-id">Id</th>
+                                        <th class="col-ware">Oficina</th>
+                                        <th class="col-inf">Información</th>
+                                        <th>Movimientos</th>
+                                        <th>Estado</th>
+                                        <th class="col-acc">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let row of tableData">
-                                        <td>{{ row.cuenta }}</td>
-                                        <td>{{ row.nombre }}</td>
-                                        <td>{{ row.apellido }}</td>
-                                        <td>{{ row.edad }}</td>
-                                        <td>{{ row.total }}</td>
-                                        <td>{{ row.descuento }}</td>
-                                        <td>{{ row.diferencia }}</td>
-                                        <td>{{ row.fecha }}</td>
+                                    @if (tableData.length===0) {
+                                    <tr>
+                                        <td colspan="5" class="text-center">No hay notas contables</td>
                                     </tr>
+                                    }@else {
+                                    @for (row of tableData; track $index) {
+                                    <tr>
+                                        <td>#{{ row.id }}</td>
+                                        <td><span class="ds">{{ row.ware }}</span></td>
+                                        <td>
+                                            Generado por: <b>{{row.creation_by}}</b><br>
+                                            Fecha Generación: <b>{{row.creation_date | date:'dd/MM/yyyy'}}</b>
+                                            @if (row.status==='C') {
+                                            <br>
+                                            Fecha Contabilización: <b>{{row.updated_date | date:'dd/MM/yyyy'}}</b>
+                                            }
+
+                                        </td>
+                                        <td>
+                                            @for (comment of row.comments; track $index) {
+                                            - <span>{{comment.comment}}</span><br>
+                                            }
+
+                                            <div (click)="toggleMovimientos(row.id)"
+                                                class="cursor-pointer accordion-header">
+                                                <i class="fa"
+                                                    [ngClass]="{'fa-caret-right': !isExpandedRow(row.id), 'fa-caret-down': isExpandedRow(row.id)}"></i>
+                                                <span class="hoverable ml-1 mr-2 pill pill-outline-blue pill-smaller">
+                                                    {{row.lines.length}} movimientos
+                                                </span>
+                                            </div>
+
+                                            <div class="mt-2 movimientos-container"
+                                                [@expandCollapse]="isExpandedRow(row.id) ? 'expanded' : 'collapsed'">
+                                                <table class="table table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-right">Débito</th>
+                                                            <th class="text-right">Crédito</th>
+                                                        </tr>
+
+                                                        @for (item of row.lines; track $index) {
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pointer"
+                                                                    [appTooltip]="item.account + ' - ' + item.account_name">
+                                                                    {{item.account}}
+                                                                </span>
+                                                            </td>
+                                                            <td class="text-right"> {{item.debit |
+                                                                currency:'COP':'symbol-narrow':'1.0-2'}}</td>
+                                                            <td class="text-right">{{item.credit |
+                                                                currency:'COP':'symbol-narrow':'1.0-2'}}</td>
+                                                        </tr>
+                                                        }
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @switch (row.status) {
+                                            @case ('P') {
+                                            <div class="open-invoice">
+                                                <i class="fa fa-circle"></i>
+                                                Pendiente
+                                            </div>
+                                            }
+                                            @case ('A') {
+                                            <div class="closed-invoice">
+                                                <i class="fa fa-check"></i>
+                                                Aprobada
+                                            </div>
+                                            }
+                                            @case ('R') {
+                                            <div class="canceled-invoice">
+                                                <i class="fa fa-undo"></i>
+                                                Rechazada
+                                            </div>
+                                            }
+                                            @case ('C') {
+                                            <div class="closed-invoice">
+                                                <i class="fa fa-check"></i>
+                                                Contabilizada
+                                            </div>
+                                            }
+                                            @case ('X') {
+                                            <div class='canceled-invoice'>
+                                                <i class='fa fa-times canceled-invoice'></i>
+                                                Anulada
+                                            </div>
+                                            }
+                                            }
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="bt bt-white" [routerLink]="['/accounting/note', row.id]">Ver</a>
+                                        </td>
+                                    </tr>
+                                    }
+                                    }
+
+
+
                                 </tbody>
                             </table>
 

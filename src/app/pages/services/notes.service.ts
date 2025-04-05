@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { environment } from 'environments/environment';
 import { AccountingEntry, apiResponse, notesHeader, Puc, PucCmpy, PucData } from 'app/pages/interfaces';
+import { NoteGetParams, NotesResponse } from '@pages/interfaces/notas.interface';
 
 const { backend } = environment;
 
@@ -46,7 +47,7 @@ export class NotesService {
                 this.pucCache = puc.data!;
                 this.pucSubject.next(puc.data!);
                 this.loadingPucSubject.next(false);
-                console.log('Puc cargado:', puc);
+                //console.log('Puc cargado:', puc);
             }),
             catchError(error => {
                 console.error('Error cargando puc:', error);
@@ -70,6 +71,18 @@ export class NotesService {
         return this.http.post<apiResponse<AccountingEntry[]>>(
             `${backend.domain}/accounting/notes`,
             data,
+            {
+                headers: {},
+            }
+        );
+    }
+
+    listsNotes(data: NoteGetParams): Observable<apiResponse<NotesResponse>> {
+        const page = data.page || 1;
+        const url = `${backend.domain}/accounting/notes/${data.cmpy}?date_ini=${data.date_ini}&date_end=${data.date_end}&page=${page}`;
+        console.log('url:', url);
+        return this.http.get<apiResponse<NotesResponse>>(
+            url,
             {
                 headers: {},
             }

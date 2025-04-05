@@ -167,46 +167,62 @@
                     </div>
                 </div>
                 <div class="accounts-container mt-2">
+
                     @for (item of pucSeleted; track $index) {
-                    <div class="card">
-                        <div class="row accounting_notes">
-                            <div class="col-10 col-md-11 text-left">
-                                <div class="row">
-                                    <div class="col-5 col-sm-2 col-md-3 col-lg-3 col-xl-3 mb-2">
+                    <div class="card p-1">
+                        <div class="row accounting_notes g-1">
+                            <div class="col-11 text-left p-0">
+                                <div class="row g-1">
+                                    <div class="col-4 col-sm-1 col-md-1 col-lg-1 col-xl-1">
                                         {{item.account}}
                                     </div>
-                                    <div class="col-7 col-sm-5 col-md-4 col-lg-5 col-xl-5 mb-2">
+                                    <div class="col-8 col-sm-3 col-md-3 col-lg-3 col-xl-3">
                                         {{item.account_name.toUpperCase()}}
                                     </div>
-                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-2">
-                                        <input type="number" [step]="0.01" placeholder="Débito" class="form-control"
-                                            [value]="item.debit" [disabled]="item.debitDisabled"
-                                            (input)="onDebitChange($index, $event)" typingListener>
+                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                        <input type="number" [step]="0.01" placeholder="Débito"
+                                            class="form-control form-control-sm p-1" [value]="item.debit"
+                                            [disabled]="item.debitDisabled" (input)="onDebitChange($index, $event)"
+                                            typingListener>
                                     </div>
-                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-2">
-                                        <input type="number" placeholder="Crédito" class="form-control"
-                                            [value]="item.credit" [disabled]="item.creditDisabled" [step]="0.01"
+                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                        <input type="number" placeholder="Crédito"
+                                            class="form-control form-control-sm p-1" [value]="item.credit"
+                                            [disabled]="item.creditDisabled" [step]="0.01"
                                             (input)="onCreditChange($index, $event)" typingListener>
                                     </div>
+                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                        <input type="number" placeholder="Base gravada"
+                                            class="form-control form-control-sm p-1" [value]="item.taxable_base"
+                                            [step]="0.01" typingListener>
+                                    </div>
+                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                        <input type="number" placeholder="Base No gravada"
+                                            class="form-control form-control-sm p-1" [value]="item.exempt_base"
+                                            [step]="0.01" typingListener>
+                                    </div>
                                 </div>
-
                             </div>
-                            <div class="col-2 col-md-1 text-right">
-                                <utils-dropdown-button tooltipText="Opciones">
-                                    <!-- Aquí puedes poner el contenido directamente -->
-                                    <button type="button" class="dropdown-item bt-red"
+                            <div class="col-1 text-right p-0">
+                                <button type="button" class="btn btn-sm btn-link text-danger p-0"
+                                    (click)="removeItem($index, item)" title="Eliminar"
+                                    [appTooltip]="'Eliminar ' + item.account">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                            <!-- <div class="col-1 text-right p-0">
+                                <utils-dropdown-button tooltipText="Opciones" class="compact-dropdown">
+                                    <button type="button" class="dropdown-item bt-red p-1"
                                         (click)="removeItem($index, item)">
                                         <i class="fa fa-times"></i>
                                         Eliminar
                                     </button>
-
-                                    <button type="button" class="dropdown-item">
+                                    <button type="button" class="dropdown-item p-1">
                                         <i class="fas fa-hand-holding-usd"></i>
                                         Agregar Base Gravable
                                     </button>
                                 </utils-dropdown-button>
-                            </div>
-
+                            </div> -->
                         </div>
                     </div>
                     }

@@ -1,3 +1,12 @@
 .breadcrumb-item .active {
     color: #adadad !important;
 }
+
+.bg-register {
+    --bs-bg-opacity: 0.01;
+    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.register_btn {
+    margin-bottom: 25px !important;
+}

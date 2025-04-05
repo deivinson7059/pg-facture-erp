@@ -6,11 +6,12 @@ import { UtilsAutocompleteComponent } from '@shared/components/utils-autocomplet
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UtilsTooltipDirective, FormControlValidationDirective, UtilsTypingListenerDirective } from '@core';
-import { UtilsTypingComponent } from '@shared/components/utils-typing/utils-typing.component';
-import { UtilsDropdownButtonComponent } from '@shared/components/utils-dropdown-button/utils-dropdown-button.component';
 import { UtilsService, UtilsSpinnerService, UtilsToastrService } from '@core';
 import { accountPUC, Customer, notesHeader, notesLine, Puc, PucData } from 'app/pages/interfaces';
 import { NotesService } from '@pages/services';
+
+import Big from 'big.js';
+
 @Component({
     selector: 'app-notes-new',
     imports: [
@@ -22,7 +23,8 @@ import { NotesService } from '@pages/services';
         DecimalPipe,
         UtilsTooltipDirective,
         FormControlValidationDirective,
-        UtilsDropdownButtonComponent,
+        UtilsTypingListenerDirective,
+        //UtilsDropdownButtonComponent,
     ],
     templateUrl: './notes-new.component.html',
     styleUrl: './notes-new.component.scss'
@@ -85,7 +87,6 @@ export class NotesNewComponent implements OnInit, OnDestroy {
         private utilsService: UtilsService,
         private toastrService: UtilsToastrService,
     ) {
-        this.toastrService.success("hola", "");
 
         this.noteForm = this.fb.group({
             pucAutocompleteId: [null],
@@ -184,7 +185,17 @@ export class NotesNewComponent implements OnInit, OnDestroy {
      **/
     getTotalDebits(): number {
         return this.pucSeleted.reduce((sum, item) => {
-            return sum + (item.debit || 0);
+            try {
+                // Convertimos los valores a objetos Big
+                const currentDebit = item.debit ? new Big(item.debit) : new Big(0);
+                const currentSum = new Big(sum);
+
+                // Realizamos la suma y devolvemos el resultado como número
+                return currentSum.plus(currentDebit).toNumber();
+            } catch (error) {
+                console.error('Error al procesar valor:', item.debit, error);
+                return sum; // En caso de error, devolvemos la suma actual
+            }
         }, 0);
     }
     /**
@@ -193,7 +204,17 @@ export class NotesNewComponent implements OnInit, OnDestroy {
      **/
     getTotalCredits(): number {
         return this.pucSeleted.reduce((sum, item) => {
-            return sum + (item.credit || 0);
+            try {
+                // Convertimos los valores a objetos Big
+                const currentCredit = item.credit ? new Big(item.credit) : new Big(0);
+                const currentSum = new Big(sum);
+
+                // Realizamos la suma y devolvemos el resultado como número
+                return currentSum.plus(currentCredit).toNumber();
+            } catch (error) {
+                console.error('Error al procesar valor:', item.credit, error);
+                return sum; // En caso de error, devolvemos la suma actual
+            }
         }, 0);
     }
 
@@ -248,6 +269,8 @@ export class NotesNewComponent implements OnInit, OnDestroy {
             "debitDisabled": false,
             "credit": null,
             "creditDisabled": false,
+            taxable_base: null,
+            exempt_base: null
         };
 
         //this.pucSeleted.push(account);
@@ -463,6 +486,9 @@ export class NotesNewComponent implements OnInit, OnDestroy {
         const totalDebitos = this.getTotalDebits();
         const totalCreditos = this.getTotalCredits();
 
+        console.log('Total Debitos:', totalDebitos);
+        console.log('Total Creditos:', totalCreditos);
+
         if (totalDebitos !== totalCreditos) {
             return {
                 valid: false,
@@ -493,6 +519,17 @@ export class NotesNewComponent implements OnInit, OnDestroy {
      */
     onSubmit(): void {
         this.noteForm.markAllAsTouched();
+
+        //validamos this.selectedCustomer este seleccionado
+        if (!this.selectedCustomer === null) {
+            Swal.fire({
+                title: 'Tercero no seleccionado',
+                html: 'Por favor seleccione un tercero para continuar',
+                icon: 'warning',
+                confirmButtonText: 'Entendido'
+            });
+            return;
+        }
 
 
         //0. Recopilar los nombres de los campos inválidos
@@ -557,18 +594,21 @@ export class NotesNewComponent implements OnInit, OnDestroy {
                         account_name: item.account_name,
                         debit: item.debit || 0,
                         credit: item.credit || 0,
-                        tercero: this.selectedCustomer?.nit || null
+                        taxable_base: item.taxable_base || 0,
+                        exempt_base: item.exempt_base || 0,
                     };
                 });
 
                 const data: notesHeader = {
                     cmpy: '01',
                     ware: this.noteForm.value.cbOffice,
-                    year: 2025,
-                    per: 1,
-                    description: this.noteForm.value.txtComment,
+                    date: this.noteForm.value.fechaContable,
+                    customer: this.selectedCustomer?.nit!,
+                    customer_name: this.selectedCustomer?.name!,
                     reference: this.noteForm.value.txtReference,
+                    cost_center: this.noteForm.value.cbCentoCosto,
                     creation_by: 'danisoft',
+                    comments: this.noteForm.value.txtComment,
                     lines: lineas,
                 }
 

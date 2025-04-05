@@ -8,183 +8,268 @@
         </div>
         }
     </div>
-    <div class="container-fluid container-grey">
-        <div class="container-semi">
-            <div class="row">
-                <div class="col-sm-12 section_title"><i class="fa fa-chevron-right"></i> Editando Nota Contable #166
-                </div>
-                <hr>
-                <div class="col-12">
-                    <div id="autocomplete_search" class="dropdown" style="position: relative;"><input
-                            autofocus="autofocus" autocomplete="off" id="search_ac_inout" placeholder="Buscar Cuenta"
-                            type="text" class="form-control">
-                        <ul class="dropdown-menu" style="width: 100%;"></ul>
-                    </div>
-                </div>
-                <hr>
+    <div class="container-semi">
+        <div class="row">
+            <div class="col-sm-12 section_title title_mobile text-center d-lg-none">
+                Nota Contable #166
             </div>
-            <div class="w-100">
-                <div class="action_panel row">
-                    <div class="col-12 col-md-6 offset-md-6 d-flex">
-                        <div class="flex-grow-1"><label>Fecha Contable</label><br> <input type="date"
-                                class="form-control"></div>
-                        <div class="flex-grow-1 pl-1"><label>Oficina</label><br> <select class="form-control">
-                                <option value="1">BOGOTA</option>
-                                <option value="2">PASTO</option>
-                                <option value="3">PUNTO DE VENTA 1</option>
-                                <option value="4">Oficina principal Secretaria</option>
-                                <option value="7">SUCURSAL CUCUTA</option>
-                                <option value="8">Bucaramanga</option>
-                                <option value="9">Bogota Centro</option>
-                                <option value="10">Pereira</option>
-                                <option value="11">Pasto</option>
-                                <option value="12">oficina monteria</option>
-                                <option value="13">Oficina Sabana de Torres</option>
-                                <option value="14">Oficina Barrancabermeja</option>
-                                <option value="15">Bogota 3C</option>
-                            </select></div>
-                        <div class="flex-grow-1 pl-1"><label>Centro de costo</label><br> <select class="form-control">
-                                <option value="0"></option>
-                                <option value="19">VENTAS</option>
-                                <option value="20">Pollos asados</option>
-                            </select></div>
+            <div class="col-12">
+                <div class="action_panel">
+                    <a href="/admin/accounting/notes"
+                        class="bt bt-white triggerwait pull-left text-primary tw back_button">
+                        <i class="fa fa-btn fa-arrow-left"></i>
+                    </a>
+                    <span class="section_title pull-left pl-4 d-none d-md-block">
+                        Nota Contable #166
+                    </span>
+                    <a href="/admin/accounting/notes/new?copy=166" class="bt bt-white">
+                        <i class="fa fa-copy"></i>
+                        Copiar
+                    </a>
+                    <a href="/admin/accounting/notes/new?edit=166" class="bt bt-blue"><i class="fa fa-edit"></i>
+                        Editar
+                    </a>
+                    <button type="button" class="bt bt-white">
+                        <i class="fa fa-print"></i>
+                        Imprimir
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="card card-h">
+                            <div class="card-block text-center">
+                                <b>Estado</b>
+                                <div id="stats">
+                                    <i class="fa fa-check closed-invoice" style="font-size: 1.5rem;"></i>
+                                    <br>Cerrada
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <div class="card card-h">
+                            <div class="card-block text-center">
+                                <b>Oficina</b>
+                                <div class="card_info">
+                                    BOGOTA
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card card-h">
+                            <div class="card-block text-center">
+                                <b>Tercero</b>
+                                <div class="card_info">
+                                    SISTEM ADMIN
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card card-h">
+                            <div class="card-block text-center">
+                                <b>Generado Por</b>
+                                <div class="card_info">ANDRES DEMO</div>
+                                <div class="low_text">12 nov. 24</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card card-h">
+                            <div class="card-block text-center">
+                                <b>Fecha Contable</b>
+                                <div class="card_info">
+                                    12 nov. 24
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card card-h">
+                            <div class="card-block text-center">
+                                <b>Aprobado Por</b>
+                                <div class="card_info">ANDRES DEMO</div>
+                                <div class="low_text">12 nov. 24</div>
+                            </div>
+                        </div>
+                    </div> <!---->
+                </div>
+            </div>
+            <div class="col-12 mt-4">
                 <div class="card">
-                    <div class="row accounting_notes">
-                        <div class="col-sm-12 col-md-2">
-                            143501
-                        </div>
-                        <div class="col-sm-12 col-md-2">
-                            MERCANCIAS VENDIDAS
-                        </div>
-                        <div class="col-sm-12 col-md-2"><input type="number" placeholder="Débito" class="form-control">
-                        </div>
-                        <div class="col-sm-12 col-md-2"><input type="number" placeholder="Crédito" class="form-control">
-                        </div>
-                        <div class="col-sm-12 col-md-3 text-center">
-                            <div>
-                                <div class="low_text">ID #1 </div>
-                                SISTEM ADMIN <i class="fa fa-times-circle canceled-invoice"
-                                    style="cursor: pointer;"></i><br>
-                                cc/nit 000000000004
+                    <div class="row  accounting_notes">
+                        <div class="col-12 col-md-1"><b>ID</b></div>
+                        <div class="col-12 col-md-2"><b>Cuenta</b></div>
+                        <div class="col-12 col-md-2"><b>Nombre</b></div>
+                        <div class="col-12 col-md-2 text-center"><b>Débito</b></div>
+                        <div class="col-12 col-md-2 text-center"><b>Crédito</b></div>
+                        <div class="col-12 col-md-3 text-center"><b>Tercero</b></div>
+                    </div>
+                    <div>
+                        <div class="row accounting_notes">
+                            <div class="col-12 col-md-1">
+                                46404
+                            </div>
+                            <div class="col-12 col-md-2"><a href="/admin/accounting/movement/143501"
+                                    target="_blank">143501 <i class="fa fa-external-link-alt"></i></a></div>
+                            <div class="col-12 col-md-2">
+                                MERCANCIAS VENDIDAS
+                                <!----> <!---->
+                            </div>
+                            <div class="col-12 col-md-2 text-center">
+                                $4,094,535
+                            </div>
+                            <div class="col-12 col-md-2 text-center">
+
+                            </div>
+                            <div class="col-12 col-md-3 text-center">
+                                SISTEM ADMIN
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-1 text-center"><button data-toggle="tooltip" data-placement="top"
-                                title="" class="btn btn-outline-danger btn-narrow" data-original-title="Eliminar"><i
-                                    class="fa fa-times"></i></button></div>
+                    </div>
+                    <div>
+                        <div class="row accounting_notes">
+                            <div class="col-12 col-md-1">
+                                46405
+                            </div>
+                            <div class="col-12 col-md-2"><a href="/admin/accounting/movement/313001"
+                                    target="_blank">313001 <i class="fa fa-external-link-alt"></i></a></div>
+                            <div class="col-12 col-md-2">
+                                Inventarios iniciales
+                                <!----> <!---->
+                            </div>
+                            <div class="col-12 col-md-2 text-center">
+
+                            </div>
+                            <div class="col-12 col-md-2 text-center">
+                                $4,094,535
+                            </div>
+                            <div class="col-12 col-md-3 text-center">
+                                SISTEM ADMIN
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="row accounting_notes">
-                        <div class="col-sm-12 col-md-2">
-                            313001
+                <div class="col-12 section_title mt-5">
+                    <div class="row">
+                        <div class="col-12 col-md-6 text-center card"><small>Débitos</small>
+                            $4,094,535
                         </div>
-                        <div class="col-sm-12 col-md-2">
-                            Inventarios iniciales
+                        <div class="col-12 col-md-6 text-center card"><small>Créditos</small>
+                            $4,094,535
                         </div>
-                        <div class="col-sm-12 col-md-2"><input type="number" placeholder="Débito" class="form-control">
-                        </div>
-                        <div class="col-sm-12 col-md-2"><input type="number" placeholder="Crédito" class="form-control">
-                        </div>
-                        <div class="col-sm-12 col-md-3 text-center">
-                            <div>
-                                <div class="low_text">ID #1 </div>
-                                SISTEM ADMIN <i class="fa fa-times-circle canceled-invoice"
-                                    style="cursor: pointer;"></i><br>
-                                cc/nit 000000000004
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-1 text-center"><button data-toggle="tooltip" data-placement="top"
-                                title="" class="btn btn-outline-danger btn-narrow" data-original-title="Eliminar"><i
-                                    class="fa fa-times"></i></button></div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="text-center card section_title"><small>Total Débitos</small> $4,094,535
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="text-center card section_title"><small>Total Créditos</small> $4,094,535
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="action_panel"><button class="bt bt-green"><i class="fa fa-check"></i> Actualizar Nota
-                            Contable</button></div>
-                </div>
+            <div style="margin-top: 80px; width: 100%;">
                 <hr>
-                <div class="col-12 section_title"><i class="fa fa-chevron-right"></i> COMENTARIOS
-                    <span data-toggle="popover" data-trigger="hover" data-placement="left"
-                        data-content="Por defecto los comentarios son privados. Si desea que un comentario aparezca en las versiones impresas y electronicas de la factura marquelo como 'publico'"
-                        data-original-title="" title="" class="input-help"><img
-                            src="https://tiendafla.com/images/icons/information.svg"></span>
-                </div>
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-block pad2rem invoiceform"><textarea maxlength="500" rows="3"
-                                class="form-control register_box"></textarea>
-                            <div class="register_btn"><button class="bt bt-blue"><i aria-hidden="true"
-                                        class="fa fa-comment"></i> Guardar Comentario</button></div>
-                            <hr>
-                        </div>
+                <div class="w-100">
+                    <div class="col-12 section_title"><i class="fa fa-chevron-right"></i> COMENTARIOS
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="card typing">
-            <div class="card-block pad2rem">
-                $0
-            </div>
-        </div>
-        <div id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-            class="modal">
-            <div role="document" class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="text-center">
-                            <div class="section_title">
-                                Seleccione Tercero
-                            </div>
-                            <hr>
-                            <div class="form-group ">
-                                <div class="form-group">
-                                    <div class="low_text" style="display: none;">No Resultados De Busqueda...</div>
-                                    <div id="autocomplete_search" class="dropdown"
-                                        style="position: relative; display: flex;"><input autofocus="autofocus"
-                                            autocomplete="off" placeholder="Buscar Cliente/Proveedor" type="text"
-                                            id="find_user_input" class="form-control"> <button
-                                            class="bt bt-white ml-3"><i class="fa fa-plus"></i> Crear</button>
-                                        <ul class="dropdown-menu" style="width: 100%;">
-                                            <li class="dropdown-item new_user_btn"><i class="fa fa-user-plus"></i> CREAR
-                                                NUEVO USUARIO</li>
-                                        </ul>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-block pad2rem invoiceform">
+                                <textarea rows="3" maxlength="512" class="form-control register_box"></textarea>
+                                <div class="register_btn">
+                                    <button class="bt bt-blue"><i aria-hidden="true" class="fa fa-comment"></i> Insertar
+                                        Comentario</button>
+                                </div>
+                                <hr>
+                                <div class="mt-2">
+                                    <div class="d-flex">
+                                        <div class="order_register w-100 shadow-sm p-2 ml-2 mr-2 mb-2 bg-register">
+                                            Generado
+                                            automaticamente. Ajuste de costos en importacion masiva de productos.</div>
+                                        <!---->
                                     </div>
-                                    <div class="selected_user" style="display: none;">
-                                        <div class="action_panel_two"><button class="btn btn-outline-primary"><i
-                                                    class="fa fa-user"></i></button> <button
-                                                class="btn btn-outline-danger"><i class="fa fa-times"></i></button>
-                                        </div>
-                                        <div class="selected_user_info">
-                                            <div class="selected_company">Razón Social: <a target="_blank"
-                                                    href="/admin/user/undefined"><b></b></a></div>
-                                            <div class="selected_name">Contacto: <b></b></div>
-                                            <div class="selected_id">NIT - CC: <b></b></div>
-                                            <div class="selected_id">Ciudad: <b></b><!----><!----></div>
-                                            <div class="selected_id">Dir: <b></b></div>
-                                            <div class="selected_id">Tel: <b></b> <b></b></div>
-                                        </div>
+                                    <div class="mb-3 mr-2 pr-4 text-monospace text-muted text-right">
+                                        ANDRES - 12 nov. 08:50
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer"><button tabindex="0" type="button" data-dismiss="modal"
-                            class="bt bt-white">Cancelar</button> <button tabindex="0" type="button"
-                            class="bt bt-green"><i class="fa fa-check"></i> Seleccionar</button></div>
                 </div>
             </div>
+            <div class="col-12 section_title mt-5 text-right"><button id="accounting" class="bt bt-clear"><i
+                        class="fa fa-calculator"></i> CONTABILIZACION <small> ( <i class="fa fa-keyboard"></i>
+                        CTR+M)</small></button></div>
+            <div class="bg-white p-1 p-md-4 mt-2 shadow w-100 overflowing_table" style="display: none;">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Cuenta</th>
+                            <th>Nombre</th>
+                            <th class="text-right">Débito</th>
+                            <th class="text-right">Crédito</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right"><b>$0</b></td>
+                            <td class="text-right"><b>$0</b></td>
+                            <td class="text-center"><!----></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-right"><button class="bt bt-clear pull-left"><i class="fa fa-times"></i> cerrar
+                    </button> <button type="button" class="bt bt-clear mb-2 mb-md-0"><i class="fa fa-edit"></i>
+                        Modificar Asiento</button> <button type="button" class="bt bt-clear"><i
+                            class="fa fa-calendar"></i> Cambiar Fecha Contable</button>
+                    <div style="display: none;"><input type="date" id="accounting_date"
+                            class="form-control period_input"> <button type="button" class="ml-2 bt bt-green"><i
+                                class="fa fa-check"></i>Aplicar</button> <button type="button"
+                            class="ml-2 bt bt-o-red"><i class="fa fa-times"></i> Cancelar</button></div>
+                </div>
+            </div>
+
+            <div id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+                class="modal">
+                <div role="document" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                Fecha Actual: <b> </b><br>
+                                Cuenta Actual: <b> </b><br>
+                                Nombre: <br>
+                                Debito: <br>
+                                Credito: <br></div>
+                            <div class="form-group row">
+                                <div class="col-12"><label>Cambiar cuenta</label>
+
+                                    <div id="autocomplete_search" class="dropdown" style="position: relative;"><input
+                                            autofocus="autofocus" autocomplete="off" id="search_ac_inout"
+                                            placeholder="Buscar Cuenta" type="text" class="form-control">
+                                        <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                    </div> <br> <label>Cambiar a fecha</label> <input type="date" class="form-control">
+                                </div>
+                            </div>
+                            <div><button type="button" data-dismiss="modal" class="bt bt-white">Cancelar</button>
+                                <button type="button" class="bt bt-green pull-right"><i class="fa fa-check"></i> Cambiar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="null-item"><button class="bt bt-red"><i class="fa fa-undo"></i> Anular
+                </button></div>
         </div>
     </div>
 </section>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <!-- Fondo degradado -->
+  <defs>
+    <linearGradient id="fondoGradiente" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#2196F3;stop-opacity:0.3" />
+    </linearGradient>
+    <linearGradient id="graphGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#4CAF50" />
+      <stop offset="100%" style="stop-color:#81C784" />
+    </linearGradient>
+    <linearGradient id="pieGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2196F3" />
+      <stop offset="100%" style="stop-color:#64B5F6" />
+    </linearGradient>
+    <linearGradient id="pieGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50" />
+      <stop offset="100%" style="stop-color:#81C784" />
+    </linearGradient>
+    <linearGradient id="pieGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFC107" />
+      <stop offset="100%" style="stop-color:#FFD54F" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo principal -->
+  <rect width="800" height="450" fill="white" />
+  
+  <!-- Forma orgánica de fondo -->
+  <path d="M0,200 Q200,50 400,150 T800,180 V450 H0 Z" fill="url(#fondoGradiente)" />
+  
+  <!-- Laptop/Dispositivo -->
+  <rect x="150" y="150" width="280" height="200" rx="10" fill="#f5f5f5" stroke="#ccc" stroke-width="2" />
+  <rect x="160" y="160" width="260" height="160" fill="white" stroke="#ddd" stroke-width="1" />
+  
+  <!-- Dashboard en la pantalla -->
+  <rect x="170" y="170" width="240" height="140" fill="#fafafa" />
+  
+  <!-- Gráfico de barras -->
+  <rect x="180" y="230" width="20" height="70" fill="url(#graphGradient)" />
+  <rect x="210" y="250" width="20" height="50" fill="url(#graphGradiente)" />
+  <rect x="240" y="210" width="20" height="90" fill="url(#graphGradiente)" />
+  <rect x="270" y="190" width="20" height="110" fill="url(#graphGradiente)" />
+  
+  <!-- Gráfico de línea -->
+  <polyline points="180,200 210,210 240,190 270,180 300,195 330,175" 
+            fill="none" stroke="#2196F3" stroke-width="3" />
+  
+  <!-- Gráfico circular -->
+  <path d="M360,220 L360,180 A40,40 0 0,1 395,220 Z" fill="url(#pieGradient1)" />
+  <path d="M360,220 L395,220 A40,40 0 0,1 340,250 Z" fill="url(#pieGradient2)" />
+  <path d="M360,220 L340,250 A40,40 0 0,1 360,180 Z" fill="url(#pieGradient3)" />
+  
+  <!-- Iconos flotantes -->
+  <rect x="450" y="120" width="60" height="60" rx="10" fill="#2196F3" opacity="0.9" />
+  <text x="480" y="160" font-family="Arial" font-size="24" text-anchor="middle" fill="white">$</text>
+  
+  <rect x="520" y="180" width="60" height="60" rx="10" fill="#4CAF50" opacity="0.9" />
+  <text x="550" y="220" font-family="Arial" font-size="20" text-anchor="middle" fill="white">%</text>
+  
+  <rect x="480" y="250" width="60" height="60" rx="10" fill="#FFC107" opacity="0.9" />
+  <text x="510" y="290" font-family="Arial" font-size="20" text-anchor="middle" fill="white">#</text>
+  
+  <!-- Líneas de conexión -->
+  <line x1="450" y1="150" x2="430" y2="180" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5" />
+  <line x1="520" y1="210" x2="430" y2="200" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5" />
+  <line x1="480" y1="280" x2="430" y2="240" stroke="#FFC107" stroke-width="2" stroke-dasharray="5,5" />
+
+  
+  <!-- Texto PgFacture® y Accounting Software debajo -->
+  <text x="400" y="360" font-family="Arial" font-weight="bold" font-size="40" text-anchor="middle" fill="#1a237e">Pg<tspan fill="#2e7d32">Facture</tspan><tspan font-size="16">®</tspan></text>
+  <text x="400" y="385" font-family="Arial" font-size="18" text-anchor="middle" fill="#424242">Accounting Software</text>
+</svg>

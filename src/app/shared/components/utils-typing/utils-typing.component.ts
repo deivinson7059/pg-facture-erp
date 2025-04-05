@@ -27,7 +27,11 @@ export class UtilsTypingComponent implements OnInit, OnDestroy {
         this.typingService.valueChanges
             .pipe(takeUntil(this.destroy$))
             .subscribe(value => {
-                // console.log('value', value);
+                // Si el valor es 0, ocultar inmediatamente
+                if (value === 0) {
+                    this.isTyping = false;
+                    return;
+                }
                 if (!isNaN(value) && value > 0) {
                     this.currentTypingValue = value;
                     this.isTyping = true;

@@ -5,8 +5,9 @@ import { AfterViewInit, Directive, ElementRef, Input, Renderer2 } from "@angular
     selector: '[tablesorter]'
 })
 export class TablesorterDirective implements AfterViewInit {
-    @Input() filter: boolean = true;
+    @Input() filter: boolean = false;
     @Input() sticky: boolean = false;
+    @Input() sorting: boolean = false;
 
     private headers: HTMLElement[] = [];
     private sortDirections: { [key: number]: 'asc' | 'desc' } = {};
@@ -59,16 +60,21 @@ export class TablesorterDirective implements AfterViewInit {
 
         this.headers = Array.from(headerRow.querySelectorAll('th'));
 
+
+
         this.headers.forEach((header, index) => {
             this.renderer.setStyle(header, 'cursor', 'pointer');
             this.renderer.addClass(header, 'tablesorter-header');
-            this.renderer.addClass(header, 'sortable');
 
-            this.sortDirections[index] = 'asc';
+            if (this.sorting) {
+                this.renderer.addClass(header, 'sortable');
 
-            header.addEventListener('click', () => {
-                this.handleHeaderClick(index);
-            });
+                this.sortDirections[index] = 'asc';
+
+                header.addEventListener('click', () => {
+                    this.handleHeaderClick(index);
+                });
+            }
         });
 
         if (this.filter) {

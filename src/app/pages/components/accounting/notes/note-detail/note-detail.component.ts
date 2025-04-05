@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 @Component({
-  selector: 'app-note-detail',
-  imports: [BreadcrumbComponent],
-  templateUrl: './note-detail.component.html',
-  styleUrl: './note-detail.component.scss'
+    selector: 'app-note-detail',
+    imports: [BreadcrumbComponent],
+    templateUrl: './note-detail.component.html',
+    styleUrl: './note-detail.component.scss'
 })
 export class NoteDetailComponent {
     breadscrums = [
@@ -15,7 +15,7 @@ export class NoteDetailComponent {
                     path: '/accounting',
                     name: 'Contabilidad'
                 }],
-            active: 'Editando Nota Contable #166',
+            active: 'Nota Contable #166',
         },
     ];
 }

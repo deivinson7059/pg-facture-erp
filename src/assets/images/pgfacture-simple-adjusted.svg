@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+  <!-- Fondo transparente -->
+  
+  <!-- Texto PgFacture® con el símbolo ® del mismo tamaño -->
+  <text x="250" y="150" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="30" text-anchor="middle"><tspan fill="#1a237e">Pg</tspan><tspan fill="#2E7D32">Facture</tspan><tspan fill="#2E7D32">®</tspan></text>
+</svg>
