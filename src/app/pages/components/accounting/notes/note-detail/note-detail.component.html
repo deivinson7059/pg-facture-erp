@@ -11,28 +11,45 @@
     <div class="container-semi">
         <div class="row">
             <div class="col-sm-12 section_title title_mobile text-center d-lg-none">
-                Nota Contable #166
+                Nota Contable #{{noteId}}
             </div>
             <div class="col-12">
                 <div class="action_panel">
-                    <a href="/admin/accounting/notes"
+                    <a [routerLink]="['/accounting/notes']"
                         class="bt bt-white triggerwait pull-left text-primary tw back_button">
                         <i class="fa fa-btn fa-arrow-left"></i>
                     </a>
                     <span class="section_title pull-left pl-4 d-none d-md-block">
-                        Nota Contable #166
+                        Nota Contable #{{noteId}}
                     </span>
-                    <a href="/admin/accounting/notes/new?copy=166" class="bt bt-white">
+
+                    @if(noteData?.status==='P') {
+                    <button class="bt bt-red">
+                        <i class="fa fa-undo"></i>
+                        Anular
+                    </button>
+                    <button id="btnAprob" class="bt bt-green" (click)="approveNote()">
+                        <i class="fa fa-check"></i>
+                        Aprobar
+                    </button>
+                    <a [routerLink]="['/accounting/note/edit', noteId]" routerLinkActive="router-link-active"
+                        class="bt bt-blue">
+                        <i class="fa fa-edit"></i>
+                        Editar
+                    </a>
+                    }
+
+                    @if(noteData?.status==='C') {
+                    <a [routerLink]="['/accounting/notes/new']" [queryParams]="{copy: noteId}"
+                        routerLinkActive="router-link-active" class="bt bt-white">
                         <i class="fa fa-copy"></i>
                         Copiar
-                    </a>
-                    <a href="/admin/accounting/notes/new?edit=166" class="bt bt-blue"><i class="fa fa-edit"></i>
-                        Editar
                     </a>
                     <button type="button" class="bt bt-white">
                         <i class="fa fa-print"></i>
                         Imprimir
                     </button>
+                    }
                 </div>
             </div>
             <hr>
@@ -42,10 +59,34 @@
                         <div class="card card-h">
                             <div class="card-block text-center">
                                 <b>Estado</b>
+
+                                @switch (noteData?.status) {
+                                @case ('P') {
+                                <div id="stats">
+                                    <i class="fa fa-circle open-invoice" style="font-size: 1.5rem;"></i>
+                                    <br>Abierta
+                                </div>
+                                }
+                                @case ('C') {
                                 <div id="stats">
                                     <i class="fa fa-check closed-invoice" style="font-size: 1.5rem;"></i>
-                                    <br>Cerrada
+                                    <br>Aprobada
                                 </div>
+                                }
+                                @case ('R') {
+                                <div id="stats">
+                                    <i class="fa fa-undo canceled-invoice" style="font-size: 1.5rem;"></i>
+                                    <br>Rechazada
+                                </div>
+                                }
+
+                                @case ('X') {
+                                <div id="stats">
+                                    <i class="fa fa-times canceled-invoice" style="font-size: 1.5rem;"></i>
+                                    <br>Anulada
+                                </div>
+                                }
+                                }
                             </div>
                         </div>
 
@@ -55,7 +96,7 @@
                             <div class="card-block text-center">
                                 <b>Oficina</b>
                                 <div class="card_info">
-                                    BOGOTA
+                                    {{noteData?.ware}}
                                 </div>
                             </div>
                         </div>
@@ -65,7 +106,7 @@
                             <div class="card-block text-center">
                                 <b>Tercero</b>
                                 <div class="card_info">
-                                    SISTEM ADMIN
+                                    {{noteData?.customer_name}}
                                 </div>
 
                             </div>
@@ -77,8 +118,12 @@
                         <div class="card card-h">
                             <div class="card-block text-center">
                                 <b>Generado Por</b>
-                                <div class="card_info">ANDRES DEMO</div>
-                                <div class="low_text">12 nov. 24</div>
+                                <div class="card_info">
+                                    {{noteData?.creation_by}}
+                                </div>
+                                <div class="low_text">
+                                    {{noteData?.creation_date! | fechaCorta}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -87,7 +132,7 @@
                             <div class="card-block text-center">
                                 <b>Fecha Contable</b>
                                 <div class="card_info">
-                                    12 nov. 24
+                                    {{noteData?.date! | fechaCorta}}
                                 </div>
                             </div>
                         </div>
@@ -97,8 +142,18 @@
                         <div class="card card-h">
                             <div class="card-block text-center">
                                 <b>Aprobado Por</b>
-                                <div class="card_info">ANDRES DEMO</div>
-                                <div class="low_text">12 nov. 24</div>
+                                @if (noteData?.status==='C') {
+                                <div class="card_info">
+                                    {{noteData?.approved_by}}
+                                </div>
+                                <div class="low_text">
+                                    {{noteData?.approved_date! | fechaCorta}}
+                                </div>
+                                }@else {
+                                <div class="card_info">--</div>
+                                <div class="low_text">--</div>
+                                }
+
                             </div>
                         </div>
                     </div> <!---->
@@ -106,170 +161,101 @@
             </div>
             <div class="col-12 mt-4">
                 <div class="card">
-                    <div class="row  accounting_notes">
-                        <div class="col-12 col-md-1"><b>ID</b></div>
-                        <div class="col-12 col-md-2"><b>Cuenta</b></div>
-                        <div class="col-12 col-md-2"><b>Nombre</b></div>
-                        <div class="col-12 col-md-2 text-center"><b>Débito</b></div>
-                        <div class="col-12 col-md-2 text-center"><b>Crédito</b></div>
-                        <div class="col-12 col-md-3 text-center"><b>Tercero</b></div>
-                    </div>
-                    <div>
-                        <div class="row accounting_notes">
-                            <div class="col-12 col-md-1">
-                                46404
-                            </div>
-                            <div class="col-12 col-md-2"><a href="/admin/accounting/movement/143501"
-                                    target="_blank">143501 <i class="fa fa-external-link-alt"></i></a></div>
-                            <div class="col-12 col-md-2">
-                                MERCANCIAS VENDIDAS
-                                <!----> <!---->
-                            </div>
-                            <div class="col-12 col-md-2 text-center">
-                                $4,094,535
-                            </div>
-                            <div class="col-12 col-md-2 text-center">
+                    <div class="accounting_notes">
+                        <table tablesorter class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">ID</th>
+                                    <th class="text-left">Cuenta</th>
+                                    <th class="text-left">Nombre</th>
+                                    <th class="text-left">Débito</th>
+                                    <th class="text-left">Crédito</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (line of noteData?.lines; track $index) {
+                                <tr>
+                                    <td class="text-left">
+                                        {{line.id}}
+                                    </td>
+                                    <td class="text-left">
+                                        <a [routerLink]="['/accounting/movement', line.account]" target="_blank">
+                                            {{line.account}}
+                                            <i class="fa fa-external-link-alt"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-left">
+                                        {{line.account_name | uppercase}}
+                                    </td>
+                                    <td class="text-right">
+                                        @if (line.debit! > 0) {
+                                        {{line.debit | currency:'COP':'symbol-narrow':'1.0-2'}}
+                                        }
+                                    </td>
+                                    <td class="text-right">
+                                        @if (line.credit! > 0) {
+                                        {{line.credit| currency:'COP':'symbol-narrow':'1.0-2'}}
+                                        }
+                                    </td>
+                                </tr>
+                                }
 
-                            </div>
-                            <div class="col-12 col-md-3 text-center">
-                                SISTEM ADMIN
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="row accounting_notes">
-                            <div class="col-12 col-md-1">
-                                46405
-                            </div>
-                            <div class="col-12 col-md-2"><a href="/admin/accounting/movement/313001"
-                                    target="_blank">313001 <i class="fa fa-external-link-alt"></i></a></div>
-                            <div class="col-12 col-md-2">
-                                Inventarios iniciales
-                                <!----> <!---->
-                            </div>
-                            <div class="col-12 col-md-2 text-center">
 
-                            </div>
-                            <div class="col-12 col-md-2 text-center">
-                                $4,094,535
-                            </div>
-                            <div class="col-12 col-md-3 text-center">
-                                SISTEM ADMIN
-                            </div>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="col-12 section_title mt-5">
-                    <div class="row">
-                        <div class="col-12 col-md-6 text-center card"><small>Débitos</small>
-                            $4,094,535
+                <div class="card">
+                    <div class="row section_title mt-2">
+                        <div class="col-12 col-md-6 text-center">
+                            <small>Débitos</small> <br>
+                            {{noteData?.total_debit| currency:'COP':'symbol-narrow':'1.0-2'}}
                         </div>
-                        <div class="col-12 col-md-6 text-center card"><small>Créditos</small>
-                            $4,094,535
+                        <div class="col-12 col-md-6 text-center">
+                            <small>Créditos</small><br>
+                            {{noteData?.total_credit| currency:'COP':'symbol-narrow':'1.0-2'}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div style="margin-top: 80px; width: 100%;">
+            <div style="margin-top: 30px; width: 100%;">
                 <hr>
                 <div class="w-100">
-                    <div class="col-12 section_title"><i class="fa fa-chevron-right"></i> COMENTARIOS
+                    <div class="col-12 section_title">
+                        <i class="fa fa-chevron-right"></i>
+                        COMENTARIOS
                     </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-block pad2rem invoiceform">
                                 <textarea rows="3" maxlength="512" class="form-control register_box"></textarea>
                                 <div class="register_btn">
-                                    <button class="bt bt-blue"><i aria-hidden="true" class="fa fa-comment"></i> Insertar
-                                        Comentario</button>
+                                    <button class="bt bt-blue">
+                                        <i aria-hidden="true" class="fa fa-comment"></i>
+                                        Insertar Comentario
+                                    </button>
                                 </div>
                                 <hr>
+                                @for (comment of noteData?.comments; track $index) {
                                 <div class="mt-2">
                                     <div class="d-flex">
                                         <div class="order_register w-100 shadow-sm p-2 ml-2 mr-2 mb-2 bg-register">
-                                            Generado
-                                            automaticamente. Ajuste de costos en importacion masiva de productos.</div>
-                                        <!---->
+                                            {{comment.comment }}
+                                        </div>
                                     </div>
                                     <div class="mb-3 mr-2 pr-4 text-monospace text-muted text-right">
-                                        ANDRES - 12 nov. 08:50
+                                        {{comment.user_enter }} - {{comment.date_in | fechaCorta}}
                                     </div>
                                 </div>
+                                }
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 section_title mt-5 text-right"><button id="accounting" class="bt bt-clear"><i
-                        class="fa fa-calculator"></i> CONTABILIZACION <small> ( <i class="fa fa-keyboard"></i>
-                        CTR+M)</small></button></div>
-            <div class="bg-white p-1 p-md-4 mt-2 shadow w-100 overflowing_table" style="display: none;">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Fecha</th>
-                            <th>Cuenta</th>
-                            <th>Nombre</th>
-                            <th class="text-right">Débito</th>
-                            <th class="text-right">Crédito</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td class="text-right"><b>$0</b></td>
-                            <td class="text-right"><b>$0</b></td>
-                            <td class="text-center"><!----></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="text-right"><button class="bt bt-clear pull-left"><i class="fa fa-times"></i> cerrar
-                    </button> <button type="button" class="bt bt-clear mb-2 mb-md-0"><i class="fa fa-edit"></i>
-                        Modificar Asiento</button> <button type="button" class="bt bt-clear"><i
-                            class="fa fa-calendar"></i> Cambiar Fecha Contable</button>
-                    <div style="display: none;"><input type="date" id="accounting_date"
-                            class="form-control period_input"> <button type="button" class="ml-2 bt bt-green"><i
-                                class="fa fa-check"></i>Aplicar</button> <button type="button"
-                            class="ml-2 bt bt-o-red"><i class="fa fa-times"></i> Cancelar</button></div>
-                </div>
-            </div>
 
-            <div id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-                class="modal">
-                <div role="document" class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                Fecha Actual: <b> </b><br>
-                                Cuenta Actual: <b> </b><br>
-                                Nombre: <br>
-                                Debito: <br>
-                                Credito: <br></div>
-                            <div class="form-group row">
-                                <div class="col-12"><label>Cambiar cuenta</label>
-
-                                    <div id="autocomplete_search" class="dropdown" style="position: relative;"><input
-                                            autofocus="autofocus" autocomplete="off" id="search_ac_inout"
-                                            placeholder="Buscar Cuenta" type="text" class="form-control">
-                                        <ul class="dropdown-menu" style="width: 100%;"></ul>
-                                    </div> <br> <label>Cambiar a fecha</label> <input type="date" class="form-control">
-                                </div>
-                            </div>
-                            <div><button type="button" data-dismiss="modal" class="bt bt-white">Cancelar</button>
-                                <button type="button" class="bt bt-green pull-right"><i class="fa fa-check"></i> Cambiar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="null-item"><button class="bt bt-red"><i class="fa fa-undo"></i> Anular
-                </button></div>
+            <utils-seat [seats]="noteData?.seats || []"></utils-seat>
         </div>
     </div>
 </section>

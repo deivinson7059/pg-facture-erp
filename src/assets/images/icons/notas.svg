@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!-- Gradiente de fondo azul a morado -->
+  <defs>
+    <linearGradient id="gradienteBg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4389FF" />
+      <stop offset="100%" stop-color="#6040FF" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Forma del libro usando el path exacto del Font Awesome -->
+  <path d="M96 0C43 0 0 43 0 96L0 416c0 53 43 96 96 96l288 0 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0-64c17.7 0 32-14.3 32-32l0-320c0-17.7-14.3-32-32-32L384 0 96 0zm0 384l256 0 0 64L96 448c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16l192 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-192 0c-8.8 0-16-7.2-16-16zm16 48l192 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-192 0c-8.8 0-16-7.2-16-16s7.2-16 16-16z" fill="url(#gradienteBg)"/>
+  
+  <!-- Símbolo de dinero superpuesto -->
+  <text x="224" y="300" font-family="Arial, sans-serif" font-size="100" font-weight="bold" text-anchor="middle" fill="#FFFFFF" opacity="0.3">$</text>
+</svg>

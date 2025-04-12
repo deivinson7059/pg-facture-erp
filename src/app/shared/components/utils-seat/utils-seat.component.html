@@ -1,0 +1,116 @@
+<div class="col-12 section_title mt-3 text-right mb-3">
+    <button id="accounting" class="bt bt-clear" (click)="toggleAccountingSection()">
+        <i class="fa fa-calculator"></i>
+        CONTABILIZACION <small> ( <i class="fa fa-keyboard"></i> CTR+M)</small>
+    </button>
+</div>
+<div class="card p-1 p-md-4 mt-2 shadow w-100 overflowing_table"
+    [style.display]="isAccountingSectionVisible ? 'block' : 'none'">
+    <table tablesorter [filter]="filter" class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="col-id">ID</th>
+                <th class="col-date">Fecha</th>
+                <th class="col-puc">Cuenta</th>
+                <th>Nombre</th>
+                <th class="text-right">Débito</th>
+                <th class="text-right">Crédito</th>
+                <!--  <th class="col-button"></th> -->
+            </tr>
+        </thead>
+        <tbody>
+            @if (seats.length === 0) {
+            <tr>
+                <td colspan="6" class="text-center">No hay asientos contables disponibles</td>
+            </tr>
+            }
+            @for (seat of seats; track $index) {
+            <tr>
+                <td>{{ seat.id }}</td>
+                <td>{{ seat.date }}</td>
+                <td>
+                    <a [routerLink]="['/accounting/movement', seat.account]" target="_blank">
+                        {{seat.account}}
+                        <i class="fa fa-external-link-alt"></i>
+                    </a>
+                </td>
+                <td>{{ seat.account_name| uppercase }}</td>
+                <td class="text-right"><b>{{ seat.debit! >0 ? formatCurrency((seat.debit)!.toString()) : '-' }}</b></td>
+                <td class="text-right"><b>{{ seat.credit! >0 ? formatCurrency((seat.credit)!.toString()) : '-' }}</b>
+                </td>
+                <!--  <td class="text-center">
+                    <button class="bt bt-clear" (click)="editSeat(seat)">
+                        <i class="fa fa-edit hoverable"></i> Editar
+                    </button>
+                </td> -->
+            </tr>
+            }
+
+        </tbody>
+        @if (seats.length > 0) {
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-right"><b>Total</b></td>
+                <td class="text-right"><b>{{ calculateTotalDebit() }}</b></td>
+                <td class="text-right"><b>{{ calculateTotalCredit() }}</b></td>
+                <!-- <td></td> -->
+            </tr>
+        </tfoot>
+        }
+
+    </table>
+    <div class="text-right">
+        <button class="bt bt-clear pull-left" (click)="toggleAccountingSection()">
+            <i class="fa fa-times"></i>
+            cerrar
+        </button>
+        <!--  <button type="button" class="bt bt-clear mb-2 mb-md-0" (click)="openModifySeat()">
+            <i class="fa fa-edit"></i>
+            Modificar Asiento
+        </button>
+        <button type="button" class="bt bt-clear" (click)="toggleDatePicker()">
+            <i class="fa fa-calendar"></i>
+            Cambiar Fecha Contable
+        </button>
+        <div [style.display]="isDatePickerVisible ? 'block' : 'none'">
+            <input type="date" id="accounting_date" class="form-control period_input" [(ngModel)]="selectedDate">
+            <button type="button" class="ml-2 bt bt-green" (click)="applyDateChange()">
+                <i class="fa fa-check"></i>
+                Aplicar
+            </button>
+            <button type="button" class="ml-2 bt bt-o-red" (click)="toggleDatePicker()">
+                <i class="fa fa-times"></i>
+                Cancelar
+            </button>
+        </div> -->
+    </div>
+</div>
+
+<div id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-group">
+                    Fecha Actual: <b> </b><br>
+                    Cuenta Actual: <b> </b><br>
+                    Nombre: <br>
+                    Debito: <br>
+                    Credito: <br></div>
+                <div class="form-group row">
+                    <div class="col-12"><label>Cambiar cuenta</label>
+
+                        <div id="autocomplete_search" class="dropdown" style="position: relative;"><input
+                                autofocus="autofocus" autocomplete="off" id="search_ac_inout"
+                                placeholder="Buscar Cuenta" type="text" class="form-control">
+                            <ul class="dropdown-menu" style="width: 100%;"></ul>
+                        </div> <br> <label>Cambiar a fecha</label> <input type="date" class="form-control">
+                    </div>
+                </div>
+                <div><button type="button" data-dismiss="modal" class="bt bt-white">Cancelar</button>
+                    <button type="button" class="bt bt-green pull-right"><i class="fa fa-check"></i> Cambiar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

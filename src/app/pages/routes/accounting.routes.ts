@@ -22,6 +22,10 @@ export const ACCOUNTING_ROUTE: Route[] = [
     {
         path: 'note/:noteId',
         component: NoteDetailComponent
+    },
+    {
+        path: 'note/edit/:noteId',
+        component: NoteDetailComponent
     }
 ];
 

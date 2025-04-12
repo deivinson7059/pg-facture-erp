@@ -7,11 +7,18 @@
         </li>
 
         @for (item of items; track item) {
+        @if(item.disabled==true){
+        <li class="breadcrumb-item active">
+            {{item.name}}
+        </li>
+        }@else {
         <li class="breadcrumb-item">
             <a [routerLink]="item.path">
                 {{item.name}}
             </a>
         </li>
+        }
+
         }
         <li class="breadcrumb-item active">
             {{active_item}}

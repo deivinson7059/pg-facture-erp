@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 import { TarjetaCardComponent } from '@shared/components/tarjeta-card/tarjeta-card.component';
-import { Breadcrumbs, Submenu } from '@shared/components/tarjeta-card/tarjeta.metadata';
+import { CardMenu } from '@shared/components/tarjeta-card/tarjeta.metadata';
 
 @Component({
     selector: 'app-accounting',
@@ -17,6 +17,24 @@ export class AccountingComponent {
         },
     ];
 
-    public submenu: Submenu[] = [];
-    public breadcrumbs: Breadcrumbs[] = [];
+    public cardMenu: CardMenu[] = [
+        {
+            title: 'Notas Contables',
+            subtitle: 'Notas Contables',
+            link: '/accounting/notes',
+            icon: 'assets/images/icons/notas.svg'
+        },
+        {
+            title: 'Puc',
+            subtitle: 'Plan Único de Cuentas',
+            link: '/accounting/puc',
+            icon: 'assets/images/icons/puc.svg'
+        },
+        {
+            title: 'Gastos Parametrizados',
+            subtitle: 'Gastos Parametrizados',
+            link: '/accounting/expenses',
+            icon: 'assets/images/icons/expenses-config.svg'
+        }
+    ];
 }

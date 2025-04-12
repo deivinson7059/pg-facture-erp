@@ -9,19 +9,20 @@ import { RouterLink } from '@angular/router';
     imports: [RouterLink]
 })
 export class BreadcrumbComponent {
-  @Input()
-  title!: string;
-  @Input()
-  items!: Items[];
-  @Input()
-  active_item!: string;
+    @Input()
+    title!: string;
+    @Input()
+    items!: Items[];
+    @Input()
+    active_item!: string;
 
-  constructor() {
-    //constructor
-  }
+    constructor() {
+        //constructor
+    }
 }
 
-interface Items{
-    path:string;
-    name:string;
+interface Items {
+    path: string;
+    name: string;
+    disabled?: boolean;
 }

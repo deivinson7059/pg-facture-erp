@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { environment } from 'environments/environment';
 import { AccountingEntry, apiResponse, notesHeader, Puc, PucCmpy, PucData } from 'app/pages/interfaces';
-import { NoteGetParams, NotesResponse } from '@pages/interfaces/notas.interface';
+import { approveNoteRequest, Note, NoteGetParams, NotesResponse } from '@pages/interfaces/notas.interface';
 
 const { backend } = environment;
 
@@ -67,8 +67,8 @@ export class NotesService {
         );
     }
 
-    createNote(data: notesHeader): Observable<apiResponse<AccountingEntry[]>> {
-        return this.http.post<apiResponse<AccountingEntry[]>>(
+    createNote(data: notesHeader): Observable<apiResponse<Note>> {
+        return this.http.post<apiResponse<Note>>(
             `${backend.domain}/accounting/notes`,
             data,
             {
@@ -83,6 +83,25 @@ export class NotesService {
         console.log('url:', url);
         return this.http.get<apiResponse<NotesResponse>>(
             url,
+            {
+                headers: {},
+            }
+        );
+    }
+
+    getNoteById(cmpy: string, id: number): Observable<apiResponse<Note>> {
+        return this.http.get<apiResponse<Note>>(
+            `${backend.domain}/accounting/notes/${cmpy}/${id}`,
+            {
+                headers: {},
+            }
+        );
+    }
+
+    approveNote(data: approveNoteRequest, cmpy: string, id: number): Observable<apiResponse<Note>> {
+        return this.http.put<apiResponse<Note>>(
+            `${backend.domain}/accounting/notes/approve/${cmpy}/${id}`,
+            data,
             {
                 headers: {},
             }

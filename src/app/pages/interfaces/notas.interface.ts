@@ -136,6 +136,7 @@ export interface Note {
     updated_date: string;
     approved_by: string | null;
     approved_date: string;
+    posting_date: string;
     cost_center: string;
     lines: NoteLine[];
     comments: NoteComment[];
@@ -178,10 +179,14 @@ export interface NoteSeat {
     time: string;
     account: string;
     account_name: string;
-    debit: string | null;
-    credit: string | null;
-    balance: string;
+    debit: number | null;
+    credit: number | null;
+    balance: number | null;
     taxable_base: string | null;
     exempt_base: string | null;
     elaboration_date: string;
+}
+export interface approveNoteRequest {
+    approved_by: string;
+    comments: string;
 }

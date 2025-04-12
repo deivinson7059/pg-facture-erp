@@ -1,0 +1,1662 @@
+<section class="content">
+    <div class="content-block">
+        @for (breadscrum of breadscrums; track breadscrum) {
+        <div class="block-header">
+            <!-- breadcrumb -->
+            <app-breadcrumb [items]="breadscrum.items" [active_item]="breadscrum.active">
+            </app-breadcrumb>
+        </div>
+        }
+    </div>
+    <div class="container-semi-fluid">
+        <div class="row">
+            <div class="col-sm-12 section_title">
+                <i class="fa fa-chevron-right"></i>
+                Parametrización Nomina
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="card">
+                <div class="card-block">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Concepto</th>
+                                <th class="text-center">Cuenta</th>
+                                <th class="text-center">Tercero</th>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Salarios</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510506</b> <br>
+                                                <small>SUELDOS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Auxilio de Transporte</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510527</b> <br>
+                                                <small>AUXILIO DE TRANSPORTE</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Horas Extras</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510515</b> <br>
+                                                <small>HORAS EXTRAS Y RECARGOS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Comisiones</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510518</b> <br>
+                                                <small>COMISIONES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Auxilios Salariales</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510545</b> <br>
+                                                <small>AUXILIOS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Bonificaciones</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510585</b> <br>
+                                                <small>BONIFICACIONES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Bonificacion no salariales</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510586</b> <br>
+                                                <small>BONIFICACIONES NO SALARIALES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Auxilios No Salariales</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510587</b> <br>
+                                                <small>AUXILIOS NO SALARIALES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Incapacidades Pagadas</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510524</b> <br>
+                                                <small>INCAPACIDADES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Licencias Pagadas</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510524</b> <br>
+                                                <small>INCAPACIDADES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Indemnizaciones Pagadas</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510560</b> <br>
+                                                <small>INDEMNIZACIONES LABORALES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Cuenta por pagar de salarios</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR del pasivo</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>250510</b> <br>
+                                                <small>SALARIOS POR PAGAR</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Retentions</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR del pasivo</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>23650501</b> <br>
+                                                <small>SALARIOS Y PAGOS LABORALES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Anticipos</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR, disminuye un activo</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>133015</b> <br>
+                                                <small>A TRABAJADORES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Otras Dedecciones</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>251099</b> <br>
+                                                <small>OTRAS DEDUCCIONES DE NOMINA</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Pension a cargo de la empresa</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510570</b> <br>
+                                                <small>APORTES A FONDOS DE PENSIONES Y /O CESANTIAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Pension por pagar</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR del pasivo por pagar a fondo de
+                                            pension</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>238030</b> <br>
+                                                <small>FONDOS DE CESANTIAS Y/O PENSIONES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Fondo_de Solidaridad Pensional</u></b> <br>
+                                    <div style="line-height: 1;"><small></small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>238030</b> <br>
+                                                <small>FONDOS DE CESANTIAS Y/O PENSIONES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Salud a cargo de la empresa</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510569</b> <br>
+                                                <small>APORTE A ENTIDADES PROMOTORAS DE SALUD EPS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Salud por pagar</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR del pasivo por pagar a EPS</small>
+                                    </div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>237005</b> <br>
+                                                <small>APORTES A ENTIDADES PROMOTORAS DE SALUD E.P.S.</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Admin. Riesgos Laborales</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510568</b> <br>
+                                                <small>APORTES A ADMINISTRADORAS DE RIESGOS PROFESIONALES</small>
+                                            </div>
+                                            <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Admin. Riesgos Laborale por pagar</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR del pasivo por pagar</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>237006</b> <br>
+                                                <small>APORTES A ADMINISTRADORAS DE RIESGOS PROFESIONALES A.R.</small>
+                                            </div>
+                                            <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Caja de compensacion Familiar</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510572</b> <br>
+                                                <small>APORTES CAJAS DE COMPENSACION FAMILIAR</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Caja de compensacion Familiar</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR del pasivo por pagar</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>23701003</b> <br>
+                                                <small>APORTES CAJA DE COMPENSACION</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> SENA</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510578</b> <br>
+                                                <small>SENA</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> SENA</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR del pasivo por pagar</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>23701002</b> <br>
+                                                <small>APORTES SENA</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> ICBF</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510575</b> <br>
+                                                <small>APORTES A ICBF</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> ICBF</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR del pasivo por pagar</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>23701001</b> <br>
+                                                <small>APORTES AL ICBF</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Prima Salarial</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510536</b> <br>
+                                                <small>PRIMA DE SERVICIOS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Provisión Prima Salarial</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR de la provision</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>252005</b> <br>
+                                                <small>PRIMA DE SERVICIOS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Pago de Prima Provisionada</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB disminución del pasivo, se causa desde
+                                            módulo de nomina en campo de prima pagada</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>252005</b> <br>
+                                                <small>PRIMA DE SERVICIOS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Vacaciones</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510539</b> <br>
+                                                <small>VACACIONES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Provisión Vacaciones</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR de la provision</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>252505</b> <br>
+                                                <small>VACACIONES CONSOLIDADAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Pago de Vacaciones Provisionada</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB disminución del pasivo, se causa desde
+                                            módulo de nomina en campo de vacaciones pagadas</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>252505</b> <br>
+                                                <small>VACACIONES CONSOLIDADAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Cesantias</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510530</b> <br>
+                                                <small>CESANTIAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Provisión Cesantias</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR de la provision</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>251005</b> <br>
+                                                <small>CESANTIAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Pago de Cesantias Provisionada</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB disminución del pasivo, se causa desde
+                                            módulo de nomina en campo de cesantias pagada</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>251005</b> <br>
+                                                <small>CESANTIAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Intereses Cesantias</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510533</b> <br>
+                                                <small>INTERESES SOBRE CESANTIAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Provisión Intereses Cesantias</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR de la provision</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>251505</b> <br>
+                                                <small>INTERESES SOBRE CESANTIA</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Pago de Intereses Ces. Provisionada</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB disminución del pasivo, se causa desde
+                                            módulo de nomina en campo de interes cesantias pagada</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>251505</b> <br>
+                                                <small>INTERESES SOBRE CESANTIA</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    EPS/Fondo
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Prima No Salarial</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510542</b> <br>
+                                                <small>PRIMAS EXTRALEGALES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Provisión Prima No Salarial</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR de la provision</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>253005</b> <br>
+                                                <small>PRIMAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Pago de Prima No Salarial Provisionada</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB disminución del pasivo, se causa desde
+                                            módulo de nomina en campo de prima no salarial pagada</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>253005</b> <br>
+                                                <small>PRIMAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Vacaciones Extralegal</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510542</b> <br>
+                                                <small>PRIMAS EXTRALEGALES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Provisión Vacaciones Extralegal</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR de la provision</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>253095</b> <br>
+                                                <small>OTRAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Cesantias Extralegal</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510542</b> <br>
+                                                <small>PRIMAS EXTRALEGALES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Provisión Cesantias Extralegal</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR de la provision</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>253095</b> <br>
+                                                <small>OTRAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Intereses Cesantias Extralegal</u></b> <br>
+                                    <div style="line-height: 1;"><small>Cuenta DB del gasto</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">DB</b> <b>510542</b> <br>
+                                                <small>PRIMAS EXTRALEGALES</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 200px;"><b><u> Provisión Intereses Cesantias Extralegal</u></b>
+                                    <br>
+                                    <div style="line-height: 1;"><small>Cuenta CR de la provision</small></div>
+                                </td>
+                                <td class="d-flex flex-column row m-0 flex-row-reverse">
+                                    <div class="col-12 col-md-6 border-right border-left">
+                                        <div class="w-100 pb-2 pl-2 w-100 d-flex">
+                                            <div class="flex-grow-1"><!----> <b
+                                                    class="pill pill-outline-blue pill-tiny">CR</b> <b>253095</b> <br>
+                                                <small>OTRAS</small>
+                                            </div> <button data-speaker="Modificar Cuenta"
+                                                class="bt bt-clear edit_account float-right tip-ele"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </div>
+                                        <div class="w-100 d-flex">
+                                            <div id="autocomplete_search" class="dropdown w-100 mr-2 ml-2 flex-grow-1"
+                                                style="position: relative; display: none;"><input autofocus="autofocus"
+                                                    autocomplete="off" id="search_ac_inout"
+                                                    placeholder="Buscar Cuenta PUC" type="text"
+                                                    class="form-control"><span class="text-muted"
+                                                    style="display: none;">0 resultados <span class="clickable">+
+                                                        Crear</span></span>
+                                                <ul class="dropdown-menu" style="width: 100%;"></ul>
+                                            </div> <button class="bt bt-o-red" style="display: none;"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6"></div>
+                                </td>
+                                <td class="text-center">
+                                    Empleado
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

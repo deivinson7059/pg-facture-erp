@@ -12,10 +12,16 @@ export const APP_ROUTE: Route[] = [
         children: [
             { path: '', redirectTo: '/authentication/signin', pathMatch: 'full' },
             {
+                path: 'configs',
+                loadChildren: () =>
+                    import('@pages/routes/configs.routes').then((m) => m.CONFIGS_ROUTE),
+            },
+            {
                 path: 'accounting',
                 loadChildren: () =>
                     import('@pages/routes/accounting.routes').then((m) => m.ACCOUNTING_ROUTE),
             },
+
 
             {
                 path: 'dashboard',

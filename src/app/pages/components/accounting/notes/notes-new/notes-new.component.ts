@@ -11,6 +11,7 @@ import { accountPUC, Customer, notesHeader, notesLine, Puc, PucData } from 'app/
 import { NotesService } from '@pages/services';
 
 import Big from 'big.js';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-notes-new',
@@ -81,12 +82,16 @@ export class NotesNewComponent implements OnInit, OnDestroy {
     ];
 
     constructor(
+        private route: ActivatedRoute,
+        private router: Router,
         private notesService: NotesService,
         private fb: FormBuilder,
         private spinnerService: UtilsSpinnerService,
         private utilsService: UtilsService,
         private toastrService: UtilsToastrService,
     ) {
+
+
 
         this.noteForm = this.fb.group({
             pucAutocompleteId: [null],
@@ -100,6 +105,13 @@ export class NotesNewComponent implements OnInit, OnDestroy {
                 Validators.required,
                 Validators.maxLength(500)
             ]]
+        });
+
+        this.route.queryParams.subscribe(params => {
+            const noteId: number = +params['copy'];
+            if (noteId) {
+                this.loadNoteToCopy(noteId);
+            }
         });
     }
 
@@ -592,10 +604,18 @@ export class NotesNewComponent implements OnInit, OnDestroy {
                     return {
                         account: item.account,
                         account_name: item.account_name,
-                        debit: item.debit || 0,
-                        credit: item.credit || 0,
-                        taxable_base: item.taxable_base || 0,
-                        exempt_base: item.exempt_base || 0,
+                        debit: (item.debit !== null && item.debit > 0)
+                            ? new Big(item.debit).toNumber()
+                            : 0,
+                        credit: (item.credit !== null && item.credit > 0)
+                            ? new Big(item.credit).toNumber()
+                            : 0,
+                        taxable_base: (item.taxable_base !== null && item.taxable_base > 0)
+                            ? new Big(item.taxable_base).toNumber()
+                            : 0,
+                        exempt_base: (item.exempt_base !== null && item.exempt_base > 0)
+                            ? new Big(item.exempt_base).toNumber()
+                            : 0,
                     };
                 });
 
@@ -618,8 +638,8 @@ export class NotesNewComponent implements OnInit, OnDestroy {
                     .subscribe(res => {
                         this.spinnerService.hide();
                         if (res.code === 200) {
-                            this.toastrService.success(res.messages.success!, 'Guardado');
-                            console.log('Respuesta del servidor:', res);
+                            this.toastrService.success(res.messages.success!, 'Exito');
+                            this.router.navigate(['/accounting/note', res.data!.id]);
 
                         } else {
                             console.error('Error al guardar la nota:', res);
@@ -643,17 +663,44 @@ export class NotesNewComponent implements OnInit, OnDestroy {
             }
 
         });
+    }
+
+    loadNoteToCopy(id: number): void {
+        this.notesService.getNoteById('01', id).subscribe(res => {
+            if (res.code === 200) {
+                const note = res.data;
+                console.log('Nota cargada:', note);
+
+                // Aquí puedes llenar el formulario con los datos de la nota
+                this.noteForm.patchValue({
+                    fechaContable: this.today,
+                    cbOffice: note?.ware,
+                    txtReference: null,
+                    cbCentoCosto: '--',
+                    txtComment: null,
+                });
 
 
-
-
-
-
-        // Todo está correcto, continuar con el procesamiento
-        //console.log('Datos del formulario:', this.noteForm.value);
-        //console.log('Cuentas seleccionadas:', this.pucSeleted);
-
-        // Código para guardar...
+                // Llenar las cuentas seleccionadas con conversión de tipos adecuada
+                this.pucSeleted = (note?.lines || [])
+                    .map(line => ({
+                        account: line.account,
+                        account_name: line.account_name,
+                        debit: (line.debit !== null && line.debit > 0) ? new Big(line.debit) : null,
+                        credit: (line.credit !== null && line.credit > 0) ? new Big(line.credit) : null,
+                        debitDisabled: (line.debit !== null && line.debit > 0) ? false : true,
+                        creditDisabled: (line.credit !== null && line.credit > 0) ? false : true,
+                        taxable_base: line.taxable_base !== null
+                            ? new Big(line.taxable_base)
+                            : null,
+                        exempt_base: line.exempt_base !== null
+                            ? new Big(line.exempt_base)
+                            : null
+                    } as accountPUC));
+            } else {
+                console.error('Error al cargar la nota:', res);
+            }
+        });
     }
 
 }

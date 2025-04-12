@@ -39,7 +39,7 @@ export class NotesComponent implements OnInit {
         {
             items: [
                 {
-                    path: '/accounting/notes',
+                    path: '/accounting',
                     name: 'Contabilidad'
                 }],
             active: 'Notas Contables',
@@ -66,8 +66,8 @@ export class NotesComponent implements OnInit {
         this.spinnerService.show();
         const data: NoteGetParams = {
             cmpy: '01',
-            date_ini: '2024-03-01',
-            date_end: '2025-03-31',
+            date_ini: '2024-04-01',
+            date_end: '2025-04-30',
             page: 1,
         }
 

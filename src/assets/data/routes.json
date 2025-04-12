@@ -17,38 +17,485 @@
             "submenu": []
         },
         {
-            "path": "",
-            "title": "Contador",
-            "icon": "pen-tool",
+            "path": "configs",
+            "title": "Configuraciones",
+            "icon": "settings",
             "class": "menu-toggle",
             "groupTitle": false,
             "submenu": [
                 {
-                    "path": "/accounting",
-                    "title": "Notas contables",
-                    "icon": "trello",
+                    "path": "configs/general",
+                    "title": "Generales",
+                    "icon": "",
                     "class": "ml-sub-menu",
                     "groupTitle": false,
                     "submenu": [
                         {
-                            "path": "/accounting/notes",
-                            "title": "Listar Notas contables",
+                            "path": "configs/general/legal",
+                            "title": "Legal",
                             "icon": "",
-                            "class": "ml-menu2",
+                            "class": "",
                             "groupTitle": false,
                             "submenu": []
                         },
                         {
-                            "path": "/accounting/notes/new",
-                            "title": "Nueva Nota Contable",
+                            "path": "configs/general/invoice",
+                            "title": "Facturación",
                             "icon": "",
-                            "class": "ml-menu2",
+                            "class": "",
+                            "groupTitle": false,
+                            "submenu": []
+                        },
+                        {
+                            "path": "configs/general/pos",
+                            "title": "Facturación POS",
+                            "icon": "",
+                            "class": "",
+                            "groupTitle": false,
+                            "submenu": []
+                        },
+                        {
+                            "path": "configs/general/print_fromats",
+                            "title": "Formatos de impresión",
+                            "icon": "",
+                            "class": "",
+                            "groupTitle": false,
+                            "submenu": []
+                        },
+                        {
+                            "path": "configs/general/adjustments",
+                            "title": "Inventarios",
+                            "icon": "",
+                            "class": "",
+                            "groupTitle": false,
+                            "submenu": []
+                        },
+                        {
+                            "path": "configs/general/payroll",
+                            "title": "Nómina",
+                            "icon": "",
+                            "class": "",
+                            "groupTitle": false,
+                            "submenu": []
+                        },
+                        {
+                            "path": "configs/general/price_list",
+                            "title": "Listas de precios",
+                            "icon": "",
+                            "class": "",
+                            "groupTitle": false,
+                            "submenu": []
+                        },
+                        {
+                            "path": "configs/general/logos",
+                            "title": "Logos",
+                            "icon": "",
+                            "class": "",
+                            "groupTitle": false,
+                            "submenu": []
+                        },
+                        {
+                            "path": "configs/general/bar",
+                            "title": "Bar/restaurante",
+                            "icon": "",
+                            "class": "",
+                            "groupTitle": false,
+                            "submenu": []
+                        },
+                        {
+                            "path": "configs/general/health",
+                            "title": "Sector salud",
+                            "icon": "",
+                            "class": "",
+                            "groupTitle": false,
+                            "submenu": []
+                        }
+                    ]
+                },
+                {
+                    "path": "configs/warehouse",
+                    "title": "Puntos de venta",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "configs/seats",
+                    "title": "Contabilidad",
+                    "icon": "",
+                    "class": "ml-sub-menu",
+                    "groupTitle": false,
+                    "submenu": [
+                        {
+                            "path": "configs/seats/accounting",
+                            "title": "Param. Cuentas",
+                            "icon": "",
+                            "class": "",
+                            "groupTitle": false,
+                            "submenu": []
+                        },
+                        {
+                            "path": "configs/seats/payroll",
+                            "title": "Param. Nómina",
+                            "icon": "",
+                            "class": "",
                             "groupTitle": false,
                             "submenu": []
                         }
                     ]
                 }
             ]
+        },
+        {
+            "path": "inventory",
+            "title": "Inventario",
+            "icon": "align-justify",
+            "class": "menu-toggle",
+            "groupTitle": false,
+            "submenu": [
+                {
+                    "path": "inventory/products",
+                    "title": "Productos",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "inventory/services",
+                    "title": "Servicios",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "inventory/price_list",
+                    "title": "Listas de precios",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "inventory/transfers",
+                    "title": "Traslados",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "inventory/prices",
+                    "title": "Precio, costos y utilidades",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "inventory/adjustments",
+                    "title": "Ajustes de Inventario",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "inventory/transforms",
+                    "title": "Transformaciones",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "inventory/categorizer",
+                    "title": "Categorizador",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "inventory/audit",
+                    "title": "Auditorias de Inventario",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "inventory/warranties",
+                    "title": "Garantias",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                }
+            ]
+        },
+        {
+            "path": "income",
+            "title": "Ingresos",
+            "icon": "dollar-sign",
+            "class": "menu-toggle",
+            "groupTitle": false,
+            "submenu": [
+                {
+                    "path": "income/invoices",
+                    "title": "Facturación",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "income/pos",
+                    "title": "Facturación POS",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "income/remision",
+                    "title": "Remisiones",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "income/payments",
+                    "title": "Pagos Recibidos",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "income/accounts",
+                    "title": "Cajas",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "income/picking",
+                    "title": "Panel Despachos",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "income/quotations",
+                    "title": "Cotizaciones",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "income/credit-notes",
+                    "title": "Notas Crédito",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "income/advances",
+                    "title": "Anticipos De Cliente",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "income/unknown",
+                    "title": "Depositos Sin Identificar",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "income/checks",
+                    "title": "Cheques",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                }
+            ]
+        },
+        {
+            "path": "expenses",
+            "title": "Compras",
+            "icon": "shopping-bag",
+            "class": "menu-toggle",
+            "groupTitle": false,
+            "submenu": [
+                {
+                    "path": "expenses/r-expenses",
+                    "title": "Gastos",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "expenses/provider-invoice",
+                    "title": "Factura de Proveedor",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "expenses/outgoing-payments",
+                    "title": "Egresos",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "expenses/purchase-orders",
+                    "title": "Ordenes de Compra Proveedor",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "expenses/imports",
+                    "title": "Importaciones",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "expenses/taxes",
+                    "title": "Impuestos de Importación",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "expenses/debit-notes",
+                    "title": "Notas Débito",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                }
+            ]
+        },
+        {
+            "path": "payroll",
+            "title": "Nóminas",
+            "icon": "database",
+            "class": "menu-toggle",
+            "groupTitle": false,
+            "submenu": [
+                {
+                    "path": "payroll/employees",
+                    "title": "Empleados",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "payroll/wages",
+                    "title": "Listado de Nominas",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "payroll/payments",
+                    "title": "Pagos de Nominas",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "payroll/aportes",
+                    "title": "Aportes de Nomina",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "payroll/liquidation",
+                    "title": "Liquidacion de Empleados",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                }
+            ]
+        },
+        {
+            "path": "accounting",
+            "title": "Contador",
+            "icon": "pen-tool",
+            "class": "menu-toggle",
+            "groupTitle": false,
+            "submenu": [
+                {
+                    "path": "/accounting/notes",
+                    "title": "Listar Notas contables",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                },
+                {
+                    "path": "/accounting/expenses",
+                    "title": "Gastos Parametrizados",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                }
+            ]
+        },
+        {
+            "path": "radian-events",
+            "title": "Eventos RADIAN",
+            "icon": "calendar",
+            "class": "menu-toggle",
+            "groupTitle": false,
+            "submenu": [
+                {
+                    "path": "radian-events/notifications",
+                    "title": "Buzón tributario",
+                    "icon": "",
+                    "class": "",
+                    "groupTitle": false,
+                    "submenu": []
+                }
+            ]
+        },
+        {
+            "path": "reports",
+            "title": "Reportes",
+            "icon": "bar-chart-2",
+            "class": "menu-toggle",
+            "groupTitle": false,
+            "submenu": []
         }
     ]
 }

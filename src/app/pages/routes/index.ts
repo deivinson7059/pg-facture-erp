@@ -7,3 +7,4 @@ export { PAYROLL_ROUTE } from "./payroll.routes";
 export { REPORTS_ROUTE } from "./reports.routes";
 export { SEED_ROUTE } from "./seed.routes";
 export { TASK_SETTINGS_ROUTE } from "./task-settings.routes";
+export { CONFIGS_ROUTE } from "./configs.routes";

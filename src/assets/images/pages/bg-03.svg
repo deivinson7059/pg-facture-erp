@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!-- Gradiente de fondo azul a morado -->
+  <defs>
+    <linearGradient id="gradienteBg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4389FF" />
+      <stop offset="100%" stop-color="#6040FF" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Documento base con esquina doblada -->
+  <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z" fill="url(#gradienteBg)"/>
+  
+  <!-- Página rota/rasgada -->
+  <path d="M320 96L384 160H320V96z" fill="#FFFFFF" opacity="0.7"/>
+  <path d="M128 96L64 160H128V96z" fill="#FFFFFF" opacity="0.7"/>
+  
+  <!-- Símbolo de búsqueda (lupa) rota -->
+  <circle cx="224" cy="190" r="60" fill="none" stroke="#FFFFFF" stroke-width="12" opacity="0.9"/>
+  <line x1="265" y1="235" x2="320" y2="290" stroke="#FFFFFF" stroke-width="12" opacity="0.9"/>
+  
+  <!-- X que marca que no se encontró -->
+  <line x1="190" y1="155" x2="258" y2="225" stroke="#FFFFFF" stroke-width="12"/>
+  <line x1="258" y1="155" x2="190" y2="225" stroke="#FFFFFF" stroke-width="12"/>
+  
+  <!-- Texto de error -->
+  <text x="224" y="330" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#FFFFFF">404</text>
+  <text x="224" y="380" font-family="Arial, sans-serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#FFFFFF">NO EXISTE</text>
+  
+  <!-- Logo PgFacture® -->
+  <text x="224" y="440" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="35" text-anchor="middle">
+    <tspan fill="#1a237e">Pg</tspan><tspan fill="#2E7D32">Facture</tspan><tspan fill="#2E7D32">®</tspan>
+  </text>
+</svg>

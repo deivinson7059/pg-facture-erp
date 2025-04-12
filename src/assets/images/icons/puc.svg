@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!-- Gradiente de fondo azul a morado -->
+  <defs>
+    <linearGradient id="gradienteBg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4389FF" />
+      <stop offset="100%" stop-color="#6040FF" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Base de documento/carpeta -->
+  <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H224c-17.7 0-32-14.3-32-32s-14.3-32-32-32H64z" fill="url(#gradienteBg)"/>
+  
+  <!-- Elementos numéricos para representar el plan de cuentas -->
+  <text x="80" y="220" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF">1</text>
+  <text x="150" y="220" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF">2</text>
+  <text x="220" y="220" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF">3</text>
+  <text x="290" y="220" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF">4</text>
+  <text x="360" y="220" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF">5</text>
+  
+  <!-- Líneas para simular estructura jerárquica del PUC -->
+  <line x1="80" y1="240" x2="80" y2="320" stroke="#FFFFFF" stroke-width="6"/>
+  <line x1="80" y1="270" x2="120" y2="270" stroke="#FFFFFF" stroke-width="6"/>
+  <line x1="80" y1="320" x2="120" y2="320" stroke="#FFFFFF" stroke-width="6"/>
+  
+  <line x1="150" y1="240" x2="150" y2="320" stroke="#FFFFFF" stroke-width="6"/>
+  <line x1="150" y1="270" x2="190" y2="270" stroke="#FFFFFF" stroke-width="6"/>
+  <line x1="150" y1="320" x2="190" y2="320" stroke="#FFFFFF" stroke-width="6"/>
+  
+  <!-- Texto PUC en la parte inferior -->
+  <text x="224" y="420" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#FFFFFF">PUC</text>
+</svg>

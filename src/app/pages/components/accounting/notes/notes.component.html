@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-12">
                     <div class="action_panel">
-                        <a [routerLink]="['/accounting']" routerLinkActive="router-link-active"
+                        <a [routerLink]="['/accounting']"
                             class="bt bt-white triggerwait pull-left text-primary tw back_button">
                             <i class="fa fa-btn fa-arrow-left"></i>
                         </a>
@@ -79,9 +79,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-block overflowing_table">
-                            <table tablesorter class="table table-bordered">
+                    <div class="card mb-5 mt-3">
+                        <div class="card-padding overflowing_table table-scroll">
+                            <table tablesorter [sticky]="true" [filter]="true" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th class="col-id">Id</th>
@@ -95,19 +95,19 @@
                                 <tbody>
                                     @if (tableData.length===0) {
                                     <tr>
-                                        <td colspan="5" class="text-center">No hay notas contables</td>
+                                        <td colspan="6" class="text-center">No hay notas contables</td>
                                     </tr>
                                     }@else {
                                     @for (row of tableData; track $index) {
                                     <tr>
-                                        <td>#{{ row.id }}</td>
+                                        <td>{{ row.id }}</td>
                                         <td><span class="ds">{{ row.ware }}</span></td>
                                         <td>
                                             Generado por: <b>{{row.creation_by}}</b><br>
                                             Fecha Generación: <b>{{row.creation_date | date:'dd/MM/yyyy'}}</b>
                                             @if (row.status==='C') {
                                             <br>
-                                            Fecha Contabilización: <b>{{row.updated_date | date:'dd/MM/yyyy'}}</b>
+                                            Fecha Contabilización: <b>{{row.posting_date | date:'dd/MM/yyyy'}}</b>
                                             }
 
                                         </td>
@@ -155,30 +155,26 @@
                                         </td>
                                         <td>
                                             @switch (row.status) {
-                                            @case ('P') {
-                                            <div class="open-invoice">
-                                                <i class="fa fa-circle"></i>
-                                                Pendiente
-                                            </div>
-                                            }
-                                            @case ('A') {
+                                            @case ('C') {
                                             <div class="closed-invoice">
                                                 <i class="fa fa-check"></i>
                                                 Aprobada
                                             </div>
                                             }
+                                            @case ('P') {
+                                            <div class="open-invoice">
+                                                <i class="fa fa-circle"></i>
+                                                Abierta
+                                            </div>
+                                            }
+
                                             @case ('R') {
                                             <div class="canceled-invoice">
                                                 <i class="fa fa-undo"></i>
                                                 Rechazada
                                             </div>
                                             }
-                                            @case ('C') {
-                                            <div class="closed-invoice">
-                                                <i class="fa fa-check"></i>
-                                                Contabilizada
-                                            </div>
-                                            }
+
                                             @case ('X') {
                                             <div class='canceled-invoice'>
                                                 <i class='fa fa-times canceled-invoice'></i>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!-- Gradiente de fondo azul a morado -->
+  <defs>
+    <linearGradient id="gradienteBg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4389FF" />
+      <stop offset="100%" stop-color="#6040FF" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Documento base -->
+  <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z" fill="url(#gradienteBg)"/>
+  
+  <!-- Símbolo de servidor con error -->
+  <rect x="124" y="120" width="200" height="140" rx="10" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="144" y="145" width="160" height="15" rx="2" fill="url(#gradienteBg)"/>
+  <rect x="144" y="175" width="160" height="15" rx="2" fill="url(#gradienteBg)"/>
+  <rect x="144" y="205" width="160" height="15" rx="2" fill="url(#gradienteBg)"/>
+  
+  <!-- Rayos/Relámpagos que indican error -->
+  <path d="M124 180L94 215L124 215L94 250" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M324 180L354 215L324 215L354 250" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Símbolo de advertencia -->
+  <path d="M224 80L200 120H248L224 80Z" fill="#FFFFFF"/>
+  <text x="224" y="117" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="url(#gradienteBg)">!</text>
+  
+  <!-- Texto de error -->
+  <text x="224" y="310" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#FFFFFF">500</text>
+  <text x="224" y="360" font-family="Arial, sans-serif" font-size="25" font-weight="bold" text-anchor="middle" fill="#FFFFFF">ERROR INTERNO</text>
+  
+  <!-- Logo PgFacture® -->
+  <text x="224" y="440" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="35" text-anchor="middle">
+    <tspan fill="#1a237e">Pg</tspan><tspan fill="#2E7D32">Facture</tspan><tspan fill="#2E7D32">®</tspan>
+  </text>
+</svg>

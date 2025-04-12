@@ -92,3 +92,7 @@ tr:has(.movimientos-container.expanded) {
 .dark .table-sm {
     border-color: #4a5568 !important;
 }
+
+.table-scroll {
+    max-height: 700px !important;
+}
