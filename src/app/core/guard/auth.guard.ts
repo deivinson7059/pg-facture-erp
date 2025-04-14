@@ -4,16 +4,16 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/ro
 import { AuthService } from '../service/auth.service';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
-export class AuthGuard  {
-  constructor(private authService: AuthService, private router: Router) {}
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authService.currentUserValue) {
-      return true;
+export class AuthGuard {
+    constructor(private authService: AuthService, private router: Router) { }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        if (this.authService.isLoggedIn()) {
+            return true;
+        }
+        this.router.navigate(['/authentication/signin']);
+        return false;
     }
-    this.router.navigate(['/authentication/signin']);
-    return false;
-  }
 }

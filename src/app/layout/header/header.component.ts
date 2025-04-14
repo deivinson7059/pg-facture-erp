@@ -16,6 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { FeatherIconsComponent } from '../../shared/components/feather-icons/feather-icons.component';
 import { MatButtonModule } from '@angular/material/button';
 import { WINDOW_PROVIDERS } from '@core/service/window.service';
+import { User } from '@core/models/user.model';
 
 interface Notifications {
     message: string;
@@ -42,6 +43,8 @@ interface Notifications {
 export class HeaderComponent
     extends UnsubscribeOnDestroyAdapter
     implements OnInit {
+
+    currentUser?: User;
 
     selectedBgColor = 'white';
     isDarkSidebar = false;
@@ -134,6 +137,7 @@ export class HeaderComponent
         // }
     }
     ngOnInit() {
+        this.currentUser = this.authService.currentUserValue;
         this.config = this.configService.configData;
         this.docElement = document.documentElement;
 

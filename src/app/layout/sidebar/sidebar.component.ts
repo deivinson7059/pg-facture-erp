@@ -22,6 +22,7 @@ import { FeatherModule } from 'angular-feather';
 import { NgScrollbar } from 'ngx-scrollbar';
 import { UnsubscribeOnDestroyAdapter } from '@shared';
 import { SidebarService } from './sidebar.service';
+import { User } from '@core/models/user.model';
 
 @Component({
     selector: 'app-sidebar',
@@ -39,6 +40,8 @@ import { SidebarService } from './sidebar.service';
 export class SidebarComponent
     extends UnsubscribeOnDestroyAdapter
     implements OnInit {
+    currentUser?: User;
+
     public sidebarItems!: RouteInfo[];
     public innerHeight?: number;
     public bodyTag!: HTMLElement;
@@ -54,6 +57,7 @@ export class SidebarComponent
         private sidebarService: SidebarService
     ) {
         super();
+
         this.subs.sink = this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 // close sidebar on mobile screen after menu select
@@ -85,16 +89,19 @@ export class SidebarComponent
         }
     }
     ngOnInit() {
+        this.currentUser = this.authService.currentUserValue;
+
+        //console.log('Current User:', this.currentUser);
         if (this.authService.currentUserValue) {
             this.subs.sink = this.sidebarService
                 .getRouteInfo()
                 .subscribe((routes: RouteInfo[]) => {
-                   // console.log(routes);
+                    // console.log(routes);
                     this.sidebarItems = routes.filter((sidebarItem) => sidebarItem);
                     //console.log(this.sidebarItems);
                 });
         }
- 
+
         this.initLeftSidebar();
         this.bodyTag = this.document.body;
     }

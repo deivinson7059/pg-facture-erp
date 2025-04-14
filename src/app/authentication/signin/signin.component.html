@@ -8,72 +8,177 @@
                             <div>
                                 <div class="text-center">
                                     <div>
-                                        <a routerLink="" class="logo-full"><img src="assets/images/logo-full.png"
-                                                alt="logo-full"></a>
+                                        <a routerLink="" class="logo-full">
+                                            <img src="assets/images/logo-full.png" alt="logo-full">
+                                        </a>
                                     </div>
                                     <!-- <h4 class="font-20 mt-2">PgFacture®</h4> -->
-                                    <p class="text-muted">Accounting Software</p>
+                                    <p class="text-muted">Software Contable</p>
                                 </div>
+
                                 <div class="p-2 mt-3">
-                                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                                        @if (error) {
-                                        <div class="alert alert-danger mb-3 mt-0">{{error}}</div>
-                                        }
-                                        <div class="form-group auth-form-group mb-4">
-                                            <mat-icon matSuffix
-                                                class="material-icons-outlined auth-page-icon">Correo</mat-icon>
-                                            <input type="email" formControlName="email"
-                                                class="form-control auth-control" id="email" placeholder="Email"
-                                                [ngClass]="{ 'is-invalid': submitted && form['email'].errors }">
-                                            @if (submitted && form['email'].errors) {
-                                            <div class="invalid-feedback">
-                                                @if (form['email'].errors['required']) {
-                                                <div>Correo es Obligatorio</div>
-                                                }
-                                                @if (form['email'].errors['email']) {
-                                                <div>El correo electrónico debe ser una dirección de correo electrónico
-                                                    válida</div>
+                                    <!-- Contenedor principal con las animaciones -->
+                                    <div class="form-container">
+                                        <!-- PASO 1: Formulario de identificación y contraseña -->
+                                        <form [formGroup]="credentialsForm" (ngSubmit)="onSubmitCredentials()"
+                                            [@formAnimation]="step === 1 ? 'visible' : 'hidden'"
+                                            [style.display]="step === 1 ? 'block' : 'none'">
+
+                                            @if (error) {
+                                            <div class="alert alert-danger mb-3 mt-0">
+                                                @for (errorLine of formatError(error); track $index) {
+                                                <div>{{errorLine}}</div>
                                                 }
                                             </div>
                                             }
-                                        </div>
-                                        <div class="form-group auth-form-group mb-4">
-                                            <mat-icon matSuffix
-                                                class="material-icons-outlined auth-page-icon">vpn_key</mat-icon>
-                                            <input type="password" formControlName="password"
-                                                class="form-control auth-control" id="password"
-                                                [ngClass]="{ 'is-invalid': submitted && form['password'].errors }"
-                                                placeholder="Password" />
-                                            @if (submitted && form['password'].errors) {
-                                            <div class="invalid-feedback">
-                                                @if (form['password'].errors['required']) {
-                                                <div>Contraseña es Obligatorio</div>
+
+                                            <div class="form-group auth-form-group mb-4">
+                                                <mat-icon matSuffix
+                                                    class="material-icons-outlined auth-page-icon">person</mat-icon>
+                                                <input type="text" formControlName="identification_number"
+                                                    class="form-control auth-control" id="identification_number"
+                                                    placeholder="Número de Identificación" utilsAutofocus
+                                                    [ngClass]="{ 'is-invalid': submittedStep1 && f1['identification_number'].errors }">
+                                                @if (submittedStep1 && f1['identification_number'].errors) {
+                                                <div class="invalid-feedback">
+                                                    @if (f1['identification_number'].errors['required']) {
+                                                    <div>Identificación es Obligatoria</div>
+                                                    }
+                                                </div>
+                                                }
+                                            </div>
+
+                                            <div class="form-group auth-form-group mb-4">
+                                                <mat-icon matSuffix
+                                                    class="material-icons-outlined auth-page-icon">vpn_key</mat-icon>
+                                                <input type="password" formControlName="password"
+                                                    class="form-control auth-control" id="password"
+                                                    [ngClass]="{ 'is-invalid': submittedStep1 && f1['password'].errors }"
+                                                    placeholder="Contraseña" />
+                                                @if (submittedStep1 && f1['password'].errors) {
+                                                <div class="invalid-feedback">
+                                                    @if (f1['password'].errors['required']) {
+                                                    <div>Contraseña es Obligatoria</div>
+                                                    }
+                                                </div>
+                                                }
+                                            </div>
+
+                                            <div class="flex-sb-m w-full p-t-15 p-b-20">
+                                                <div class="form-check m-0">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            formControlName="remember"> Recordar
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <a class="txt1" routerLink="/authentication/forgot-password">¿Olvidó
+                                                        su
+                                                        Contraseña?</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="container-login100-form-btn">
+                                                <button mat-flat-button color="primary" class="login100-form-btn"
+                                                    type="submit" [disabled]="isLoading">
+                                                    <span *ngIf="isLoading"
+                                                        class="spinner-border spinner-border-sm me-1" role="status"
+                                                        aria-hidden="true"></span>
+                                                    Continuar
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                        <!-- PASO 2: Selección de compañía y bodega -->
+                                        <form [formGroup]="companyForm" (ngSubmit)="onSubmitCompany()"
+                                            [@formAnimation]="step === 2 ? 'visible' : 'hidden'"
+                                            [style.display]="step === 2 ? 'block' : 'none'">
+
+                                            @if (error) {
+                                            <div class="alert alert-danger mb-3 mt-0">
+                                                @for (errorLine of formatError(error); track $index) {
+                                                <div>{{errorLine}}</div>
                                                 }
                                             </div>
                                             }
-                                        </div>
-                                        <div class="flex-sb-m w-full p-t-15 p-b-20">
-                                            <div class="form-check m-0">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox" value=""> Recordar
-                                                    <span class="form-check-sign">
-                                                        <span class="check"></span>
-                                                    </span>
-                                                </label>
+
+                                            <!-- Usuario seleccionado -->
+                                            <div class="selected-user mb-4">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="avatar-circle">
+                                                        <span class="initials">{{getInitials()}}</span>
+                                                    </div>
+                                                    <div class="ms-3">
+                                                        <h5 class="mb-0">{{userData?.name}}</h5>
+                                                        <p class="text-muted mb-0 small">
+                                                            {{userData?.identification_number}}</p>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-link text-primary p-0 mt-2"
+                                                    (click)="backToStep1()">
+                                                    <i class="material-icons-outlined small">arrow_back</i> Cambiar
+                                                    usuario
+                                                </button>
                                             </div>
-                                            <div>
-                                                <a class="txt1" routerLink="/authentication/forgot-password">Olvidó su
-                                                    Contraseña?</a>
+
+                                            <div class="form-group auth-form-group mb-4">
+                                                <mat-icon matSuffix
+                                                    class="material-icons-outlined auth-page-icon">business</mat-icon>
+                                                <select formControlName="cmpy" class="form-control auth-control"
+                                                    id="cmpy"
+                                                    [ngClass]="{ 'is-invalid': submittedStep2 && f2['cmpy'].errors }"
+                                                    (change)="onCompanyChange($event)">
+                                                    <option value="">Seleccione Empresa</option>
+                                                    @for (company of companies; track company) {
+                                                    <option [value]="company.cmpy">{{company.cmpy}}</option>
+                                                    }
+                                                </select>
+                                                @if (submittedStep2 && f2['cmpy'].errors) {
+                                                <div class="invalid-feedback">
+                                                    @if (f2['cmpy'].errors['required']) {
+                                                    <div>Empresa es Obligatoria</div>
+                                                    }
+                                                </div>
+                                                }
                                             </div>
-                                        </div>
-                                        <div class="container-login100-form-btn">
-                                            <button mat-flat-button color="primary" class="login100-form-btn"
-                                                type="submit">
-                                                Entrar
-                                            </button>
-                                        </div>
-                                    </form>
+
+                                            <div class="form-group auth-form-group mb-4">
+                                                <mat-icon matSuffix
+                                                    class="material-icons-outlined auth-page-icon">store</mat-icon>
+                                                <select formControlName="ware" class="form-control auth-control"
+                                                    id="ware"
+                                                    [ngClass]="{ 'is-invalid': submittedStep2 && f2['ware'].errors }">
+                                                    <option value="">Seleccione Oficina</option>
+                                                    @for (warehouse of warehouses; track warehouse) {
+                                                    <option [value]="warehouse.ware">{{warehouse.ware}} -
+                                                        {{warehouse.role_name}}</option>
+                                                    }
+                                                </select>
+                                                @if (submittedStep2 && f2['ware'].errors) {
+                                                <div class="invalid-feedback">
+                                                    @if (f2['ware'].errors['required']) {
+                                                    <div>Oficina es Obligatoria</div>
+                                                    }
+                                                </div>
+                                                }
+                                            </div>
+
+                                            <div class="container-login100-form-btn">
+                                                <button mat-flat-button color="primary" class="login100-form-btn"
+                                                    type="submit" [disabled]="isLoading">
+                                                    <span *ngIf="isLoading"
+                                                        class="spinner-border spinner-border-sm me-1" role="status"
+                                                        aria-hidden="true"></span>
+                                                    Entrar
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
+
                                 <div class="mt-2 text-center">
                                     <p>Proveedor tecnólogico Software Propio en Colombia para documentos electrónicos y
                                         certificados digitales DIAN! </p>
