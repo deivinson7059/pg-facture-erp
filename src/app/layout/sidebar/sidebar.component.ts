@@ -96,9 +96,9 @@ export class SidebarComponent
             this.subs.sink = this.sidebarService
                 .getRouteInfo()
                 .subscribe((routes: RouteInfo[]) => {
-                    // console.log(routes);
+                    //console.log(routes);
                     this.sidebarItems = routes.filter((sidebarItem) => sidebarItem);
-                    //console.log(this.sidebarItems);
+                    console.log('Menú cargado:', this.sidebarItems);
                 });
         }
 
