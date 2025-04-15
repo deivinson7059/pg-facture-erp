@@ -12,11 +12,11 @@ export class SeatsPayrollComponent {
         {
             items: [
                 {
-                    path: '/configs',
+                    path: '/admin/configs',
                     name: 'Configs'
                 },
                 {
-                    path: '/configs',
+                    path: '/admin/configs',
                     name: 'Contabilidad',
                     disabled: true
                 }

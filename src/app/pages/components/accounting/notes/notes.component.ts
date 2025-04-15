@@ -39,7 +39,7 @@ export class NotesComponent implements OnInit {
         {
             items: [
                 {
-                    path: '/accounting',
+                    path: '/admin/accounting',
                     name: 'Contabilidad'
                 }],
             active: 'Notas Contables',

@@ -21,19 +21,19 @@ export class AccountingComponent {
         {
             title: 'Notas Contables',
             subtitle: 'Notas Contables',
-            link: '/accounting/notes',
+            link: '/admin/accounting/notes',
             icon: 'assets/images/icons/notas.svg'
         },
         {
             title: 'Puc',
             subtitle: 'Plan Único de Cuentas',
-            link: '/accounting/puc',
+            link: '/admin/accounting/puc',
             icon: 'assets/images/icons/puc.svg'
         },
         {
             title: 'Gastos Parametrizados',
             subtitle: 'Gastos Parametrizados',
-            link: '/accounting/expenses',
+            link: '/admin/accounting/expenses',
             icon: 'assets/images/icons/expenses-config.svg'
         }
     ];

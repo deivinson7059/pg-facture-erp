@@ -244,7 +244,14 @@ export class AuthService {
                     const ware = companies[0].wares[0].ware;
 
                     // Hacer login automático con el segundo paso
-                    this.loginStep2(cmpy, ware).subscribe();
+                    this.loginStep2(cmpy, ware).subscribe(user => {
+                        // Redireccionar según el rol del usuario
+                        if (user && user.path === 'admin') {
+                            this.router.navigate(['/admin/dashboard/main']);
+                        } else {
+                            this.router.navigate(['/user/dashboard/user']);
+                        }
+                    });
 
                     // Devolver respuesta formateada para compatibilidad
                     return new HttpResponse({

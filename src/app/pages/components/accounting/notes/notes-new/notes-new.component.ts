@@ -36,7 +36,7 @@ export class NotesNewComponent implements OnInit, OnDestroy {
         {
             items: [
                 {
-                    path: '/accounting',
+                    path: '/admin/accounting',
                     name: 'Contabilidad'
                 }],
             active: 'Nueva Nota Contable',

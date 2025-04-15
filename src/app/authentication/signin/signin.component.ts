@@ -73,7 +73,14 @@ export class SigninComponent
         super();
         // Redireccionar si ya está logueado
         if (this.authService.isLoggedIn()) {
-            this.router.navigate(['/dashboard/main']);
+            const currentUser = this.authService.currentUserValue;
+
+            if (currentUser.path === 'admin') {
+                this.router.navigate(['/admin/dashboard']);
+            } else {
+                this.router.navigate(['/user/dashboard']);
+            }
+
         }
 
     }
@@ -172,8 +179,12 @@ export class SigninComponent
             .pipe(
                 tap(user => {
                     this.toastrService.success('Bienvenido!, ' + user.name, 'Éxito');
-                    // Redireccionar al dashboard
-                    this.router.navigate(['/dashboard/main']);
+                    // Redireccionar según el rol del usuario
+                    if (user.path === 'admin') {
+                        this.router.navigate(['admin/dashboard']);
+                    } else {
+                        this.router.navigate(['/user/dashboard/user']);
+                    }
 
                 }),
                 catchError(errorMsg => {

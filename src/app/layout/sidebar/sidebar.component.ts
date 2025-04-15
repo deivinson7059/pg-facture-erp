@@ -98,7 +98,7 @@ export class SidebarComponent
                 .subscribe((routes: RouteInfo[]) => {
                     //console.log(routes);
                     this.sidebarItems = routes.filter((sidebarItem) => sidebarItem);
-                    console.log('Menú cargado:', this.sidebarItems);
+                    //console.log('Menú cargado:', this.sidebarItems);
                 });
         }
 

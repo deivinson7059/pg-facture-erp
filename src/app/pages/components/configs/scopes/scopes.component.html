@@ -1,0 +1,95 @@
+<section class="content">
+    <div class="container-fluid">
+        @for (breadscrum of breadscrums; track breadscrum) {
+        <div class="block-header">
+            <!-- breadcrumb -->
+            <app-breadcrumb [items]="breadscrum.items" [active_item]="breadscrum.active">
+            </app-breadcrumb>
+        </div>
+        }
+
+        <div>
+            <div class="row">
+                <div class="col-sm-12 section_title title_mobile text-center d-lg-none">
+                    Permisos
+                </div>
+                <div class="col-12">
+                    <div class="action_panel">
+                        <a [routerLink]="['/admin/configs']"
+                            class="bt bt-white triggerwait pull-left text-primary tw back_button">
+                            <i class="fa fa-btn fa-arrow-left"></i>
+                        </a>
+                        <span class="section_title pull-left pl-4 d-none d-md-block">
+                            Permisos
+                        </span>
+                        <button type="button" class="bt bt-blue" (click)="addScope()" title="Agregar Permiso"
+                            [appTooltip]="'Agregar Permiso'">
+                            <i class="fa fa-note-o"></i>
+                            Agregar Permiso
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-sm-12 col-md-12">
+                    <div class="card mb-5 mt-3">
+                        <div class="card-padding overflowing_table table-scroll">
+                            <table tablesorter [sticky]="true" [filter]="true" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="col-id">
+                                            Permiso
+                                        </th>
+                                        <th class="col-desc">
+                                            Descripción
+                                        </th>
+                                        <th class="col-acc">
+                                            Acciones
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (scopes.length===0) {
+                                    <tr>
+                                        <td colspan="3" class="text-center">
+                                            <i class="fa fa-btn fa-exclamation-triangle red"></i>
+                                            No hay permisos disponibles
+                                        </td>
+                                    </tr>
+                                    }
+                                    @for (scope of scopes; track $index) {
+                                    <tr>
+                                        <td>
+                                            {{scope.id}}
+                                        </td>
+                                        <td>
+                                            {{scope.description}}
+                                        </td>
+                                        <td class="text-center">
+                                            <i (click)="removeScope(scope)" class="fa fa-btn fa-trash red pointer"
+                                                title="Eliminar" [appTooltip]="'Eliminar ' + scope.id"></i>
+                                        </td>
+                                    </tr>
+                                    }
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</section>
