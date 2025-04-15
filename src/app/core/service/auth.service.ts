@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { environment } from 'environments/environment';
 
@@ -35,6 +35,13 @@ export class AuthService {
 
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
+    }
+
+    // Método para  vaciar el BehaviorSubject y el localStorage
+    clearUserData() {
+        this.currentUserSubject.next({} as User);
+        localStorage.removeItem('currentUser');
+        this.tempLoginData = {};
     }
     // Función auxiliar para extraer y formatear mensajes de error
     private formatErrorMessage(errorResponse: any): string {
@@ -155,6 +162,7 @@ export class AuthService {
                             scopes: res.data.cmpy.scopes,
                             token: res.data.token,
                             access_token: res.data.access_token,
+                            menu: res.data.menu || [],
                         };
 
                         // Guardar en localStorage
@@ -181,6 +189,44 @@ export class AuthService {
     // Obtener los datos almacenados del primer paso
     getTempLoginData() {
         return this.tempLoginData;
+    }
+
+    // auth.service.ts
+
+    refreshToken(): Observable<any> {
+        const currentUser = this.currentUserValue;
+
+        if (!currentUser || !currentUser.access_token) {
+            return throwError(() => 'No hay token para refrescar');
+        }
+
+        return this.http.post<any>(`${this.apiUrl}/refresh-token`, {
+            token: currentUser.access_token
+        }).pipe(
+            map(response => {
+                if (response.success && response.data && response.data.access_token) {
+                    // Crear un nuevo objeto de usuario con el mismo contenido pero con el nuevo access_token
+                    const updatedUser = {
+                        ...currentUser,
+                        access_token: response.data.access_token
+                    };
+
+                    // Guardar en localStorage
+                    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+
+                    // Actualizar el BehaviorSubject
+                    this.currentUserSubject.next(updatedUser);
+
+                    return updatedUser;
+                } else {
+                    throw new Error('No se recibió un nuevo token válido');
+                }
+            }),
+            catchError(error => {
+                console.error('Error al refrescar el token:', error);
+                return throwError(() => error);
+            })
+        );
     }
 
     // Método original de login (para compatibilidad)
@@ -222,7 +268,36 @@ export class AuthService {
             : false;
     }
 
-    logout() {
+    // Modifica el método logout existente:
+    logout(): Observable<any> {
+        const currentUser = this.currentUserValue;
+
+        // Si no hay usuario o token, simplemente hacer logout local
+        if (!currentUser || !currentUser.access_token) {
+            this.doLocalLogout();
+            return of({ success: true });
+        }
+
+        // Enviar solicitud de logout al servidor
+        return this.http
+            .post<any>(`${this.apiUrl}/logout`,
+                null,
+            ).pipe(
+                tap((res) => {
+                    console.log('Logout exitoso en el servidor:', res);
+                    // Independientemente de la respuesta del servidor, realizar el logout local
+                    // this.doLocalLogout();
+                }),
+                catchError(error => {
+                    // Si hay un error en la comunicación con el servidor, aún así hacer logout local
+                    console.error('Error al cerrar sesión en el servidor:', error);
+                    //this.doLocalLogout();
+                    return of({ success: true }); // Retornamos éxito aunque haya habido error en el servidor
+                })
+            );
+    }
+
+    doLocalLogout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next({} as User);

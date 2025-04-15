@@ -24,14 +24,6 @@
                                             [@formAnimation]="step === 1 ? 'visible' : 'hidden'"
                                             [style.display]="step === 1 ? 'block' : 'none'">
 
-                                            @if (error) {
-                                            <div class="alert alert-danger mb-3 mt-0">
-                                                @for (errorLine of formatError(error); track $index) {
-                                                <div>{{errorLine}}</div>
-                                                }
-                                            </div>
-                                            }
-
                                             <div class="form-group auth-form-group mb-4">
                                                 <mat-icon matSuffix
                                                     class="material-icons-outlined auth-page-icon">person</mat-icon>
@@ -97,14 +89,6 @@
                                             [@formAnimation]="step === 2 ? 'visible' : 'hidden'"
                                             [style.display]="step === 2 ? 'block' : 'none'">
 
-                                            @if (error) {
-                                            <div class="alert alert-danger mb-3 mt-0">
-                                                @for (errorLine of formatError(error); track $index) {
-                                                <div>{{errorLine}}</div>
-                                                }
-                                            </div>
-                                            }
-
                                             <!-- Usuario seleccionado -->
                                             <div class="selected-user mb-4">
                                                 <div class="d-flex align-items-center">
@@ -151,7 +135,7 @@
                                                 <select formControlName="ware" class="form-control auth-control"
                                                     id="ware"
                                                     [ngClass]="{ 'is-invalid': submittedStep2 && f2['ware'].errors }">
-                                                    <option value="">Seleccione Oficina</option>
+                                                    <option value="">Seleccione Punto De Venta</option>
                                                     @for (warehouse of warehouses; track warehouse) {
                                                     <option [value]="warehouse.ware">{{warehouse.ware}} -
                                                         {{warehouse.role_name}}</option>
@@ -160,7 +144,7 @@
                                                 @if (submittedStep2 && f2['ware'].errors) {
                                                 <div class="invalid-feedback">
                                                     @if (f2['ware'].errors['required']) {
-                                                    <div>Oficina es Obligatoria</div>
+                                                    <div>Punto De Venta es Obligatorio</div>
                                                     }
                                                 </div>
                                                 }

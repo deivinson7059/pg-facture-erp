@@ -54,7 +54,6 @@ export class SigninComponent
     submittedStep1 = false;
     submittedStep2 = false;
 
-    error = '';
     isLoading = false;
     step = 1;
 
@@ -110,8 +109,8 @@ export class SigninComponent
 
     // Primer paso: enviar credenciales
     onSubmitCredentials() {
+
         this.submittedStep1 = true;
-        this.error = '';
 
         if (this.credentialsForm.invalid) {
             return;
@@ -141,8 +140,8 @@ export class SigninComponent
                     }
                 }),
                 catchError(errorMsg => {
+                    // Mostrar mensaje de error tanto en toastr como en la variable error
                     this.toastrService.error(errorMsg || 'Error en la autenticación', 'Error');
-                    //this.error = errorMsg || 'Error en la autenticación';
                     return of(null);
                 }),
                 finalize(() => {
@@ -156,7 +155,6 @@ export class SigninComponent
     // Segundo paso: seleccionar compañía y bodega
     onSubmitCompany() {
         this.submittedStep2 = true;
-        this.error = '';
 
         if (this.companyForm.invalid) {
             return;
@@ -180,7 +178,6 @@ export class SigninComponent
                 }),
                 catchError(errorMsg => {
                     this.toastrService.error(errorMsg || 'Error en la autenticación', 'Error');
-                    this.error = errorMsg || 'Error en la autenticación';
                     return of(null);
                 }),
                 finalize(() => {
@@ -203,7 +200,6 @@ export class SigninComponent
     backToStep1() {
         this.step = 1;
         this.submittedStep2 = false;
-        this.error = '';
 
         // Limpiar el segundo formulario
         this.companyForm.reset();

@@ -10,13 +10,15 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { ConfigService } from '@config';
 import { UnsubscribeOnDestroyAdapter } from '@shared';
-import { InConfiguration, AuthService, WINDOW, RightSidebarService } from '@core';
+import { InConfiguration, AuthService, WINDOW, RightSidebarService, UtilsSpinnerService, UtilsToastrService } from '@core';
 import { NgScrollbar } from 'ngx-scrollbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { FeatherIconsComponent } from '../../shared/components/feather-icons/feather-icons.component';
 import { MatButtonModule } from '@angular/material/button';
 import { WINDOW_PROVIDERS } from '@core/service/window.service';
 import { User } from '@core/models/user.model';
+
+import Swal from 'sweetalert2';
 
 interface Notifications {
     message: string;
@@ -68,6 +70,8 @@ export class HeaderComponent
         private configService: ConfigService,
         private authService: AuthService,
         private router: Router,
+        private spinnerService: UtilsSpinnerService,
+        private toastrService: UtilsToastrService
     ) {
         super();
     }
@@ -268,6 +272,45 @@ export class HeaderComponent
             this.renderer.addClass(this.document.body, 'submenu-closed');
             localStorage.setItem('collapsed_menu', 'true');
         }
+    }
+
+
+    onLogout(): void {
+        // Mostrar diálogo de confirmación con Swal
+        Swal.fire({
+            title: '¿Cerrar sesión?',
+            text: '¿Está seguro que desea salir del sistema?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, cerrar sesión',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            // Si el usuario confirma
+            if (result.isConfirmed) {
+                this.spinnerService.show();
+
+                this.authService.logout().subscribe({
+                    next: () => {
+                        this.toastrService.success('Sesión cerrada correctamente', 'Éxito');
+                        localStorage.removeItem('currentUser');
+                        this.authService.clearUserData();
+                        this.router.navigate(['/authentication/signin']);
+                    },
+                    error: (error) => {
+                        console.error('Error al cerrar sesión:', error);
+                        this.toastrService.error('Error al cerrar sesión', 'Error');
+                        // Aún así navegar a la página de login
+                        this.router.navigate(['/authentication/signin']);
+                    },
+                    complete: () => {
+                        this.spinnerService.hide();
+                    }
+                });
+            }
+            // Si el usuario cancela, no hacer nada
+        });
     }
     logout() {
         this.subs.sink = this.authService.logout().subscribe((res) => {

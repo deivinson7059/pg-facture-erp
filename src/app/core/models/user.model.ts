@@ -1,3 +1,6 @@
+import { RouteInfo } from "app/layout/sidebar/sidebar.metadata";
+
+
 export interface User {
     id: string;
     name: string;
@@ -13,5 +16,5 @@ export interface User {
     scopes: string[];
     token: string;
     access_token: string;
-
+    menu: RouteInfo[];
 }

@@ -1,3 +1,5 @@
+import { RouteInfo } from "app/layout/sidebar/sidebar.metadata";
+
 export interface ApiResponse {
     code: number;
     success: boolean;
@@ -51,5 +53,6 @@ export interface SecondStepResponse extends ApiResponse {
         };
         token: string;
         access_token: string;
+        menu: RouteInfo[];
     };
 }
