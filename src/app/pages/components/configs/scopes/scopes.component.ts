@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -6,9 +7,11 @@ import { Scope } from '@pages/interfaces/scope.inerface';
 import { ConfigsService } from '@pages/services/configs.service';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
+import Swal from 'sweetalert2';
+
 @Component({
     selector: 'app-scopes',
-    imports: [FormsModule, RouterModule, BreadcrumbComponent, TablesorterDirective, UtilsTooltipDirective],
+    imports: [CommonModule, FormsModule, RouterModule, BreadcrumbComponent, TablesorterDirective, UtilsTooltipDirective,],
     templateUrl: './scopes.component.html',
     styleUrl: './scopes.component.scss'
 })
@@ -33,6 +36,9 @@ export class ScopesComponent implements OnInit {
     ) { }
 
     public scopes: Scope[] = [];
+    public showScopeModal: boolean = false;
+    public newScope: Scope = { id: '', description: '' };
+    public submitted: boolean = false;
 
 
     ngOnInit(): void {
@@ -67,9 +73,105 @@ export class ScopesComponent implements OnInit {
             );
     }
 
-    removeScope(scope: Scope) { }
+    removeScope(scope: Scope) {
+        Swal.fire({
+            title: '¿Está seguro que desea eliminar este permiso?',
+            text: 'Esta acción no se puede deshacer',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar!',
+            cancelButtonText: 'No, cancelar!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.spinnerService.show();
+                this.configsService.removeScope(scope.id)
+                    .subscribe({
+                        next: (res) => {
+                            this.spinnerService.hide();
+                            if (res.code == 200) {
+                                Swal.fire({
+                                    title: 'Éxito',
+                                    text: 'Permiso eliminado correctamente',
+                                    icon: 'success',
+                                    timer: 1500
+                                });
+                                this.findAllScopes(); // Recargar la lista
+                            } else {
+                                Swal.fire({
+                                    title: 'Error',
+                                    text: 'Error al eliminar el permiso',
+                                    icon: 'error'
+                                });
+                            }
+                        },
+                        error: (error) => {
+                            this.spinnerService.hide();
+                            if (error === 'Forbidden') {
+                                Swal.fire({
+                                    title: 'Error 403',
+                                    text: 'No tienes permisos para eliminar este permiso',
+                                    icon: 'error'
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Error',
+                                    text: 'Error al eliminar el permiso',
+                                    icon: 'error'
+                                });
+                            }
+                        }
+                    });
+            }
+        });
+    }
 
     addScope() {
-        //abrea madal para crear un nuevo registro
+        this.resetForm();
+        this.showScopeModal = true;
+    }
+    closeScopeModal() {
+        this.showScopeModal = false;
+        this.resetForm();
+    }
+
+    resetForm() {
+        this.newScope = { id: '', description: '' };
+        this.submitted = false;
+    }
+
+    saveScope() {
+        this.submitted = true;
+
+        // Validar que los campos requeridos estén completos
+        if (!this.newScope.id || !this.newScope.description) {
+            return;
+        }
+
+        this.spinnerService.show();
+        this.configsService.addScope(this.newScope)
+            .subscribe({
+                next: (res) => {
+                    this.spinnerService.hide();
+                    if (res.code == 200) {
+                        this.toastrService.success('Permiso creado correctamente', 'Éxito');
+                        this.closeScopeModal();
+                        this.findAllScopes(); // Recargar la lista
+                    } else {
+                        this.toastrService.error(res.messages.error || 'Error al crear el permiso', 'Error');
+                    }
+                },
+                error: (error) => {
+                    this.spinnerService.hide();
+                    if (error === 'Forbidden') {
+                        this.toastrService.error('No tienes permisos para crear permisos', 'Error 403');
+                    } else if (error?.error?.message) {
+                        this.toastrService.error(error.error.message, 'Error');
+                    } else {
+                        this.toastrService.error('Error al crear el permiso', 'Error');
+                    }
+                }
+            });
     }
 }

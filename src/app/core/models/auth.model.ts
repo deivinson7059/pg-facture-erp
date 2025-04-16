@@ -28,6 +28,7 @@ export interface Warehouse {
 
 export interface Company {
     cmpy: string;
+    cmpy_name: string;
     wares: Warehouse[];
 }
 

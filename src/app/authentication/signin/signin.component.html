@@ -67,9 +67,9 @@
                                                     </label>
                                                 </div>
                                                 <div>
-                                                    <a class="txt1" routerLink="/authentication/forgot-password">¿Olvidó
-                                                        su
-                                                        Contraseña?</a>
+                                                    <a class="txt1" routerLink="/authentication/forgot-password">
+                                                        ¿Olvidó su Contraseña?
+                                                    </a>
                                                 </div>
                                             </div>
 
@@ -117,7 +117,8 @@
                                                     (change)="onCompanyChange($event)">
                                                     <option value="">Seleccione Empresa</option>
                                                     @for (company of companies; track company) {
-                                                    <option [value]="company.cmpy">{{company.cmpy}}</option>
+                                                    <option [value]="company.cmpy">{{company.cmpy}} -
+                                                        {{company.cmpy_name}}</option>
                                                     }
                                                 </select>
                                                 @if (submittedStep2 && f2['cmpy'].errors) {
